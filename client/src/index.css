@@ -3,11 +3,59 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary: 145 63% 42%; /* Vert naturel */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 140 30% 32%; /* Vert foncé */
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 160 84% 39%; /* Vert vif pour les accents */
+    --accent-foreground: 0 0% 100%;
+    
+    --background: 210 18% 10%; /* Fond sombre */
+    --foreground: 0 0% 98%;
+    
+    --muted: 210 15% 20%; /* Fond sombre atténué */
+    --muted-foreground: 0 0% 80%;
+    
+    --card: 210 24% 16%; /* Fond de carte légèrement plus clair */
+    --card-foreground: 0 0% 98%;
+    
+    --border: 210 15% 25%;
+    --input: 210 15% 25%;
+    
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --success: 145 70% 45%;
+    --success-foreground: 0 0% 98%;
+    
+    --ring: 145 63% 42%;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  /* Styles spéciaux pour les sections */
+  section {
+    @apply py-16 md:py-24;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Poppins'] font-bold;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl mb-6;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl mb-4;
   }
 }

@@ -30,9 +30,9 @@ export class ThreeAnimation {
       containerId: options.containerId,
       particleCount: 150,
       particleSize: 0.05,
-      particleColor: '#3b82f6',
-      lineColor: '#3b82f6',
-      lineOpacity: 0.2,
+      particleColor: '#2c9e5e', // Vert naturel pour correspondre au thème
+      lineColor: '#34d8ac', // Vert vif pour les connections
+      lineOpacity: 0.15,
       rotationSpeedX: 0.0005,
       rotationSpeedY: 0.001,
       connectionDistance: 2
