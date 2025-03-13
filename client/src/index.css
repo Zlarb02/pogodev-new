@@ -3,35 +3,41 @@
 @tailwind utilities;
 
 @layer base {
+  /* Thème sombre appliqué directement à la racine */
   :root {
     --primary: 145 63% 42%; /* Vert naturel */
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 210 40% 98%;
     
     --secondary: 140 30% 32%; /* Vert foncé */
-    --secondary-foreground: 0 0% 100%;
+    --secondary-foreground: 210 40% 98%;
     
     --accent: 160 84% 39%; /* Vert vif pour les accents */
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 210 40% 98%;
     
-    --background: 210 18% 10%; /* Fond sombre */
-    --foreground: 0 0% 98%;
+    --background: 222.2 47.4% 11.2%; /* Fond sombre */
+    --foreground: 210 40% 98%;
     
-    --muted: 210 15% 20%; /* Fond sombre atténué */
-    --muted-foreground: 0 0% 80%;
+    --muted: 217.2 32.6% 17.5%; /* Fond sombre atténué */
+    --muted-foreground: 215 20.2% 65.1%;
     
-    --card: 210 24% 16%; /* Fond de carte légèrement plus clair */
-    --card-foreground: 0 0% 98%;
+    --card: 222.2 47.4% 15.2%; /* Fond de carte légèrement plus clair */
+    --card-foreground: 210 40% 98%;
     
-    --border: 210 15% 25%;
-    --input: 210 15% 25%;
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
     
-    --destructive: 0 85% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --border: 217.2 32.6% 22.5%;
+    --input: 217.2 32.6% 22.5%;
+    
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
     
     --success: 145 70% 45%;
-    --success-foreground: 0 0% 98%;
+    --success-foreground: 210 40% 98%;
     
     --ring: 145 63% 42%;
+    
+    --radius: 0.5rem;
   }
 
   * {
