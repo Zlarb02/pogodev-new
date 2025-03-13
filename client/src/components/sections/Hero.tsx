@@ -73,7 +73,7 @@ export function Hero() {
           </motion.h1>
           
           <motion.p 
-            className="text-lg md:text-xl text-secondary mb-8"
+            className="text-lg md:text-xl text-muted-foreground mb-8"
             variants={itemVariants}
           >
             Je suis Étienne Pogoda, développeur freelance. Je cherche mes premiers clients pour lancer mon activité. En échange de votre confiance, je propose une offre soignée, humaine et accessible.
@@ -91,13 +91,13 @@ export function Hero() {
             </Button>
             
             <div className="flex space-x-4">
-              <a href="mailto:etienne@pogodev.com" className="text-secondary hover:text-accent transition-colors" aria-label="Email">
+              <a href="mailto:etienne@pogodev.com" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Email">
                 <Mail className="h-6 w-6" />
               </a>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-accent transition-colors" aria-label="GitHub">
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="GitHub">
                 <Github className="h-6 w-6" />
               </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-accent transition-colors" aria-label="LinkedIn">
+              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="LinkedIn">
                 <Linkedin className="h-6 w-6" />
               </a>
             </div>
@@ -111,7 +111,7 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
       >
-        <a href="#about" className="text-secondary flex flex-col items-center animate-bounce">
+        <a href="#about" className="text-muted-foreground flex flex-col items-center animate-bounce">
           <span className="mb-2">Découvrir</span>
           <ChevronDown className="h-6 w-6" />
         </a>

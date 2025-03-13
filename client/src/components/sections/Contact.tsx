@@ -62,10 +62,10 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-slate-50">
+    <section id="contact" ref={sectionRef} className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-2xl md:text-3xl font-bold text-center mb-6 font-['Poppins']"
+          className="text-2xl md:text-3xl font-bold text-center mb-6 font-['Poppins'] text-foreground"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
@@ -74,7 +74,7 @@ export function Contact() {
         </motion.h2>
         
         <motion.p 
-          className="text-center text-secondary max-w-2xl mx-auto mb-12"
+          className="text-center text-muted-foreground max-w-2xl mx-auto mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -90,8 +90,8 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Me contacter</h3>
+            <div className="bg-card p-6 rounded-xl shadow-sm">
+              <h3 className="text-xl font-semibold mb-4 text-foreground">Me contacter</h3>
               
               <div className="mb-6">
                 <a href="mailto:etienne@pogodev.com" className="text-accent hover:underline flex items-center mb-3">
@@ -100,13 +100,13 @@ export function Contact() {
                 </a>
               </div>
               
-              <h4 className="font-medium mb-2">Retrouvez-moi sur :</h4>
+              <h4 className="font-medium mb-2 text-foreground">Retrouvez-moi sur :</h4>
               <div className="flex space-x-4">
                 <a 
                   href="https://github.com/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-secondary hover:text-accent transition-colors" 
+                  className="text-muted-foreground hover:text-accent transition-colors" 
                   aria-label="GitHub"
                 >
                   <Github className="h-6 w-6" />
@@ -115,7 +115,7 @@ export function Contact() {
                   href="https://linkedin.com/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-secondary hover:text-accent transition-colors" 
+                  className="text-muted-foreground hover:text-accent transition-colors" 
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-6 w-6" />
@@ -131,7 +131,7 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="bg-white p-8 rounded-xl shadow-sm">
+            <div className="bg-card p-8 rounded-xl shadow-sm">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <FormField
@@ -139,7 +139,7 @@ export function Contact() {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Prénom</FormLabel>
+                        <FormLabel className="text-foreground">Prénom</FormLabel>
                         <FormControl>
                           <Input placeholder="Votre prénom" {...field} />
                         </FormControl>
@@ -153,7 +153,7 @@ export function Contact() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel className="text-foreground">Email</FormLabel>
                         <FormControl>
                           <Input placeholder="votre@email.com" type="email" {...field} />
                         </FormControl>
@@ -167,7 +167,7 @@ export function Contact() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel className="text-foreground">Message</FormLabel>
                         <FormControl>
                           <Textarea 
                             placeholder="Parlez-moi de votre projet..." 
