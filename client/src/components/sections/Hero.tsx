@@ -66,7 +66,7 @@ export function Hero() {
           animate="visible"
         >
           <motion.h1 
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 font-['Poppins'] text-primary"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 font-['Poppins'] text-foreground"
             variants={itemVariants}
           >
             Vous cherchez un développeur autonome et engagé pour donner vie à votre projet ?

@@ -7,10 +7,10 @@ export function About() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-white">
+    <section id="about" ref={sectionRef} className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-2xl md:text-3xl font-bold text-center mb-12 font-['Poppins']"
+          className="text-2xl md:text-3xl font-bold text-center mb-12 font-['Poppins'] text-foreground"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}

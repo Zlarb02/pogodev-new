@@ -25,10 +25,10 @@ export function Services() {
   };
 
   return (
-    <section id="services" ref={sectionRef} className="py-20 bg-white">
+    <section id="services" ref={sectionRef} className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-2xl md:text-3xl font-bold text-center mb-12 font-['Poppins']"
+          className="text-2xl md:text-3xl font-bold text-center mb-12 font-['Poppins'] text-foreground"
           variants={fadeInUp}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -54,38 +54,38 @@ export function Services() {
           >
             {/* Service 1 */}
             <motion.div 
-              className="bg-slate-50 p-6 rounded-xl shadow-sm"
+              className="bg-card p-6 rounded-xl shadow-sm"
               variants={fadeInUp}
             >
               <div className="text-accent mb-4">
                 <Globe className="h-10 w-10" />
               </div>
-              <h4 className="text-lg font-semibold mb-3">Sites vitrines & portfolios</h4>
-              <p className="text-secondary">Sites vitrines, landing pages, portfolios professionnels pour présenter votre activité.</p>
+              <h4 className="text-lg font-semibold mb-3 text-foreground">Sites vitrines & portfolios</h4>
+              <p className="text-muted-foreground">Sites vitrines, landing pages, portfolios professionnels pour présenter votre activité.</p>
             </motion.div>
             
             {/* Service 2 */}
             <motion.div 
-              className="bg-slate-50 p-6 rounded-xl shadow-sm"
+              className="bg-card p-6 rounded-xl shadow-sm"
               variants={fadeInUp}
             >
               <div className="text-accent mb-4">
                 <Code className="h-10 w-10" />
               </div>
-              <h4 className="text-lg font-semibold mb-3">Applications web</h4>
-              <p className="text-secondary">Applications web sur-mesure, modernes et performantes selon vos besoins spécifiques.</p>
+              <h4 className="text-lg font-semibold mb-3 text-foreground">Applications web</h4>
+              <p className="text-muted-foreground">Applications web sur-mesure, modernes et performantes selon vos besoins spécifiques.</p>
             </motion.div>
             
             {/* Service 3 */}
             <motion.div 
-              className="bg-slate-50 p-6 rounded-xl shadow-sm"
+              className="bg-card p-6 rounded-xl shadow-sm"
               variants={fadeInUp}
             >
               <div className="text-accent mb-4">
                 <ShoppingBag className="h-10 w-10" />
               </div>
-              <h4 className="text-lg font-semibold mb-3">Boutiques en ligne</h4>
-              <p className="text-secondary">E-commerce sécurisé et prêt à vendre pour commercialiser vos produits ou services.</p>
+              <h4 className="text-lg font-semibold mb-3 text-foreground">Boutiques en ligne</h4>
+              <p className="text-muted-foreground">E-commerce sécurisé et prêt à vendre pour commercialiser vos produits ou services.</p>
             </motion.div>
           </motion.div>
           
@@ -108,29 +108,29 @@ export function Services() {
           >
             {/* Option 1 */}
             <motion.div 
-              className="bg-slate-50 p-6 rounded-xl shadow-sm"
+              className="bg-card p-6 rounded-xl shadow-sm"
               variants={fadeInUp}
             >
-              <h4 className="text-lg font-semibold mb-3">Automatisations métiers</h4>
-              <p className="text-secondary">Automatisations métiers et API pour faciliter votre travail quotidien.</p>
+              <h4 className="text-lg font-semibold mb-3 text-foreground">Automatisations métiers</h4>
+              <p className="text-muted-foreground">Automatisations métiers et API pour faciliter votre travail quotidien.</p>
             </motion.div>
             
             {/* Option 2 */}
             <motion.div 
-              className="bg-slate-50 p-6 rounded-xl shadow-sm"
+              className="bg-card p-6 rounded-xl shadow-sm"
               variants={fadeInUp}
             >
-              <h4 className="text-lg font-semibold mb-3">Solutions auto-hébergées</h4>
-              <p className="text-secondary">Solutions auto-hébergées et éco-conçues pour plus de contrôle.</p>
+              <h4 className="text-lg font-semibold mb-3 text-foreground">Solutions auto-hébergées</h4>
+              <p className="text-muted-foreground">Solutions auto-hébergées et éco-conçues pour plus de contrôle.</p>
             </motion.div>
             
             {/* Option 3 */}
             <motion.div 
-              className="bg-slate-50 p-6 rounded-xl shadow-sm"
+              className="bg-card p-6 rounded-xl shadow-sm"
               variants={fadeInUp}
             >
-              <h4 className="text-lg font-semibold mb-3">CI/CD simples</h4>
-              <p className="text-secondary">CI/CD simples pour faciliter les mises à jour de votre site ou application.</p>
+              <h4 className="text-lg font-semibold mb-3 text-foreground">CI/CD simples</h4>
+              <p className="text-muted-foreground">CI/CD simples pour faciliter les mises à jour de votre site ou application.</p>
             </motion.div>
           </motion.div>
           
@@ -149,7 +149,7 @@ export function Services() {
           >
             {/* Offer 1 */}
             <motion.div 
-              className="bg-accent/5 border border-accent/20 p-6 rounded-xl"
+              className="bg-accent/10 border border-accent/20 p-6 rounded-xl"
               variants={{
                 hidden: { opacity: 0, x: -20 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
@@ -160,16 +160,16 @@ export function Services() {
                   <Gift className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold mb-2">Tarif préférentiel</h4>
-                  <p className="text-primary text-lg font-bold mb-3">🎁 -50% pour mes 2 premiers clients</p>
-                  <p className="text-secondary">Profitez d'un tarif exceptionnel pour le lancement de mon activité, en échange de votre confiance.</p>
+                  <h4 className="text-lg font-semibold mb-2 text-foreground">Tarif préférentiel</h4>
+                  <p className="text-accent text-lg font-bold mb-3">🎁 -50% pour mes 2 premiers clients</p>
+                  <p className="text-muted-foreground">Profitez d'un tarif exceptionnel pour le lancement de mon activité, en échange de votre confiance.</p>
                 </div>
               </div>
             </motion.div>
             
             {/* Offer 2 */}
             <motion.div 
-              className="bg-accent/5 border border-accent/20 p-6 rounded-xl"
+              className="bg-accent/10 border border-accent/20 p-6 rounded-xl"
               variants={{
                 hidden: { opacity: 0, x: 20 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
@@ -180,9 +180,9 @@ export function Services() {
                   <Clock className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold mb-2">Livraison adaptée</h4>
-                  <p className="text-primary text-lg font-bold mb-3">⚡ Délais adaptés à votre projet</p>
-                  <p className="text-secondary">Quelques jours pour un site simple, plusieurs semaines pour une application complète, avec étapes claires et accompagnement.</p>
+                  <h4 className="text-lg font-semibold mb-2 text-foreground">Livraison adaptée</h4>
+                  <p className="text-accent text-lg font-bold mb-3">⚡ Délais adaptés à votre projet</p>
+                  <p className="text-muted-foreground">Quelques jours pour un site simple, plusieurs semaines pour une application complète, avec étapes claires et accompagnement.</p>
                 </div>
               </div>
             </motion.div>
@@ -207,18 +207,18 @@ export function Services() {
           
           {/* Hosting info */}
           <motion.div 
-            className="bg-slate-50 p-8 rounded-xl shadow-sm"
+            className="bg-card p-8 rounded-xl shadow-sm"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ delay: 0.9 }}
           >
-            <h3 className="text-xl font-semibold mb-6 flex items-center">
+            <h3 className="text-xl font-semibold mb-6 flex items-center text-foreground">
               <Server className="h-6 w-6 mr-2 text-accent" />
               Hébergement & accompagnement sur-mesure
             </h3>
             
-            <ul className="space-y-4 text-secondary">
+            <ul className="space-y-4 text-muted-foreground">
               <li className="flex items-start">
                 <Check className="h-5 w-5 text-accent mr-2 mt-1" />
                 <div>
