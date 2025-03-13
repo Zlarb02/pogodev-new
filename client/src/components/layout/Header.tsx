@@ -34,9 +34,9 @@ export function Header() {
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-sm shadow-sm' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/">
-          <a className="text-xl font-semibold text-primary font-['Poppins']">
+          <div className="text-xl font-semibold text-primary font-['Poppins'] cursor-pointer">
             pogodev<span className="text-accent">.com</span>
-          </a>
+          </div>
         </Link>
         
         {/* Mobile menu button */}
