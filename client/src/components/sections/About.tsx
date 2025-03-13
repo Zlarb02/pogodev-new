@@ -41,13 +41,13 @@ export function About() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <p className="text-lg leading-relaxed text-secondary mb-6">
+              <p className="text-lg leading-relaxed text-muted-foreground mb-6">
                 Derrière l'écran, je suis Étienne Pogoda, développeur fullstack & devops. Après 7 ans de formation continue tout en travaillant en restauration, je me lance aujourd'hui en freelance.
               </p>
-              <p className="text-lg leading-relaxed text-secondary mb-6">
+              <p className="text-lg leading-relaxed text-muted-foreground mb-6">
                 J'aime imaginer des projets utiles et sur-mesure, avec une attention particulière à la qualité, la performance et l'impact environnemental.
               </p>
-              <p className="text-lg leading-relaxed text-secondary">
+              <p className="text-lg leading-relaxed text-muted-foreground">
                 Mon objectif : créer avec vous des solutions solides, élégantes, qui répondent à vos vrais besoins.
               </p>
             </motion.div>

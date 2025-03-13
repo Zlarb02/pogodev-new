@@ -66,10 +66,10 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 bg-slate-50">
+    <section id="projects" ref={sectionRef} className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-2xl md:text-3xl font-bold text-center mb-6 font-['Poppins']"
+          className="text-2xl md:text-3xl font-bold text-center mb-6 font-['Poppins'] text-foreground"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
@@ -78,7 +78,7 @@ export function Projects() {
         </motion.h2>
         
         <motion.p 
-          className="text-center text-secondary max-w-3xl mx-auto mb-12"
+          className="text-center text-muted-foreground max-w-3xl mx-auto mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -95,7 +95,7 @@ export function Projects() {
           {projects.map((project, index) => (
             <motion.div 
               key={index}
-              className="bg-white rounded-xl shadow-sm overflow-hidden transition-transform hover:scale-[1.02]"
+              className="bg-card rounded-xl shadow-sm overflow-hidden transition-transform hover:scale-[1.02]"
               variants={itemVariants}
               whileHover={{ y: -5 }}
             >
@@ -105,8 +105,8 @@ export function Projects() {
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-secondary mb-4">{project.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-foreground">{project.title}</h3>
+                <p className="text-muted-foreground mb-4">{project.description}</p>
                 <a 
                   href={project.url} 
                   target="_blank" 
@@ -127,7 +127,7 @@ export function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <p className="text-secondary">
+          <p className="text-muted-foreground">
             🎯 Vous pouvez tester leurs performances avec 
             <a href="https://developers.google.com/web/tools/lighthouse" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline mx-1">Lighthouse</a>, 
             <a href="https://ecograder.com/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline mx-1">Ecograder</a>, 

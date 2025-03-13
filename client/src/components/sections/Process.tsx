@@ -57,10 +57,10 @@ export function Process() {
   ];
 
   return (
-    <section id="process" ref={sectionRef} className="py-20 bg-white">
+    <section id="process" ref={sectionRef} className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-2xl md:text-3xl font-bold text-center mb-12 font-['Poppins']"
+          className="text-2xl md:text-3xl font-bold text-center mb-12 font-['Poppins'] text-foreground"
           variants={fadeInUp}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -87,8 +87,8 @@ export function Process() {
                   {step.id % 2 === 1 ? (
                     <>
                       <div className="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
-                        <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                        <p className="text-secondary">{step.description}</p>
+                        <h3 className="text-xl font-semibold mb-3 text-foreground">{step.title}</h3>
+                        <p className="text-muted-foreground">{step.description}</p>
                       </div>
                       <div className="z-10 flex items-center justify-center w-12 h-12 bg-accent text-white rounded-full">
                         <span className="font-medium">{step.id}</span>
@@ -102,8 +102,8 @@ export function Process() {
                         <span className="font-medium">{step.id}</span>
                       </div>
                       <div className="md:w-1/2 md:pl-12 mb-6 md:mb-0">
-                        <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                        <p className="text-secondary">{step.description}</p>
+                        <h3 className="text-xl font-semibold mb-3 text-foreground">{step.title}</h3>
+                        <p className="text-muted-foreground">{step.description}</p>
                       </div>
                     </>
                   )}
@@ -114,19 +114,19 @@ export function Process() {
           
           {/* What you receive */}
           <motion.div 
-            className="mt-24 bg-slate-50 p-8 rounded-xl"
+            className="mt-24 bg-card p-8 rounded-xl"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ delay: 0.8 }}
           >
-            <h3 className="text-xl font-semibold mb-6">Ce que vous recevez</h3>
+            <h3 className="text-xl font-semibold mb-6 text-foreground">Ce que vous recevez</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {deliverables.map((item, index) => (
                 <div key={index} className="flex items-start">
                   <Check className="h-5 w-5 text-accent mr-3 mt-1" />
-                  <span>
+                  <span className="text-muted-foreground">
                     {item.includes("Namecheap") ? (
                       <>
                         Nom de domaine à votre charge (<a href="https://www.namecheap.com/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Namecheap</a>).
