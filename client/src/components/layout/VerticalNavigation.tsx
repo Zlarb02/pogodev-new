@@ -80,10 +80,23 @@ export function VerticalNavigation() {
 
       // Cacher la navigation sur la section Hero
       const heroElement = document.getElementById("hero");
+      // Récupérer l'élément footer
+      const footerElement = document.querySelector("footer");
+
       if (heroElement) {
         const heroRect = heroElement.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        setIsVisible(heroRect.bottom <= windowHeight * 0.6);
+
+        // Vérifier si le footer est visible
+        let footerVisible = false;
+        if (footerElement) {
+          const footerRect = footerElement.getBoundingClientRect();
+          // Le footer est considéré comme visible si sa partie supérieure entre dans la vue
+          footerVisible = footerRect.top < windowHeight;
+        }
+
+        // Montrer la navigation seulement si on n'est pas sur le hero ET pas sur le footer
+        setIsVisible(heroRect.bottom <= windowHeight * 0.6 && !footerVisible);
       }
     };
 

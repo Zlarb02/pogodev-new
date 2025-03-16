@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { ThreeAnimation } from '@/lib/three-animation';
-import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, ChevronDown } from 'lucide-react';
+import { useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { ThreeAnimation } from "@/lib/three-animation";
+import { motion } from "framer-motion";
+import { Mail, Github, Linkedin, ChevronDown } from "lucide-react";
 
 export function Hero() {
   const threeContainerRef = useRef<HTMLDivElement>(null);
@@ -11,21 +11,21 @@ export function Hero() {
   useEffect(() => {
     // Initialize Three.js animation
     if (threeContainerRef.current && !threeAnimationRef.current) {
-      const containerId = 'three-container';
+      const containerId = "three-container";
       threeContainerRef.current.id = containerId;
-      
+
       threeAnimationRef.current = new ThreeAnimation({
         containerId,
         particleCount: 150,
         particleSize: 0.05,
-        particleColor: '#2c9e5e', // Vert naturel pour correspondre au thème
-        lineColor: '#34d8ac', // Vert vif pour les connections
+        particleColor: "#2c9e5e", // Vert naturel pour correspondre au thème
+        lineColor: "#34d8ac", // Vert vif pour les connections
         lineOpacity: 0.2,
       });
-      
+
       threeAnimationRef.current.start();
     }
-    
+
     // Cleanup
     return () => {
       if (threeAnimationRef.current) {
@@ -41,9 +41,9 @@ export function Hero() {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -51,67 +51,106 @@ export function Hero() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-16">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center pt-16"
+    >
       <div ref={threeContainerRef} className="absolute inset-0 z-0"></div>
       <div className="container mx-auto px-4 py-16 z-10 relative">
-        <motion.div 
+        <motion.div
           className="max-w-2xl"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.h1 
+          <motion.h1
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 font-['Poppins'] text-foreground"
             variants={itemVariants}
           >
-            Vous cherchez un développeur autonome et engagé pour donner vie à votre projet ?
+            Vous cherchez un développeur autonome et engagé pour donner vie à
+            votre projet ?
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             className="text-lg md:text-xl text-muted-foreground mb-8"
             variants={itemVariants}
           >
-            Je suis Étienne Pogoda, développeur freelance. Je cherche mes premiers clients pour lancer mon activité. En échange de votre confiance, je propose une offre soignée, humaine et accessible.
+            Je suis Étienne Pogoda, développeur freelance. Je cherche mes
+            premiers clients pour lancer mon activité. En échange de votre
+            confiance, je propose une offre soignée, humaine et accessible.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
             variants={itemVariants}
           >
             <Button asChild size="lg" className="group">
-              <a href="#contact">
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 Discutons de votre projet
                 <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            
+
             <div className="flex space-x-4">
-              <a href="mailto:etienne@pogodev.com" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Email">
+              <a
+                href="mailto:etienne@pogodev.com"
+                className="text-muted-foreground hover:text-accent transition-colors"
+                aria-label="Email"
+              >
                 <Mail className="h-6 w-6" />
               </a>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="GitHub">
+              <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-accent transition-colors"
+                aria-label="GitHub"
+              >
                 <Github className="h-6 w-6" />
               </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="LinkedIn">
+              <a
+                href="https://linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-accent transition-colors"
+                aria-label="LinkedIn"
+              >
                 <Linkedin className="h-6 w-6" />
               </a>
             </div>
           </motion.div>
         </motion.div>
       </div>
-      
-      <motion.div 
+
+      <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
       >
-        <a href="#about" className="text-muted-foreground flex flex-col items-center animate-bounce">
+        <a
+          href="#about"
+          className="text-muted-foreground flex flex-col items-center animate-bounce"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .getElementById("about")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
           <span className="mb-2">Découvrir</span>
           <ChevronDown className="h-6 w-6" />
         </a>

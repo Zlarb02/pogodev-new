@@ -17,6 +17,7 @@ import {
   Smartphone,
   LineChart,
   Zap,
+  CheckCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -54,12 +55,13 @@ export function Services() {
 
         <div className="max-w-5xl mx-auto">
           <motion.h3
-            className="text-xl font-semibold mb-8"
+            className="text-xl font-semibold mb-8 flex row gap-3 items-center justify-center"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            ✅ Ce que je peux réaliser pour vous :
+            <CheckCheck className="h-8 w-8 flex-shrink-0" /> Ce que je peux
+            réaliser pour vous
           </motion.h3>
 
           <motion.div
@@ -286,7 +288,15 @@ export function Services() {
             transition={{ delay: 0.8 }}
           >
             <Button asChild size="lg">
-              <a href="#contact">
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 Obtenez un devis personnalisé
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
