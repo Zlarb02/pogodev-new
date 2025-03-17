@@ -172,6 +172,7 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <img src="/assets/logo-large.svg" alt="Logo" className="h-20 w-auto" />
         <Link href="/">
           <div className="text-xl font-semibold text-primary font-['Poppins'] cursor-pointer">
             pogodev<span className="text-accent">.com</span>
