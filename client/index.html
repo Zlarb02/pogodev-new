@@ -8,10 +8,39 @@
       name="description"
       content="Développeur fullstack & devops freelance. Créations sur-mesure, accessibles et éco-conçues."
     />
+    <!-- Balises SEO supplémentaires -->
+    <meta name="author" content="Étienne Pogoda" />
+    <meta
+      name="keywords"
+      content="développeur freelance, fullstack, devops, web, éco-conception, sites web, applications"
+    />
+
+    <!-- Open Graph / Social Media -->
+    <meta
+      property="og:title"
+      content="Étienne Pogoda | Développeur Freelance"
+    />
+    <meta
+      property="og:description"
+      content="Développeur fullstack & devops freelance. Créations sur-mesure, accessibles et éco-conçues."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zlarb02.github.io/pogodev-new" />
+    <meta
+      property="og:image"
+      content="https://zlarb02.github.io/pogodev-new/assets/og-image.jpg"
+    />
+
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+
     <!-- Script pour gérer les redirections SPA sur GitHub Pages -->
     <script type="text/javascript">
       (function () {
@@ -33,13 +62,79 @@
             history.replaceState(null, null, fullPath);
           }
         }
+
+        // Ajouter un gestionnaire pour capturer les erreurs JS
+        window.addEventListener("error", function (e) {
+          console.error(
+            "Erreur JavaScript capturée:",
+            e.message,
+            "dans",
+            e.filename,
+            "ligne",
+            e.lineno
+          );
+        });
       })();
     </script>
+
     <!-- Utilisation d'un chemin relatif pour l'icône -->
     <link rel="icon" type="image/svg+xml" href="./assets/logo.svg" />
-    <script type="module" src="./src/main.tsx"></script>
+    <script type="module" src="./src/main.tsx" defer></script>
+
+    <!-- Vérification de compatibilité des navigateurs -->
+    <script>
+      if (
+        !("IntersectionObserver" in window) ||
+        !("querySelector" in document) ||
+        !("localStorage" in window)
+      ) {
+        document.write(
+          '<p style="color: #721c24; background-color: #f8d7da; padding: 1rem; margin: 0;">Votre navigateur semble obsolète. Pour une meilleure expérience, veuillez utiliser un navigateur moderne comme Chrome, Firefox, Edge ou Safari.</p>'
+        );
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fallback pour SEO et en cas de problème de chargement JS -->
+      <noscript>
+        <div style="padding: 20px; text-align: center">
+          <h1>Étienne Pogoda - Développeur Freelance</h1>
+          <p>Ce site nécessite JavaScript pour fonctionner correctement.</p>
+          <p>
+            Veuillez activer JavaScript ou utiliser un navigateur qui le
+            supporte.
+          </p>
+          <p>
+            Pour me contacter directement:
+            <a href="mailto:etienne@pogodev.com">etienne@pogodev.com</a>
+          </p>
+        </div>
+      </noscript>
+      <!-- Indicateur de chargement -->
+      <div
+        id="loader"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          width: 100vw;
+          position: fixed;
+          top: 0;
+          left: 0;
+          background: #121212;
+        "
+      >
+        <div style="text-align: center">
+          <img
+            src="./assets/logo.svg"
+            alt="Logo"
+            style="width: 80px; height: 80px; margin-bottom: 20px"
+          />
+          <p style="color: #fff; font-family: sans-serif">Chargement...</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
