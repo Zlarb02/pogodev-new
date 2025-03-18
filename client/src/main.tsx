@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-// Utiliser des chemins relatifs pour le développement
-import { ModalsProvider } from "./contexts/ModalsContext";
-import { AppModals } from "./components/AppModals";
+// Il est préférable de garder les imports avec @ pour la cohérence du projet
+import { ModalsProvider } from "@/contexts/ModalsContext";
+import { AppModals } from "@/components/AppModals";
 
 // Apply font family directly with styles
 document.documentElement.style.setProperty(
@@ -13,8 +13,10 @@ document.documentElement.style.setProperty(
 );
 
 // Récupérer la base URL injectée par Vite lors du build
-// __BASE_URL__ est défini dans vite.config.ts
 const baseUrl = (window.__BASE_URL__ || "/") as string;
+
+// Console temporaire pour aider au debug
+console.log("Base URL détectée:", baseUrl);
 
 // Définir la base URL pour le routage
 window.BASE_URL = baseUrl;

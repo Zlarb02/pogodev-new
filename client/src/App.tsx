@@ -1,12 +1,12 @@
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import NotFound from "@/pages/not-found";
-import Home from "@/pages/Home";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import React from "react";
+import { Toaster } from "./components/ui/toaster";
+import NotFound from "./pages/not-found";
+import Home from "./pages/Home";
+import { Header } from "./components/layout/Header";
+import { Footer } from "./components/layout/Footer";
+import React, { useEffect } from "react";
 
 // Utiliser le BASE_URL défini dans main.tsx
 const base = window.BASE_URL || "/";
@@ -47,7 +47,6 @@ function Router() {
     <WouterRouter hook={useHashLocation}>
       <Switch>
         <Route path="/" component={Home} />
-        {/* Fallback to 404 */}
         <Route component={NotFound} />
       </Switch>
     </WouterRouter>
@@ -55,6 +54,25 @@ function Router() {
 }
 
 function App() {
+  // Récupérer et réinitialiser la redirection stockée dans sessionStorage
+  useEffect(() => {
+    const redirectPath = sessionStorage.redirect;
+    if (redirectPath) {
+      // Supprimer la redirection pour ne pas la réutiliser
+      delete sessionStorage.redirect;
+
+      // Extraire le chemin de la redirection et naviguer
+      const path =
+        new URL(redirectPath).pathname.replace(new RegExp(`^${base}`), "/") ||
+        "/";
+      window.history.replaceState(
+        null,
+        "",
+        `${base}${path.replace(/^\//, "")}`
+      );
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex flex-col min-h-screen">
