@@ -18,8 +18,20 @@
         // Récupère les paramètres de route depuis l'URL si présents
         var redirect = sessionStorage.redirect;
         delete sessionStorage.redirect;
-        if (redirect && redirect != location.href) {
-          history.replaceState(null, null, redirect);
+
+        if (redirect && redirect !== location.href) {
+          // Extraction des paramètres pour reconstruire l'URL correctement
+          var urlParams = new URLSearchParams(location.search);
+          var path = urlParams.get("path") || "";
+          var hash = location.hash || "";
+
+          // Replace state pour restaurer l'URL correcte
+          if (path || hash) {
+            var baseUrl =
+              location.protocol + "//" + location.host + location.pathname;
+            var fullPath = baseUrl + (path ? path : "") + hash;
+            history.replaceState(null, null, fullPath);
+          }
         }
       })();
     </script>

@@ -4,23 +4,37 @@
     <meta charset="utf-8" />
     <title>Étienne Pogoda | Redirection</title>
     <script type="text/javascript">
-      // Une redirection avec préservation de l'URL pour les routes SPA
-      var pathSegmentsToKeep = 1; // Ajustez selon la profondeur de votre dépôt
+      // Configuration pour GitHub Pages avec SPA
+      var pathSegmentsToKeep = 1; // Garde le segment "pogodev-new" dans le path
       var l = window.location;
-      var repositoryName = "pogodev-new"; // Nom de votre dépôt GitHub
-      var baseUrl =
+      var repositoryName = "pogodev-new"; // Nom du dépôt GitHub
+
+      // Construction de la redirection avec préservation du chemin d'URL
+      var path = l.pathname
+        .split("/")
+        .slice(pathSegmentsToKeep + 1)
+        .join("/");
+      var queryParams = l.search ? l.search.replace(/&/g, "~and~") : "";
+      var hashFragment = l.hash ? l.hash.slice(1) : "";
+
+      // L'URL vers laquelle rediriger
+      var redirectUrl =
         l.protocol +
         "//" +
         l.hostname +
         (l.port ? ":" + l.port : "") +
         "/" +
-        repositoryName;
+        repositoryName +
+        "/?path=" +
+        path +
+        (queryParams ? "&" + queryParams.slice(1).replace(/&/g, "~and~") : "") +
+        (hashFragment ? "#" + hashFragment : "");
 
-      // Stockage de l'URL complète pour redirection après chargement de la page principale
-      sessionStorage.redirect = l.href;
+      // Stockage de l'URL pour que index.html puisse y accéder
+      sessionStorage.redirect = redirectUrl;
 
-      // Redirection vers la page d'accueil
-      window.location.href = baseUrl;
+      // Redirection vers la page principale
+      window.location.replace(redirectUrl);
     </script>
   </head>
   <body>
