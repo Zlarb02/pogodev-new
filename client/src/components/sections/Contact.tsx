@@ -119,7 +119,7 @@ export function Contact() {
               </h4>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/zlarb02"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-accent transition-colors"
@@ -128,7 +128,7 @@ export function Contact() {
                   <Github className="h-6 w-6" />
                 </a>
                 <a
-                  href="https://linkedin.com/"
+                  href="https://linkedin.com/in/etiennepogoda"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-accent transition-colors"

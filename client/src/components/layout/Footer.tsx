@@ -51,7 +51,7 @@ export function Footer({
 
         <div className="flex items-center gap-3">
           <a
-            href="https://github.com/etiennepogoda"
+            href="https://github.com/zlarb02"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -60,7 +60,7 @@ export function Footer({
             <Github size={18} />
           </a>
           <a
-            href="https://linkedin.com/in/etienne-pogoda"
+            href="https://linkedin.com/in/etiennepogoda"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
