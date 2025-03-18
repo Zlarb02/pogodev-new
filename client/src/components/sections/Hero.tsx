@@ -69,7 +69,7 @@ export function Hero() {
           animate="visible"
         >
           <motion.h1
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 font-['Poppins'] text-foreground"
+            className="text-3xl md:text-4xl lg:text-5xl lg:leading-tight font-bold mb-8 font-['Poppins'] text-foreground"
             variants={itemVariants}
           >
             Vous cherchez un développeur autonome et engagé pour donner vie à
@@ -77,7 +77,7 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-muted-foreground mb-8"
+            className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8"
             variants={itemVariants}
           >
             Je suis Étienne Pogoda, développeur freelance. Je cherche mes
