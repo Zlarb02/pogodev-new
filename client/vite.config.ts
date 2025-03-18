@@ -10,4 +10,10 @@ export default defineConfig({
   plugins: [react()],
   // Base URL pour GitHub Pages
   base: process.env.NODE_ENV === "production" ? `/${repo}/` : "/",
+  build: {
+    // Assurons-nous que les assets sont générés avec les bons chemins
+    assetsDir: "assets",
+    // Assurons-nous que le HTML est généré avec les bons chemins relatifs
+    emptyOutDir: true,
+  },
 });

@@ -31,6 +31,16 @@ jobs:
         # Le build est également exécuté à la racine
         run: npm run build
 
+      - name: Create .nojekyll file 📄
+        run: touch dist/public/.nojekyll
+
+      - name: Debug output directory 🔍
+        run: |
+          echo "Contenu du répertoire dist/public:"
+          ls -la dist/public
+          echo "Sous-répertoires et fichiers:"
+          find dist/public -type f | sort
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
