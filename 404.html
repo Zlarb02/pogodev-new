@@ -49,17 +49,28 @@
       }
     </style>
     <script>
-      // Script de redirection simplifié
+      // Script de redirection amélioré pour GitHub Pages
       window.onload = function () {
-        // Stocker l'URL demandée pour analyse éventuelle
-        sessionStorage.setItem("notFoundUrl", window.location.pathname);
+        // Sur GitHub Pages, le chemin inclut '/pogodev-new'
+        var basePath = "/pogodev-new";
+
+        // Pour le domaine personnalisé futur
+        if (window.location.hostname === "pogodev.com") {
+          basePath = "";
+        }
+
+        // Stocker l'URL demandée pour indiquer qu'on est sur une page 404
+        sessionStorage.setItem("redirect", "true");
 
         // Bouton de retour à l'accueil
         document
           .getElementById("homeButton")
           .addEventListener("click", function () {
-            window.location.href = "/";
+            window.location.href = basePath + "/";
           });
+
+        // Mettre à jour le chemin de l'image
+        document.querySelector(".logo").src = basePath + "/assets/logo.svg";
       };
     </script>
   </head>
