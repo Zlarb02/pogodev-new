@@ -7,28 +7,26 @@
       // Une redirection avec préservation de l'URL pour les routes SPA
       var pathSegmentsToKeep = 1; // Ajustez selon la profondeur de votre dépôt
       var l = window.location;
-      var redirectUrl =
+      var repositoryName = "pogodev-new"; // Nom de votre dépôt GitHub
+      var baseUrl =
         l.protocol +
         "//" +
         l.hostname +
         (l.port ? ":" + l.port : "") +
-        l.pathname
-          .split("/")
-          .slice(0, 1 + pathSegmentsToKeep)
-          .join("/") +
-        "/?/" +
-        l.pathname
-          .slice(1)
-          .split("/")
-          .slice(pathSegmentsToKeep)
-          .join("/")
-          .replace(/&/g, "~and~") +
-        (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
-        l.hash;
-      window.location.href = redirectUrl;
+        "/" +
+        repositoryName;
+
+      // Stockage de l'URL complète pour redirection après chargement de la page principale
+      sessionStorage.redirect = l.href;
+
+      // Redirection vers la page d'accueil
+      window.location.href = baseUrl;
     </script>
   </head>
   <body>
     <h1>Redirection en cours...</h1>
+    <p>
+      Si vous n'êtes pas redirigé automatiquement, <a href="/">cliquez ici</a>.
+    </p>
   </body>
 </html>
