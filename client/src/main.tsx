@@ -1,32 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
-import NotFound from "./pages/not-found";
+import App from "./App";
 import "./index.css";
-import { ModalsProvider } from "@/contexts/ModalsContext";
-import { AppModals } from "@/components/AppModals";
-
-// Récupérer le nom du dépôt depuis vite.config.ts
-const repo = "pogodev-new";
-
-// Configuration du routeur avec la base URL correcte pour GitHub Pages
-const router = createBrowserRouter(
-  [
-    {
-      path: "/",
-      element: <Home />,
-    },
-    {
-      path: "*",
-      element: <NotFound />,
-    },
-  ],
-  {
-    // Important pour GitHub Pages: base correcte
-    basename: import.meta.env.PROD ? `/${repo}` : "/",
-  }
-);
+// Utiliser des chemins relatifs pour le développement
+import { ModalsProvider } from "./contexts/ModalsContext";
+import { AppModals } from "./components/AppModals";
 
 // Apply font family directly with styles
 document.documentElement.style.setProperty(
@@ -34,10 +12,32 @@ document.documentElement.style.setProperty(
   '"Inter", sans-serif'
 );
 
+// Récupérer la base URL injectée par Vite lors du build
+// __BASE_URL__ est défini dans vite.config.ts
+const baseUrl = (window.__BASE_URL__ || "/") as string;
+
+// Définir la base URL pour le routage
+window.BASE_URL = baseUrl;
+
+// Fonction pour détecter si nous sommes sur un domaine personnalisé
+const detectCustomDomain = () => {
+  const { hostname } = window.location;
+  return !hostname.includes("github.io") && hostname !== "localhost";
+};
+
+// Si nous détectons un domaine personnalisé mais que la base URL contient encore un sous-chemin,
+// nous sommes probablement dans une situation où le CNAME a été ajouté après le build
+if (detectCustomDomain() && baseUrl !== "/") {
+  console.info(
+    "Domaine personnalisé détecté, mais le build a été fait pour GitHub Pages. Les chemins de navigation seront ajustés automatiquement."
+  );
+  window.BASE_URL = "/";
+}
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ModalsProvider>
-      <RouterProvider router={router} />
+      <App />
       <AppModals />
     </ModalsProvider>
   </React.StrictMode>
