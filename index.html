@@ -41,39 +41,24 @@
       onload="this.media='all'"
     />
 
-    <!-- Script pour gérer les redirections SPA sur GitHub Pages -->
+    <!-- Script amélioré pour gérer les redirections SPA -->
     <script type="text/javascript">
+      // Récupérer la redirection depuis sessionStorage (définie par 404.html)
       (function () {
-        // Récupère les paramètres de route depuis l'URL si présents
         var redirect = sessionStorage.redirect;
         delete sessionStorage.redirect;
 
-        if (redirect && redirect !== location.href) {
-          // Extraction des paramètres pour reconstruire l'URL correctement
-          var urlParams = new URLSearchParams(location.search);
-          var path = urlParams.get("path") || "";
-          var hash = location.hash || "";
+        // Si path est spécifié dans l'URL (format ?path=chemin)
+        var urlParams = new URLSearchParams(window.location.search);
+        var path = urlParams.get("path");
 
-          // Replace state pour restaurer l'URL correcte
-          if (path || hash) {
-            var baseUrl =
-              location.protocol + "//" + location.host + location.pathname;
-            var fullPath = baseUrl + (path ? path : "") + hash;
-            history.replaceState(null, null, fullPath);
-          }
+        if (path) {
+          // Remplacer l'historique avec le bon chemin
+          history.replaceState(null, null, path || "/");
+        } else if (redirect && redirect.length > 0) {
+          // Utiliser la redirection de sessionStorage si disponible
+          history.replaceState(null, null, redirect);
         }
-
-        // Ajouter un gestionnaire pour capturer les erreurs JS
-        window.addEventListener("error", function (e) {
-          console.error(
-            "Erreur JavaScript capturée:",
-            e.message,
-            "dans",
-            e.filename,
-            "ligne",
-            e.lineno
-          );
-        });
       })();
     </script>
 
@@ -92,7 +77,7 @@
         );
       }
     </script>
-    <script type="module" crossorigin src="/pogodev-new/assets/index-B4mpJ5uE.js"></script>
+    <script type="module" crossorigin src="/pogodev-new/assets/index-F-b-l3rn.js"></script>
     <link rel="stylesheet" crossorigin href="/pogodev-new/assets/index-DgnxXwXB.css">
   </head>
   <body>

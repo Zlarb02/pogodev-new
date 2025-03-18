@@ -9,11 +9,21 @@
       var l = window.location;
       var repositoryName = "pogodev-new"; // Nom du dépôt GitHub
 
+      // Vérifier si nous sommes sur un domaine personnalisé
+      var isCustomDomain =
+        !l.hostname.includes("github.io") && l.hostname !== "localhost";
+
       // Construction de la redirection avec préservation du chemin d'URL
-      var path = l.pathname
-        .split("/")
-        .slice(pathSegmentsToKeep + 1)
-        .join("/");
+      // Si domaine personnalisé, ne pas ajouter le nom du repo
+      var path = l.pathname;
+      if (!isCustomDomain) {
+        // Sur github.io, on garde le segment du repo et on reconstruit le path
+        path = l.pathname
+          .split("/")
+          .slice(pathSegmentsToKeep + 1)
+          .join("/");
+      }
+
       var queryParams = l.search ? l.search.replace(/&/g, "~and~") : "";
       var hashFragment = l.hash ? l.hash.slice(1) : "";
 
@@ -23,10 +33,8 @@
         "//" +
         l.hostname +
         (l.port ? ":" + l.port : "") +
-        "/" +
-        repositoryName +
-        "/?path=" +
-        path +
+        (isCustomDomain ? "/" : "/" + repositoryName + "/") +
+        (path ? "?path=" + path : "") +
         (queryParams ? "&" + queryParams.slice(1).replace(/&/g, "~and~") : "") +
         (hashFragment ? "#" + hashFragment : "");
 
