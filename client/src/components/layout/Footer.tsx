@@ -14,6 +14,35 @@ export function Footer({
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
   const [showLegalModal, setShowLegalModal] = React.useState(false);
+  const [is404Page, setIs404Page] = React.useState(false);
+
+  React.useEffect(() => {
+    // Vérifier si nous sommes sur la page 404
+    const redirect = sessionStorage.getItem("redirect");
+    const notFoundUrl = sessionStorage.getItem("notFoundUrl");
+
+    if (redirect || notFoundUrl) {
+      setIs404Page(true);
+    }
+  }, []);
+
+  // Ne pas afficher le footer sur la page 404
+  if (is404Page) {
+    return null;
+  }
+
+  // Fonction pour gérer les clics sur les liens en tenant compte de la page 404
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    if (is404Page) {
+      event.preventDefault();
+      const basePath =
+        window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+      window.location.href = `${basePath}/#${sectionId}`;
+    }
+  };
 
   return (
     <footer
@@ -29,16 +58,32 @@ export function Footer({
         </p>
 
         <nav className="flex flex-wrap items-center justify-center gap-5">
-          <a href="#about" className="text-xs hover:text-foreground">
+          <a
+            href="#about"
+            className="text-xs hover:text-foreground"
+            onClick={(e) => handleNavClick(e, "about")}
+          >
             À propos
           </a>
-          <a href="#services" className="text-xs hover:text-foreground">
+          <a
+            href="#services"
+            className="text-xs hover:text-foreground"
+            onClick={(e) => handleNavClick(e, "services")}
+          >
             Services
           </a>
-          <a href="#projects" className="text-xs hover:text-foreground">
+          <a
+            href="#projects"
+            className="text-xs hover:text-foreground"
+            onClick={(e) => handleNavClick(e, "projects")}
+          >
             Projets
           </a>
-          <a href="#contact" className="text-xs hover:text-foreground">
+          <a
+            href="#contact"
+            className="text-xs hover:text-foreground"
+            onClick={(e) => handleNavClick(e, "contact")}
+          >
             Contact
           </a>
           <button

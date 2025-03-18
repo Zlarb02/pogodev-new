@@ -1,9 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
-import { Link } from "react-router-dom";
 
 export default function NotFound() {
+  // Fonction pour revenir à l'accueil qui respecte le hash routing
+  const handleGoHome = () => {
+    const basePath =
+      window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+    window.location.href = `${basePath}/#/`;
+  };
+
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-background text-foreground">
       <Card className="w-full max-w-md mx-4 border-border bg-card">
@@ -17,9 +23,7 @@ export default function NotFound() {
           </div>
 
           <div className="flex justify-center mt-6">
-            <Button asChild>
-              <Link to="/">Retour à l'accueil</Link>
-            </Button>
+            <Button onClick={handleGoHome}>Retour à l'accueil</Button>
           </div>
         </CardContent>
       </Card>

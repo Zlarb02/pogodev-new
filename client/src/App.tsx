@@ -1,102 +1,76 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "./components/ui/toaster";
-import Home from "./pages/Home";
+import { Route, Switch, Router } from "wouter";
+import { useState, useEffect } from "react";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
-import React, { useEffect } from "react";
+import Home from "./pages/Home";
+import NotFoundPage from "./pages/not-found";
 
-// Utiliser le BASE_URL défini dans main.tsx
-const base = window.BASE_URL || "/";
+// Hook pour gérer la base URL (nécessaire pour GitHub Pages)
+const useBasePath = () => {
+  const basePath =
+    window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+  return basePath;
+};
 
-// Hook personnalisé pour wouter qui tient compte du basename
-const useHashLocation = (): [string, (to: string, ...args: any[]) => void] => {
-  const [loc, setLoc] = React.useState(
-    window.location.pathname.replace(new RegExp(`^${base}`), "/")
-  );
+export const useHashLocation = (): [
+  string,
+  (to: string, ...args: any[]) => void
+] => {
+  const [loc, setLoc] = useState(window.location.hash.substring(1) || "/");
+  const basePath = useBasePath();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handler = () => {
-      const path = window.location.pathname.replace(
-        new RegExp(`^${base}`),
-        "/"
-      );
+      const path = window.location.hash.substring(1) || "/";
       setLoc(path);
     };
 
-    window.addEventListener("popstate", handler);
-    window.addEventListener("pushstate", handler);
-    return () => {
-      window.removeEventListener("popstate", handler);
-      window.removeEventListener("pushstate", handler);
-    };
+    window.addEventListener("hashchange", handler);
+    return () => window.removeEventListener("hashchange", handler);
   }, []);
 
-  const navigate = (to: string, ...args: any[]): void => {
-    window.history.pushState(null, "", `${base}${to.replace(/^\//, "")}`);
-    setLoc(to);
-  };
-
-  return [loc, navigate];
+  return [
+    loc,
+    (to: string) => {
+      window.location.hash = to;
+    },
+  ];
 };
 
-// Composant pour la page d'erreur 404
-function NotFound() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center bg-background">
-      <img src="/assets/logo.svg" alt="Logo" className="w-20 mb-8" />
-      <h1 className="text-4xl font-bold text-white mb-4 font-poppins">
-        Page non trouvée
-      </h1>
-      <p className="text-xl mb-8 max-w-md">
-        Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
-      </p>
-      <a
-        href="/"
-        className="px-6 py-3 bg-accent text-white rounded-lg font-semibold transition-colors hover:bg-accent/80"
-      >
-        Retour à l'accueil
-      </a>
-    </div>
-  );
-}
-
 export default function App() {
-  // Récupérer et réinitialiser la redirection stockée dans sessionStorage
-  useEffect(() => {
-    const redirectPath = sessionStorage.redirect;
-    if (redirectPath) {
-      // Supprimer la redirection pour ne pas la réutiliser
-      delete sessionStorage.redirect;
+  // Déterminer si nous sommes sur la page 404
+  const [is404Redirect, setIs404Redirect] = useState(false);
 
-      // Extraire le chemin de la redirection et naviguer
-      const path =
-        new URL(redirectPath).pathname.replace(new RegExp(`^${base}`), "/") ||
-        "/";
-      window.history.replaceState(
-        null,
-        "",
-        `${base}${path.replace(/^\//, "")}`
-      );
+  useEffect(() => {
+    // Vérifier si on vient d'une redirection 404
+    const redirect = sessionStorage.getItem("redirect");
+    if (redirect) {
+      setIs404Redirect(true);
+      // On ne supprime pas le redirect ici pour permettre au Header/Footer de le détecter
     }
   }, []);
 
+  // Sur la page 404 récupérée par redirect, on n'affiche pas le layout
+  if (is404Redirect) {
+    return (
+      <div className="min-h-screen bg-background">
+        <NotFoundPage />
+      </div>
+    );
+  }
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="flex flex-col min-h-screen">
+    <Router hook={useHashLocation}>
+      <div className="flex flex-col min-h-screen bg-background">
         <Header />
         <main className="flex-grow">
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route component={NotFoundPage} />
+          </Switch>
         </main>
         <Footer />
       </div>
-      <Toaster />
-    </QueryClientProvider>
+    </Router>
   );
 }

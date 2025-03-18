@@ -43,21 +43,26 @@
 
     <!-- Script amélioré pour gérer les redirections SPA -->
     <script type="text/javascript">
-      // Récupérer la redirection depuis sessionStorage (définie par 404.html)
       (function () {
+        // Vérifier si on vient d'une redirection 404
         var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
 
-        // Si path est spécifié dans l'URL (format ?path=chemin)
-        var urlParams = new URLSearchParams(window.location.search);
-        var path = urlParams.get("path");
+        // Si on a une redirection depuis la page 404.html
+        if (redirect) {
+          // Ne pas effacer tout de suite car les composants React en ont besoin
+          // On va le garder pour détection dans App.tsx, Header et Footer
 
-        if (path) {
-          // Remplacer l'historique avec le bon chemin
-          history.replaceState(null, null, path || "/");
-        } else if (redirect && redirect.length > 0) {
-          // Utiliser la redirection de sessionStorage si disponible
-          history.replaceState(null, null, redirect);
+          // Par défaut, on redirige vers la route principale avec hash routing
+          // L'application React prendra en charge l'affichage de la page 404
+          var basePath =
+            window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+          if (
+            window.location.pathname !== basePath + "/" &&
+            !window.location.hash
+          ) {
+            // On s'assure qu'on est sur la racine sans toucher au hash s'il existe
+            history.replaceState(null, null, basePath + "/#/");
+          }
         }
       })();
     </script>

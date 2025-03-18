@@ -53,7 +53,18 @@ export function Header() {
     setIsMobileProjectsOpen((curr) => !curr);
   };
 
+  // Détecter si nous sommes sur la page 404
+  const [is404Page, setIs404Page] = useState(false);
+
   useEffect(() => {
+    // Vérifier si nous sommes sur la page 404 en regardant le sessionStorage
+    const redirect = sessionStorage.getItem("redirect");
+    const notFoundUrl = sessionStorage.getItem("notFoundUrl");
+
+    if (redirect || notFoundUrl) {
+      setIs404Page(true);
+    }
+
     // Handle scroll event to change header style
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -96,6 +107,11 @@ export function Header() {
     };
   }, [isMenuOpen]);
 
+  // Ne pas afficher le header sur la page 404
+  if (is404Page) {
+    return null;
+  }
+
   const handleNavClick = (sectionId?: string) => {
     // Close mobile menu when clicking on a link
     if (isMenuOpen) {
@@ -108,6 +124,14 @@ export function Header() {
 
     // Scroll to the section if an ID is provided
     if (sectionId) {
+      // Si nous sommes sur la page 404, nous devons d'abord retourner à l'accueil
+      if (is404Page) {
+        const basePath =
+          window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+        window.location.href = `${basePath}/#${sectionId}`;
+        return;
+      }
+
       document
         .getElementById(sectionId)
         ?.scrollIntoView({ behavior: "smooth" });
@@ -123,6 +147,11 @@ export function Header() {
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
+  };
+
+  // Pour obtenir le bon chemin de base pour les assets
+  const getBasePath = () => {
+    return window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
   };
 
   // Animations pour le menu mobile
@@ -175,7 +204,7 @@ export function Header() {
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <img
-            src="/assets/logo-large.svg"
+            src={`${getBasePath()}/assets/logo-large.svg`}
             alt="Logo"
             className="h-20 w-auto"
           />

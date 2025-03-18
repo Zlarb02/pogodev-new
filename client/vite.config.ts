@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -8,6 +8,9 @@ const __dirname = dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
+  // Charger les variables d'environnement
+  const env = loadEnv(mode, process.cwd());
+
   // Si un CNAME existe (domaine personnalisé), on utilise "/" comme base
   // Sinon, on utilise le nom du dépôt pour les builds de production
   // En développement local, on utilise toujours "/"
