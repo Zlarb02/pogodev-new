@@ -1,0 +1,13 @@
+# robots.txt pour pogodev.com
+User-agent: *
+Allow: /
+
+# Exclusion des fichiers de configuration et des répertoires non nécessaires à l'indexation
+Disallow: /assets/fonts/
+Disallow: /assets/raw/
+Disallow: /*.json$
+Disallow: /*.js.map$
+Disallow: /*.css.map$
+
+# Sitemap
+Sitemap: https://zlarb02.github.io/pogodev-new/sitemap.xml
