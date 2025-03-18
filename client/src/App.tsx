@@ -1,8 +1,7 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "./components/ui/toaster";
-import NotFound from "./pages/not-found";
 import Home from "./pages/Home";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
@@ -42,18 +41,28 @@ const useHashLocation = (): [string, (to: string, ...args: any[]) => void] => {
   return [loc, navigate];
 };
 
-function Router() {
+// Composant pour la page d'erreur 404
+function NotFound() {
   return (
-    <WouterRouter hook={useHashLocation}>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route component={NotFound} />
-      </Switch>
-    </WouterRouter>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center bg-background">
+      <img src="/assets/logo.svg" alt="Logo" className="w-20 mb-8" />
+      <h1 className="text-4xl font-bold text-white mb-4 font-poppins">
+        Page non trouvée
+      </h1>
+      <p className="text-xl mb-8 max-w-md">
+        Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+      </p>
+      <a
+        href="/"
+        className="px-6 py-3 bg-accent text-white rounded-lg font-semibold transition-colors hover:bg-accent/80"
+      >
+        Retour à l'accueil
+      </a>
+    </div>
   );
 }
 
-function App() {
+export default function App() {
   // Récupérer et réinitialiser la redirection stockée dans sessionStorage
   useEffect(() => {
     const redirectPath = sessionStorage.redirect;
@@ -78,7 +87,12 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
-          <Router />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
         </main>
         <Footer />
       </div>
@@ -86,5 +100,3 @@ function App() {
     </QueryClientProvider>
   );
 }
-
-export default App;

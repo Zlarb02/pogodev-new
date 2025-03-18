@@ -6,6 +6,16 @@ import "./index.css";
 import { ModalsProvider } from "@/contexts/ModalsContext";
 import { AppModals } from "@/components/AppModals";
 
+// Ajouter ce code au début de votre fichier main.tsx
+// Vérifier si une redirection a été stockée dans sessionStorage
+const redirect = sessionStorage.getItem("redirect");
+if (redirect) {
+  sessionStorage.removeItem("redirect");
+  // Utiliser history.replaceState pour restaurer le chemin sans causer un rechargement
+  const basePath = import.meta.env.BASE_URL || "/";
+  history.replaceState(null, "", basePath + redirect.replace(/^\//, ""));
+}
+
 // Apply font family directly with styles
 document.documentElement.style.setProperty(
   "--font-sans",

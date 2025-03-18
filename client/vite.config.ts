@@ -45,5 +45,10 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true,
       assetsInlineLimit: 0,
     },
+    server: {
+      // Configuration pour gérer les redirections SPA en développement
+      proxy: {}, // Add actual proxy configuration if needed
+      // historyApiFallback is not available in Vite, it uses this by default
+    },
   };
 });

@@ -11,10 +11,7 @@ export default defineConfig({
   plugins: [react()],
 
   // Base URL pour GitHub Pages
-  base:
-    process.env.NODE_ENV === "production"
-      ? `/${process.env.GITHUB_REPOSITORY?.split("/")[1] || "pogodev-new"}/`
-      : "/",
+  base: "/pogodev-new/",
 
   // Configuration des alias - CRITIQUE pour résoudre les imports @/
   resolve: {
