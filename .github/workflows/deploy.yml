@@ -17,19 +17,21 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
-          cache-dependency-path: "./client/package-lock.json"
+          # Chemin corrigé vers package-lock.json à la racine du projet
+          cache-dependency-path: "./package-lock.json"
 
       - name: Install dependencies 📦
-        working-directory: ./client
+        # Installation des dépendances à la racine
         run: npm ci
 
       - name: Build 🏗️
-        working-directory: ./client
+        # Le build est également exécuté à la racine
         run: npm run build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: client/dist # Dossier de sortie de Vite
+          # Chemin corrigé vers le répertoire de sortie
+          folder: dist/public # Dossier de sortie selon votre configuration vite
           branch: gh-pages
           clean: true
