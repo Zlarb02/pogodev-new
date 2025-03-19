@@ -50,17 +50,15 @@
         // Si on a une redirection depuis la page 404.html
         if (redirect) {
           // Ne pas effacer tout de suite car les composants React en ont besoin
-          // On va le garder pour détection dans App.tsx, Header et Footer
 
-          // Par défaut, on redirige vers la route principale avec hash routing
-          // L'application React prendra en charge l'affichage de la page 404
-          var basePath =
-            window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+          // Définir le basePath comme une chaîne vide puisqu'on est maintenant sur le domaine racine
+          var basePath = "";
+
+          // S'assurer qu'on est sur la racine
           if (
             window.location.pathname !== basePath + "/" &&
             !window.location.hash
           ) {
-            // On s'assure qu'on est sur la racine sans toucher au hash s'il existe
             history.replaceState(null, null, basePath + "/#/");
           }
         }
@@ -82,7 +80,7 @@
         );
       }
     </script>
-    <script type="module" crossorigin src="/pogodev-new/assets/index-CBv8VS5-.js"></script>
+    <script type="module" crossorigin src="/pogodev-new/assets/index-DxpAw4t1.js"></script>
     <link rel="stylesheet" crossorigin href="/pogodev-new/assets/index-pSoL2AR8.css">
   </head>
   <body>
