@@ -73,7 +73,7 @@ Formation offerte sur CMS ou outils pour vous rendre le plus autonome possible.
 
 E-commerce produits numériques : site de vente en ligne. → https://shop.pogodev.com
 Site vitrine pour freelance : présentation + formulaire. → https://anais.pogodev.com
-Portfolio interactif 3D : avec avatar animé. → https://scene.pogodev.com
+Portfolio interactif 3D : avec avatar animé. → https://games.pogodev.com
 Mirojo.app : application JDR avec IA. → https://mirojo.app
 Violette.pogodev.com : site vitrine responsive. → https://violette.pogodev.com
 GrooveGather.fr : plateforme musicale collaborative. → https://groovegather.fr

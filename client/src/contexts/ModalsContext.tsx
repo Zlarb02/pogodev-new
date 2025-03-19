@@ -70,7 +70,7 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
       context:
         "Projet expérimental démarré avec Replit pour accélérer le processus de création et explorer les possibilités de Three.js et WebGL dans la présentation de portfolio créatifs.",
       image: "https://i.imgur.com/nxAjahS.gif",
-      url: "https://scene.pogodev.com",
+      url: "https://games.pogodev.com",
       githubUrl: "https://github.com/Zlarb02/DevPortfolioShowcase",
       technologies: [
         "Three.js",
