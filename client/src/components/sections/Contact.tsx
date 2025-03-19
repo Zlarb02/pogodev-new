@@ -17,7 +17,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+
+// Remplacez apiRequest qui n'est pas utilisable sur GitHub Pages
+// import { apiRequest } from "@/lib/queryClient";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, {
@@ -32,6 +34,9 @@ const contactFormSchema = z.object({
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+// Remplacer cette URL par l'URL de votre formulaire Formspree
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xblgdovr"; // ⚠️ À remplacer par votre endpoint Formspree
 
 export function Contact() {
   const sectionRef = useRef(null);
@@ -51,7 +56,19 @@ export function Contact() {
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
     try {
-      await apiRequest("POST", "/api/contact", data);
+      // Utiliser Formspree au lieu de l'API personnalisée
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erreur lors de l'envoi du formulaire");
+      }
+
       toast({
         title: "Message envoyé !",
         description:

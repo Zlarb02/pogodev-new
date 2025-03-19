@@ -126,9 +126,14 @@ export function WhyMe() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <p className="text-xl font-medium text-primary italic">
-            "Je transforme vos idées en solutions élégantes et efficaces, <br />
-            pour vous simplifier la vie"
+          <p className="text-xl font-light text-primary">
+            <i>Je transforme vos</i> <b className="font-semibold">idées</b>{" "}
+            <i>en</i> <b className="font-semibold">solutions</b>{" "}
+            <i>
+              <b className="font-semibold">élégantes</b> et{" "}
+              <b className="font-semibold">efficaces</b>, <br />
+              pour vous <b className="font-semibold">simplifier la vie</b>
+            </i>
           </p>
         </motion.div>
 
@@ -212,11 +217,6 @@ export function WhyMe() {
                 Mozilla Observatory
               </a>
             </div>
-
-            <p className="mt-6 italic text-muted-foreground">
-              "La qualité n'est pas un acte mais une habitude sur laquelle je
-              travaille chaque jour 🌱"
-            </p>
           </div>
         </motion.div>
       </div>

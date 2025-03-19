@@ -75,13 +75,9 @@ export function About() {
                 Mon objectif : créer avec vous des solutions solides, élégantes,
                 qui répondent à vos vrais besoins.
               </p>
-              <p className="text-muted-foreground mb-6">
-                Je transforme vos idées en solutions élégantes et efficaces,
-                pour vous simplifier la vie.
-              </p>
               <p className="text-muted-foreground">
-                La qualité n'est pas un acte mais une habitude sur laquelle je
-                travaille chaque jour 🌱
+                La qualité n’est pas un simple geste ponctuel, mais une
+                discipline quotidienne que je cultive avec engagement. 🌱
               </p>{" "}
               <br />
               <h3 className="text-xl font-medium mb-2 text-foreground">
