@@ -40,6 +40,7 @@ export const useHashLocation = (): [
 export default function App() {
   // Déterminer si nous sommes sur la page 404
   const [is404Redirect, setIs404Redirect] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Vérifier si on vient d'une redirection 404
@@ -48,6 +49,18 @@ export default function App() {
       setIs404Redirect(true);
       // On ne supprime pas le redirect ici pour permettre au Header/Footer de le détecter
     }
+
+    // Masquer l'écran de chargement après un court délai
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      // Masquer l'élément loader du DOM
+      const loader = document.getElementById("loader");
+      if (loader) {
+        loader.style.display = "none";
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Sur la page 404 récupérée par redirect, on n'affiche pas le layout

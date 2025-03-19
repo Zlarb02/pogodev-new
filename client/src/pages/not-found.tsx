@@ -5,9 +5,13 @@ import { AlertCircle } from "lucide-react";
 export default function NotFound() {
   // Fonction pour revenir à l'accueil qui respecte le hash routing
   const handleGoHome = () => {
-    const basePath =
-      window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+    // Utiliser un chemin de base vide puisqu'on est sur le domaine racine
+    const basePath = "";
     window.location.href = `${basePath}/#/`;
+
+    // Nettoyer les variables de session pour éviter des problèmes futurs
+    sessionStorage.removeItem("redirect");
+    sessionStorage.removeItem("notFoundUrl");
   };
 
   return (
