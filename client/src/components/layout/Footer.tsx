@@ -151,9 +151,14 @@ export function Footer({
                 2. Hébergement
               </h3>
               <p>
-                Ce site est hébergé par OVH SAS, 2 rue Kellermann, 59100
-                Roubaix, France. RCS Lille Métropole 424 761 419 00045.
-                Téléphone : +33 9 72 10 10 07.
+                Ce site est hébergé par GitHub Pages, un service de GitHub Inc.,
+                88 Colin P. Kelly Jr. Street, San Francisco, CA 94107,
+                États-Unis.
+              </p>
+              <p className="mt-2">
+                Le nom de domaine est géré par o2switch, SARL au capital de
+                100000€, RCS Clermont-Ferrand 510 909 807 00024, 222-224
+                Boulevard Gustave Flaubert, 63000 Clermont-Ferrand, France.
               </p>
             </section>
 
@@ -166,6 +171,12 @@ export function Footer({
                 images, etc.) est protégé par le droit d'auteur et est la
                 propriété exclusive d'Etienne Pogoda.
               </p>
+              <p className="mt-2">
+                Toute reproduction, distribution ou utilisation sans
+                autorisation écrite préalable est strictement interdite et
+                constituerait une contrefaçon sanctionnée par les articles
+                L.335-2 et suivants du Code de la propriété intellectuelle.
+              </p>
             </section>
 
             <section>
@@ -174,15 +185,15 @@ export function Footer({
               </h3>
               <p>
                 Les informations recueillies via le formulaire de contact sont
-                destinées à répondre à vos demandes et peuvent être transmises
-                aux partenaires si nécessaire pour le traitement de votre
-                demande.
+                destinées exclusivement à répondre à vos demandes et ne sont
+                transmises à aucun tiers, sauf obligation légale.
               </p>
               <p className="mt-2">
-                Conformément à la loi Informatique et Libertés et au RGPD, vous
-                disposez d'un droit d'accès, de rectification, et de suppression
-                de vos données. Pour exercer ce droit, contactez
-                etienne@pogodev.com.
+                Conformément au Règlement Général sur la Protection des Données
+                (RGPD) et à la loi Informatique et Libertés, vous disposez d'un
+                droit d'accès, de rectification, de limitation, de portabilité
+                et de suppression de vos données. Pour exercer ce droit,
+                contactez etienne@pogodev.com.
               </p>
             </section>
 
@@ -191,9 +202,26 @@ export function Footer({
                 5. Cookies
               </h3>
               <p>
-                Ce site utilise des cookies techniques nécessaires à son bon
-                fonctionnement. Aucun cookie de suivi ou publicitaire n'est
-                utilisé.
+                Ce site utilise uniquement des cookies techniques nécessaires à
+                son bon fonctionnement. Aucun cookie de suivi, publicitaire ou
+                d'analyse de comportement n'est utilisé.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-sm font-medium text-foreground">
+                6. Limitation de responsabilité
+              </h3>
+              <p>
+                Etienne Pogoda s'efforce d'assurer l'exactitude des informations
+                présentes sur ce site mais ne peut garantir qu'elles soient
+                complètes, précises, exhaustives ou sans erreur. Etienne Pogoda
+                décline toute responsabilité concernant les dommages directs ou
+                indirects résultant de l'accès ou de l'utilisation de ce site.
+              </p>
+              <p className="mt-2">
+                Les liens vers d'autres sites ne sont fournis qu'à titre
+                informatif et n'impliquent aucune approbation de leur contenu.
               </p>
             </section>
           </div>
