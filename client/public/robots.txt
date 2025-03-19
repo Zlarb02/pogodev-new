@@ -10,4 +10,4 @@ Disallow: /*.js.map$
 Disallow: /*.css.map$
 
 # Sitemap
-Sitemap: https://zlarb02.github.io/pogodev-new/sitemap.xml
+Sitemap: https://pogodev.com/sitemap.xml

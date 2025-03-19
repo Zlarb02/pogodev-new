@@ -34,7 +34,9 @@ jobs:
       - name: Create .nojekyll file 📄
         run: touch dist/public/.nojekyll
 
-      # Ajout de la copie du fichier 404.html
+      - name: Copy CNAME file 📄
+        run: cp client/public/CNAME dist/public/
+
       - name: Copy 404.html 📋
         run: |
           if [ -f client/public/404.html ]; then
@@ -43,7 +45,6 @@ jobs:
             echo "File 404.html not found in client/public/"
           fi
 
-      # Ajout d'un script de vérification et correction des chemins
       - name: Fix asset paths 🔧
         run: |
           echo "Vérification des chemins d'assets dans index.html..."
@@ -61,7 +62,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # Chemin corrigé vers le répertoire de sortie
-          folder: dist/public # Dossier de sortie selon votre configuration vite
+          folder: dist/public
           branch: gh-pages
           clean: true

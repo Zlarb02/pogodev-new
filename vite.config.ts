@@ -11,13 +11,12 @@ export default defineConfig({
   plugins: [react()],
 
   // Base URL pour GitHub Pages
-  base: "/pogodev-new/",
+  base: "/",
 
   // Configuration des alias - CRITIQUE pour résoudre les imports @/
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client", "src"),
-      "@shared": path.resolve(__dirname, "shared"),
     },
   },
 
