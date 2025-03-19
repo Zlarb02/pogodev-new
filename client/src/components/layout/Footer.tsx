@@ -36,12 +36,17 @@ export function Footer({
     event: React.MouseEvent<HTMLAnchorElement>,
     sectionId: string
   ) => {
+    event.preventDefault();
+
+    // Si nous sommes sur la page 404, nous devons d'abord retourner à l'accueil
     if (is404Page) {
-      event.preventDefault();
-      const basePath =
-        window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+      const basePath = window.location.hostname === "pogodev.com" ? "" : "/";
       window.location.href = `${basePath}/#${sectionId}`;
+      return;
     }
+
+    // Sinon, faire défiler en douceur jusqu'à la section
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

@@ -11,19 +11,8 @@ export default defineConfig(({ mode }) => {
   // Charger les variables d'environnement
   const env = loadEnv(mode, process.cwd());
 
-  // Si un CNAME existe (domaine personnalisé), on utilise "/" comme base
-  // Sinon, on utilise le nom du dépôt pour les builds de production
-  // En développement local, on utilise toujours "/"
   const getBaseUrl = () => {
-    // Pour le développement local
-    if (mode !== "production") return "/";
-
-    // Pour les domaines personnalisés (quand vous ajoutez un CNAME)
-    if (process.env.USE_CUSTOM_DOMAIN === "true") return "/";
-
-    // Pour les déploiements GitHub Pages standards
-    const repo = process.env.GITHUB_REPOSITORY?.split("/")[1] || "pogodev-new";
-    return `/${repo}/`;
+    return "/";
   };
 
   const baseUrl = getBaseUrl();

@@ -55,8 +55,8 @@ export function Process() {
     "Un guide de prise en main (PDF ou vidéo).",
     "Tous les accès (vous êtes propriétaire).",
     "Aide au choix et mise en ligne de l'hébergement.",
-    "Nom de domaine à votre charge (Namecheap).",
-    "Support technique à l'heure (si besoin).",
+    "Accompagnement pour l'achat de votre nom de domaine (Namecheap recommandé).",
+    "Support technique facturé à l'heure après la période de garantie.",
     "Suivi et corrections gratuites pendant 30 jours.",
   ];
 
@@ -142,18 +142,7 @@ export function Process() {
                   <Check className="h-5 w-5 text-accent mr-3 mt-1" />
                   <span className="text-muted-foreground">
                     {item.includes("Namecheap") ? (
-                      <>
-                        Nom de domaine à votre charge (
-                        <a
-                          href="https://www.namecheap.com/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-accent hover:underline"
-                        >
-                          Namecheap
-                        </a>
-                        ).
-                      </>
+                      <>Accompagnement pour l'achat de votre nom de domaine.</>
                     ) : (
                       item
                     )}

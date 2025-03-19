@@ -7,8 +7,7 @@ import NotFoundPage from "./pages/not-found";
 
 // Hook pour gérer la base URL (nécessaire pour GitHub Pages)
 const useBasePath = () => {
-  const basePath =
-    window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+  const basePath = window.location.hostname === "pogodev.com" ? "" : "/";
   return basePath;
 };
 

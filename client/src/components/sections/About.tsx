@@ -38,8 +38,8 @@ export function About() {
               <p className="text-lg leading-relaxed text-muted-foreground">
                 Derrière l'écran, je suis Étienne Pogoda, développeur freelance.
                 Après 7 ans de formations en développement web sur différentes
-                stack, tout en travaillant en restauration, je me lance
-                aujourd'hui en freelance.
+                technologies, je me lance aujourd'hui dans l'aventure du
+                freelance.
               </p>
             </motion.div>
           </div>
@@ -74,6 +74,22 @@ export function About() {
               <p className="text-lg leading-relaxed text-muted-foreground">
                 Mon objectif : créer avec vous des solutions solides, élégantes,
                 qui répondent à vos vrais besoins.
+              </p>
+              <p className="text-muted-foreground mb-6">
+                Je transforme vos idées en solutions élégantes et efficaces,
+                pour vous simplifier la vie.
+              </p>
+              <p className="text-muted-foreground">
+                La qualité n'est pas un acte mais une habitude sur laquelle je
+                travaille chaque jour 🌱
+              </p>{" "}
+              <br />
+              <h3 className="text-xl font-medium mb-2 text-foreground">
+                Un accompagnement humain et accessible
+              </h3>
+              <p className="text-muted-foreground">
+                J'explique les concepts techniques clairement et je reste
+                disponible pour répondre à toutes vos questions.
               </p>
             </motion.div>
           </div>

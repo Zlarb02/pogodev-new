@@ -116,8 +116,8 @@ export function Services() {
                 </h4>
               </div>
               <p className="text-muted-foreground min-h-20">
-                E-commerce sécurisé et optimisé pour commercialiser efficacement
-                vos produits ou services en ligne.
+                E-commerce sécurisé et optimisé pour vendre efficacement vos
+                produits ou services en ligne.
               </p>
             </motion.div>
           </motion.div>
@@ -129,7 +129,7 @@ export function Services() {
             animate={isInView ? "visible" : "hidden"}
             transition={{ delay: 0.3 }}
           >
-            🔧 En option selon besoins :
+            🔧 En option selon vos besoins :
           </motion.h3>
 
           <motion.div
@@ -241,7 +241,8 @@ export function Services() {
                     Tarif préférentiel
                   </h4>
                   <p className="text-accent text-lg font-bold mb-3">
-                    🎁 -50% pour mes 2 premiers clients
+                    🎁 -50% pendant la période de lancement (jusqu'au 1er
+                    septembre 2025)
                   </p>
                   <p className="text-muted-foreground">
                     Profitez d'un tarif exceptionnel pour le lancement de mon
@@ -331,21 +332,22 @@ export function Services() {
                 <Check className="h-5 w-5 text-accent mr-2 mt-1" />
                 <div>
                   Je vous aide à choisir l'hébergement le plus adapté : VPS,
-                  cloud, serveur dédié, ou hébergement statique sur o2switch
-                  (inclus).
+                  cloud, serveur dédié, ou hébergement de solution légère chez
+                  o2switch offert (nom de domaine non inclus).
                 </div>
               </li>
               <li className="flex items-start">
                 <Check className="h-5 w-5 text-accent mr-2 mt-1" />
                 <div>
-                  Nom de domaine à votre charge —{" "}
+                  Accompagnement dans le choix du nom de domaine (Abonnement
+                  annuel à votre charge, vous êtes propriétaire du domaine) —{" "}
                   <a
                     href="https://www.namecheap.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-accent hover:underline"
                   >
-                    Vérifier ici sur Namecheap
+                    Vérifier prix et disponibilité sur Namecheap
                   </a>
                 </div>
               </li>
@@ -376,7 +378,7 @@ export function Services() {
           >
             <h3 className="text-xl font-semibold mb-6 flex items-center text-foreground">
               <Search className="h-6 w-6 mr-2 text-accent" />
-              Référencement & Visibilité optimisés
+              Référencement & visibilité optimisés
             </h3>
 
             <p className="mb-6 text-muted-foreground">

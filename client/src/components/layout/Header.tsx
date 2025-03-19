@@ -1,14 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import {
-  Menu,
-  X,
-  ChevronDown,
-  ChevronRight,
-  ExternalLink,
-  Info,
-} from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Info } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProjectType } from "@/components/ProjectModal";
 import { useModals } from "@/contexts/ModalsContext";
@@ -126,8 +118,7 @@ export function Header() {
     if (sectionId) {
       // Si nous sommes sur la page 404, nous devons d'abord retourner à l'accueil
       if (is404Page) {
-        const basePath =
-          window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+        const basePath = window.location.hostname === "pogodev.com" ? "" : "/";
         window.location.href = `${basePath}/#${sectionId}`;
         return;
       }
@@ -151,7 +142,7 @@ export function Header() {
 
   // Pour obtenir le bon chemin de base pour les assets
   const getBasePath = () => {
-    return window.location.hostname === "pogodev.com" ? "" : "/pogodev-new";
+    return window.location.hostname === "pogodev.com" ? "" : "/";
   };
 
   // Animations pour le menu mobile
@@ -203,16 +194,18 @@ export function Header() {
         }`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <img
-            src={`${getBasePath()}/assets/logo-large.svg`}
-            alt="Logo"
-            className="h-20 w-auto"
-          />
-          <Link href="/">
+          <a href="/">
+            <img
+              src={`assets/logo-large.svg`}
+              alt="Logo"
+              className="h-20 w-auto"
+            />
+          </a>
+          <a href="/">
             <div className="text-xl font-semibold text-primary font-['Poppins'] cursor-pointer">
               pogodev<span className="text-accent">.com</span>
             </div>
-          </Link>
+          </a>
 
           {/* Mobile menu button */}
           <button
