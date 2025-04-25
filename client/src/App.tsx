@@ -4,6 +4,7 @@ import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import Home from "./pages/Home";
 import NotFoundPage from "./pages/not-found";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 // Hook pour gérer la base URL (nécessaire pour GitHub Pages)
 const useBasePath = () => {
@@ -78,6 +79,7 @@ export default function App() {
         <main className="flex-grow">
           <Switch>
             <Route path="/" component={Home} />
+            <Route path="/privacy-policy" component={PrivacyPolicy} />
             <Route component={NotFoundPage} />
           </Switch>
         </main>
