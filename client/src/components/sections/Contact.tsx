@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { MessageCircle, Phone, Github, Linkedin, Zap, Clock } from "lucide-react";
+import {
+  MessageCircle,
+  Phone,
+  Github,
+  Linkedin,
+  Zap,
+  Clock,
+} from "lucide-react";
 
 export function Contact() {
   const sectionRef = useRef(null);
@@ -86,7 +93,7 @@ export function Contact() {
           >
             <div className="max-w-lg mx-auto">
               <h3 className="text-2xl font-bold mb-4">Prêt à démarrer ?</h3>
-              
+
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
                 <p className="text-amber-800 font-semibold text-lg mb-2">
                   ⚠️ SMS UNIQUEMENT
@@ -99,15 +106,15 @@ export function Contact() {
               <p className="text-muted-foreground mb-6">
                 Envoyez-moi un message avec votre idée de projet.
               </p>
-              
-              <a 
+
+              <a
                 href="sms:0771853328"
                 className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg"
               >
                 <MessageCircle className="w-5 h-5 mr-3" />
                 07 71 85 33 28
               </a>
-              
+
               <p className="text-xs text-muted-foreground mt-4">
                 Cliquez pour ouvrir votre app SMS directement
               </p>

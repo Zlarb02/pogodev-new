@@ -238,15 +238,14 @@ export function Services() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-foreground">
-                    Tarif préférentiel
+                    Tarifs compétitifs
                   </h4>
                   <p className="text-accent text-lg font-bold mb-3">
-                    🎁 -50% pendant la période de lancement (jusqu'au 1er
-                    septembre 2025)
+                    💼 Tarification juste et transparente
                   </p>
                   <p className="text-muted-foreground">
-                    Profitez d'un tarif exceptionnel pour le lancement de mon
-                    activité, en échange de votre confiance.
+                    Des prix adaptés à chaque projet, avec une tarification 
+                    claire dès le devis et un excellent rapport qualité-prix.
                   </p>
                 </div>
               </div>
