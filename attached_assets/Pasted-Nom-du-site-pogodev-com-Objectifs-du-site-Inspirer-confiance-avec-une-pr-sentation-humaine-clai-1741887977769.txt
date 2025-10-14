@@ -75,7 +75,7 @@ E-commerce produits numériques : site de vente en ligne. → https://shop.pogod
 Site vitrine pour freelance : présentation + formulaire. → https://anais.pogodev.com
 Portfolio interactif 3D : avec avatar animé. → https://games.pogodev.com
 Mirojo.app : application JDR avec IA. → https://mirojo.app
-Violette.pogodev.com : site vitrine responsive. → https://violette.pogodev.com
+vio-lettres.pogodev.com : site vitrine responsive. → https://vio-lettres.pogodev.com
 GrooveGather.fr : plateforme musicale collaborative. → https://groovegather.fr
 🎯 Vous pouvez tester leurs performances avec Lighthouse, Ecograder, Carbon, Mozilla Observatory.
 

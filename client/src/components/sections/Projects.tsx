@@ -44,7 +44,7 @@ export function Projects() {
         </motion.h2>
 
         <motion.p
-          className="text-center text-muted-foreground max-w-3xl mx-auto mb-12"
+          className="text-center text-muted-foreground max-w-3xl mx-auto mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -53,6 +53,35 @@ export function Projects() {
           peux faire. Cliquez pour plus de détails.
         </motion.p>
 
+        {/* Bloc Alto Lille vendeur en haut, grille inchangée */}
+        <motion.p
+          className="max-w-3xl mx-auto mb-8 text-center text-lg md:text-xl text-accent font-semibold"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <span className="font-bold">Alto Lille</span> : mon projet vitrine,
+          boutique e-commerce sur mesure, moderne et engagée.
+          <br />
+          Conçue pour un créateur de lampes écoresponsables, Alto Lille réunit
+          design haut de gamme, animation 3D, mode sombre/clair, paiement
+          Stripe, gestion autonome des contenus, overlays saisonniers, et bien
+          plus.
+          <br />
+          Ce projet incarne ma passion pour le web utile, performant et humain.
+          <br />
+          <br />
+          <a
+            href="https://alto-lille.fr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-2 px-4 py-2 bg-accent text-white rounded-lg font-semibold shadow hover:bg-accent/90 transition"
+          >
+            Découvrir Alto Lille
+          </a>
+        </motion.p>
+        <br />
+        <br />
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
           variants={containerVariants}

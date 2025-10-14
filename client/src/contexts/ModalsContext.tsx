@@ -96,7 +96,7 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
     },
     {
       id: "violette",
-      title: "Violette - Site vitrine",
+      title: "Vio-lettres - Site vitrine",
       description:
         "Site vitrine entièrement responsive optimisé pour tous types d'appareils et tailles d'écran.",
       longDescription:
@@ -104,7 +104,7 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
       context:
         "Site créé pour ma sœur Violette en utilisant l'IA de lovable.dev pour générer rapidement un site professionnel et responsive.",
       image: "https://i.imgur.com/0iTLzLd.png",
-      url: "https://violette.pogodev.com",
+      url: "https://vio-lettres.pogodev.com",
       githubUrl: "https://github.com/Zlarb02/violette-pogodev",
       technologies: ["HTML5", "CSS3", "JavaScript", "Lovable.dev AI"],
     },

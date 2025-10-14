@@ -77,12 +77,28 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8"
+            className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-4"
             variants={itemVariants}
           >
             Je suis Étienne Pogoda, développeur freelance. Je cherche mes
             premiers clients pour lancer mon activité. En échange de votre
             confiance, je propose une offre soignée, humaine et accessible.
+          </motion.p>
+          <motion.p
+            className="text-base md:text-lg text-accent mb-8"
+            variants={itemVariants}
+          >
+            Mon projet phare&nbsp;:{" "}
+            <a
+              href="https://alto-lille.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline font-semibold"
+            >
+              Alto Lille
+            </a>
+            , boutique e-commerce sur mesure, moderne et engagée, conçue avec
+            passion pour un créateur inspirant.
           </motion.p>
 
           <motion.div
