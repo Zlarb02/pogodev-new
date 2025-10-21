@@ -244,7 +244,7 @@ export function Services() {
                     💼 Tarification juste et transparente
                   </p>
                   <p className="text-muted-foreground">
-                    Des prix adaptés à chaque projet, avec une tarification 
+                    Des prix adaptés à chaque projet, avec une tarification
                     claire dès le devis et un excellent rapport qualité-prix.
                   </p>
                 </div>

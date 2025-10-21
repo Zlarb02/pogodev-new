@@ -96,10 +96,8 @@ export function Contact() {
 
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
                 <p className="text-amber-800 font-semibold text-lg mb-2">
-                  ⚠️ SMS UNIQUEMENT
-                </p>
-                <p className="text-amber-700 text-sm">
-                  Je ne réponds qu'aux SMS, pas aux appels téléphoniques
+                  Je privilégie les échanges simples et directs. <br /> Un SMS
+                  suffit pour lancer la discussion.
                 </p>
               </div>
 

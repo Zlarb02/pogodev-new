@@ -80,9 +80,9 @@ export function Hero() {
             className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-4"
             variants={itemVariants}
           >
-            Je suis Étienne Pogoda, développeur freelance établi. Avec déjà un 
-            premier client satisfait et des projets concrets à mon actif, je 
-            propose une offre mûre, soignée et accessible.
+            Je suis Étienne Pogoda, développeur freelance établi. Déjà un
+            premier client satisfait, et chaque projet me pousse à aller plus
+            loin dans ma vision d’un web plus fluide et durable.
           </motion.p>
           <motion.p
             className="text-base md:text-lg text-accent mb-8"
