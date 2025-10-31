@@ -72,23 +72,31 @@ export function Hero() {
             className="text-3xl md:text-4xl lg:text-5xl lg:leading-tight font-bold mb-8 font-['Poppins'] text-foreground"
             variants={itemVariants}
           >
-            Vous cherchez un développeur autonome et engagé pour donner vie à
-            votre projet ?
+            Un site web, c'est comme une maison : mieux vaut qu'elle soit solide
+            et facile à entretenir
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-4"
+            className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-6"
             variants={itemVariants}
           >
-            Je suis Étienne Pogoda, développeur freelance établi. Déjà un
-            premier client satisfait, et chaque projet me pousse à aller plus
-            loin dans ma vision d’un web plus fluide et durable.
+            Je crée des sites et applications pensés pour durer : rapides à
+            charger, simples à héberger, sans complexité inutile.
+          </motion.p>
+          <motion.p
+            className="text-base md:text-lg text-muted-foreground mb-4"
+            variants={itemVariants}
+          >
+            <span className="text-foreground font-medium">Ma valeur ajoutée</span>
+            &nbsp;: vous expliquer clairement les choix techniques, vous rendre
+            autonome, et vous livrer un projet que vous pourrez faire évoluer
+            sereinement — avec ou sans moi.
           </motion.p>
           <motion.p
             className="text-base md:text-lg text-accent mb-8"
             variants={itemVariants}
           >
-            Mon projet phare&nbsp;:{" "}
+            Projet de référence&nbsp;:{" "}
             <a
               href="https://alto-lille.fr"
               target="_blank"
@@ -97,8 +105,7 @@ export function Hero() {
             >
               Alto Lille
             </a>
-            , boutique e-commerce sur mesure, moderne et engagée, conçue avec
-            passion pour un créateur inspirant.
+            , boutique e-commerce sobre et performante.
           </motion.p>
 
           <motion.div

@@ -35,11 +35,16 @@ export function About() {
               <h2 className="text-2xl md:text-3xl font-bold mb-6 font-['Poppins'] text-foreground">
                 Qui suis-je ?
               </h2>
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="text-lg leading-relaxed text-muted-foreground mb-4">
                 Derrière l'écran, je suis Étienne Pogoda, développeur freelance.
-                Après 7 ans de formations en développement web sur différentes
-                technologies, je me lance aujourd'hui dans l'aventure du
-                freelance.
+                Après 7 ans de formations en développement web, je me lance
+                aujourd'hui dans l'aventure du freelance avec une conviction :
+                créer un web plus sobre, performant et respectueux.
+              </p>
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                <span className="text-accent font-medium">
+                  🌱 Éco-conception · Sobriété numérique · Accessibilité
+                </span>
               </p>
             </motion.div>
           </div>
@@ -66,21 +71,24 @@ export function About() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Mon objectif : créer avec vous des solutions solides, élégantes,
-                qui répondent à vos vrais besoins.
+              <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+                Mon objectif : partir du besoin réel, choisir la solution la plus
+                adaptée, et livrer quelque chose que vous pouvez héberger et
+                faire évoluer sereinement.
               </p>
-              <br />
               <p className="text-lg leading-relaxed text-muted-foreground mb-6">
-                La qualité n’est pas un simple geste ponctuel, mais une
-                discipline quotidienne que je cultive avec engagement. 🌱
+                <span className="font-medium text-foreground">
+                  Pas de dépendances inutiles.
+                </span>{" "}
+                Pas de tracking par défaut. Du code lisible et maintenable. 🌱
               </p>
               <h3 className="text-xl font-medium mb-2 text-foreground">
-                Un accompagnement humain et accessible
+                Alternative-friendly
               </h3>
               <p className="text-lg leading-relaxed text-muted-foreground">
-                J'explique les concepts techniques clairement et je reste
-                disponible pour répondre à toutes vos questions.
+                Je peux monter une stack sans services GAFAM si vous le
+                souhaitez : hébergement perso/VPS, DNS maîtrisé, pas de trackers
+                tiers, analytics légers, outils open-source.
               </p>
             </motion.div>
           </div>

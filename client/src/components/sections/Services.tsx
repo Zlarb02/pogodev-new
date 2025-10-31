@@ -3,7 +3,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Globe,
-  Code,
   ShoppingBag,
   Gift,
   Bot,
@@ -18,6 +17,7 @@ import {
   LineChart,
   Zap,
   CheckCheck,
+  Box,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -54,14 +54,24 @@ export function Services() {
         </motion.h2>
 
         <div className="max-w-5xl mx-auto">
+          <motion.p
+            className="text-lg text-center mb-8 text-muted-foreground max-w-3xl mx-auto"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            Sites et applications qui chargent vite, restent simples à héberger,
+            et n'embarquent que le nécessaire. Une approche sobre, durable et
+            transparente.
+          </motion.p>
+
           <motion.h3
             className="text-xl font-semibold mb-8 flex row gap-3 items-center justify-center"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            <CheckCheck className="h-8 w-8 flex-shrink-0" /> Ce que je peux
-            réaliser pour vous
+            <CheckCheck className="h-8 w-8 flex-shrink-0" /> Ce que je livre
           </motion.h3>
 
           <motion.div
@@ -78,12 +88,12 @@ export function Services() {
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
                 <Globe className="h-8 w-8 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  Sites vitrines & portfolios
+                  Sites vitrines propres
                 </h4>
               </div>
               <p className="text-muted-foreground min-h-20">
-                Sites vitrines et portfolios professionnels pour présenter votre
-                activité et vos réalisations avec élégance.
+                Sites vitrines et portfolios performants avec un poids maîtrisé
+                et une techno compréhensible.
               </p>
             </motion.div>
 
@@ -93,14 +103,14 @@ export function Services() {
               variants={fadeInUp}
             >
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
-                <Code className="h-8 w-8 flex-shrink-0" />
+                <ShoppingBag className="h-8 w-8 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  Applications web
+                  E-commerce / Paiements
                 </h4>
               </div>
               <p className="text-muted-foreground min-h-20">
-                Applications web sur-mesure et performantes, conçues pour
-                répondre précisément à vos besoins spécifiques.
+                Boutiques en ligne sécurisées avec Stripe, optimisées pour la
+                conversion et la performance.
               </p>
             </motion.div>
 
@@ -110,26 +120,26 @@ export function Services() {
               variants={fadeInUp}
             >
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
-                <ShoppingBag className="h-8 w-8 flex-shrink-0" />
+                <Box className="h-8 w-8 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  Boutiques en ligne
+                  Petits outils web & 3D
                 </h4>
               </div>
               <p className="text-muted-foreground min-h-20">
-                E-commerce sécurisé et optimisé pour vendre efficacement vos
-                produits ou services en ligne.
+                Outils web pour la prod ou la communauté, scènes 3D interactives
+                (Three.js, React Three Fiber, Blender).
               </p>
             </motion.div>
           </motion.div>
 
           <motion.h3
-            className="text-xl font-semibold mb-8"
+            className="text-xl font-semibold mb-8 mt-12"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ delay: 0.3 }}
           >
-            🔧 En option selon vos besoins :
+            🔧 Options techniques & avancées
           </motion.h3>
 
           <motion.div
@@ -147,16 +157,16 @@ export function Services() {
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
                 <Bot className="h-6 w-6 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  Automatisations métiers
+                  APIs LLM & Automatisations
                 </h4>
               </div>
               <p className="text-muted-foreground min-h-24">
-                Intégration d'IA et d'APIs sur-mesure pour automatiser vos
-                processus et optimiser votre productivité.
+                Intégration d'APIs LLM seulement si c'est utile : génération de
+                contenu, traitement média, ou outil interne.
               </p>
             </motion.div>
 
-            {/* Option 2 - Auto-hébergement */}
+            {/* Option 2 - Alternative-friendly */}
             <motion.div
               className="bg-card p-6 rounded-xl shadow-sm"
               variants={fadeInUp}
@@ -164,12 +174,12 @@ export function Services() {
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
                 <Database className="h-6 w-6 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  Solutions auto-hébergées
+                  Alternative GAFAM
                 </h4>
               </div>
               <p className="text-muted-foreground min-h-24">
-                Contrôle total sur vos données et réduction des coûts avec des
-                déploiements éco-conçus sur votre infrastructure.
+                Stack sans GAFAM : hébergement perso/VPS, DNS maîtrisé, analytics
+                légers, outils open-source. Gardez le contrôle de vos données.
               </p>
             </motion.div>
 
@@ -181,12 +191,12 @@ export function Services() {
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
                 <Workflow className="h-6 w-6 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  CI/CD simples
+                  Déploiement dockerisé
                 </h4>
               </div>
               <p className="text-muted-foreground min-h-24">
-                Pipelines de déploiement automatisés pour des mises à jour
-                fluides et des interventions rapides sur vos projets.
+                Stacks dockerisées déployables avec Traefik/Nginx, pour un
+                hébergement simple et évolutif.
               </p>
             </motion.div>
 
@@ -224,7 +234,7 @@ export function Services() {
               },
             }}
           >
-            {/* Offer 1 */}
+            {/* Offer 1 - Principes */}
             <motion.div
               className="bg-accent/10 border border-accent/20 p-6 rounded-xl"
               variants={{
@@ -238,20 +248,20 @@ export function Services() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-foreground">
-                    Tarifs compétitifs
+                    Mes principes
                   </h4>
                   <p className="text-accent text-lg font-bold mb-3">
-                    💼 Tarification juste et transparente
+                    🌱 Éco-conception · Sobriété · Accessibilité
                   </p>
                   <p className="text-muted-foreground">
-                    Des prix adaptés à chaque projet, avec une tarification
-                    claire dès le devis et un excellent rapport qualité-prix.
+                    Pas de dépendances inutiles, pas de tracking par défaut. Du
+                    code lisible et maintenable.
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Offer 2 */}
+            {/* Offer 2 - Approche */}
             <motion.div
               className="bg-accent/10 border border-accent/20 p-6 rounded-xl"
               variants={{
@@ -265,15 +275,15 @@ export function Services() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-foreground">
-                    Livraison adaptée
+                    Façon de travailler
                   </h4>
                   <p className="text-accent text-lg font-bold mb-3">
-                    ⚡ Délais adaptés à votre projet
+                    💬 Du besoin réel à la solution adaptée
                   </p>
                   <p className="text-muted-foreground">
-                    Quelques jours pour un site simple, plusieurs semaines pour
-                    une application complète, avec étapes claires et
-                    accompagnement.
+                    On part du besoin réel, on choisit la solution la plus
+                    adaptée, je livre quelque chose que vous pouvez héberger et
+                    faire évoluer sereinement.
                   </p>
                 </div>
               </div>
