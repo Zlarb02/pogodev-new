@@ -343,6 +343,12 @@ export function Header() {
               Processus
             </a>
             <a
+              href="/#/eco-conception"
+              className="text-foreground hover:text-accent transition-colors py-2 flex items-center"
+            >
+              Éco-conception
+            </a>
+            <a
               href="#contact"
               className="inline-flex items-center justify-center rounded-full px-5 py-2 bg-cyan-950 text-accent-foreground font-medium hover:bg-accent/90 transition-colors"
               onClick={(e) => {

@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  ClipboardCopy,
-  MessageSquare,
-  Shield,
-  Globe,
+  Palette,
+  Eye,
+  FileText,
+  UserCheck,
   Check,
+  Shield,
 } from "lucide-react";
 
 export function WhyMe() {
@@ -41,7 +42,7 @@ export function WhyMe() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          Pourquoi travailler avec moi ?
+          Pourquoi moi ?
         </motion.h2>
 
         <motion.div
@@ -50,175 +51,78 @@ export function WhyMe() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* Card 1 */}
+          {/* Card 1 - Sur-mesure */}
           <motion.div
-            className="bg-card p-6 rounded-xl shadow-sm"
+            className="bg-card p-6 rounded-xl shadow-sm border border-border"
             variants={itemVariants}
           >
             <div className="text-accent mb-4 flex row items-center gap-4">
-              <ClipboardCopy className="h-10 w-10" />{" "}
+              <Palette className="h-10 w-10" />
               <h3 className="text-xl font-semibold text-foreground mb-0">
                 Sur-mesure
               </h3>
             </div>
 
             <p className="text-muted-foreground">
-              Une approche sur-mesure, qui s'adapte à vous et à vos besoins
-              spécifiques.
+              Chaque projet a ses contraintes : budget, timing, compétences en interne.
+              Je m'adapte à votre réalité, pas l'inverse. Pas de solution clé en main
+              standardisée.
             </p>
           </motion.div>
 
-          {/* Card 2 */}
+          {/* Card 2 - Accessible */}
           <motion.div
-            className="bg-card p-6 rounded-xl shadow-sm"
+            className="bg-card p-6 rounded-xl shadow-sm border border-border"
             variants={itemVariants}
           >
             <div className="text-accent mb-4 flex row items-center gap-4">
-              <MessageSquare className="h-10 w-10" />{" "}
+              <Eye className="h-10 w-10" />
               <h3 className="text-xl font-semibold mb-0 text-foreground">
                 Accessible
               </h3>
             </div>
             <p className="text-muted-foreground">
-              Un accompagnement humain et accessible, même si vous n'êtes pas
-              technique.
+              Accessible dans les deux sens : un site utilisable par tous (navigation clavier,
+              lecteurs d'écran, contrastes WCAG AAA), et un code que vous pouvez comprendre
+              si vous voulez mettre les mains dedans.
             </p>
           </motion.div>
 
-          {/* Card 3 */}
+          {/* Card 3 - Transparent */}
           <motion.div
-            className="bg-card p-6 rounded-xl shadow-sm"
+            className="bg-card p-6 rounded-xl shadow-sm border border-border"
             variants={itemVariants}
           >
             <div className="text-accent mb-4 flex row items-center gap-4">
-              <Shield className="h-10 w-10" />
+              <FileText className="h-10 w-10" />
               <h3 className="text-xl font-semibold mb-0 text-foreground">
-                Qualité
+                Transparent
               </h3>
             </div>
             <p className="text-muted-foreground">
-              Un vrai souci de qualité : rapidité, durabilité, simplicité et
-              robustesse.
+              Pas de « magie ». Je vous explique ce que je fais, pourquoi, et combien ça coûte.
+              Les devis sont détaillés. Vous savez où va chaque euro.
             </p>
           </motion.div>
 
-          {/* Card 4 */}
+          {/* Card 4 - Indépendant */}
           <motion.div
-            className="bg-card p-6 rounded-xl shadow-sm"
+            className="bg-card p-6 rounded-xl shadow-sm border border-border"
             variants={itemVariants}
           >
             <div className="text-accent mb-4 flex row items-center gap-4">
-              <Globe className="h-10 w-10" />
+              <UserCheck className="h-10 w-10" />
               <h3 className="text-xl font-semibold mb-0 text-foreground">
-                Responsable
+                Indépendant
               </h3>
             </div>
             <p className="text-muted-foreground">
-              Des solutions responsables, éco-conçues, stables, et faciles à
-              faire évoluer.
+              Freelance = vous me parlez, je vous réponds. Pas de commercial, pas d'équipe
+              commerciale, pas d'intermédiaire. Relation directe.
             </p>
           </motion.div>
         </motion.div>
 
-        <motion.div
-          className="mt-12 text-center max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <p className="text-xl font-light text-primary">
-            <i>Je transforme vos</i> <b className="font-semibold">idées</b>{" "}
-            <i>en</i> <b className="font-semibold">solutions</b>{" "}
-            <i>
-              <b className="font-semibold">élégantes</b> et{" "}
-              <b className="font-semibold">efficaces</b>, <br />
-              pour vous <b className="font-semibold">simplifier la vie</b>
-            </i>
-          </p>
-        </motion.div>
-
-        {/* Quality section */}
-        <motion.div
-          className="mt-16 max-w-4xl mx-auto bg-card p-8 rounded-xl shadow-sm border border-border"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-        >
-          <h3 className="text-xl font-semibold mb-6 flex items-center text-foreground">
-            <Shield className="h-6 w-6 mr-2 text-accent" />
-            Qualité testée et prouvée
-          </h3>
-
-          <p className="mb-6 text-muted-foreground">
-            Tous mes sites sont testés et optimisés pour :
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="flex items-center">
-              <Check className="h-5 w-5 text-accent mr-2" />
-              <span className="text-muted-foreground">Performance rapide</span>
-            </div>
-            <div className="flex items-center">
-              <Check className="h-5 w-5 text-accent mr-2" />
-              <span className="text-muted-foreground">Accessibilité</span>
-            </div>
-            <div className="flex items-center">
-              <Check className="h-5 w-5 text-accent mr-2" />
-              <span className="text-muted-foreground">Bonnes pratiques</span>
-            </div>
-            <div className="flex items-center">
-              <Check className="h-5 w-5 text-accent mr-2" />
-              <span className="text-muted-foreground">Éco-conception</span>
-            </div>
-          </div>
-
-          <p className="mt-6 font-medium text-primary">
-            ➡️ Je m'engage dans une démarche d'amélioration continue pour des
-            performances optimales.
-          </p>
-
-          <div className="mt-4">
-            <p className="mb-2 text-muted-foreground">
-              👉 Dans un souci de transparence, vous pouvez évaluer les sites
-              avec ces outils :
-            </p>
-
-            <div className="flex flex-wrap gap-3 mt-4">
-              <a
-                href="https://developers.google.com/web/tools/lighthouse"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-muted rounded-full text-sm hover:bg-muted/80 transition-colors text-muted-foreground"
-              >
-                Lighthouse (Google)
-              </a>
-              <a
-                href="https://ecograder.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-muted rounded-full text-sm hover:bg-muted/80 transition-colors text-muted-foreground"
-              >
-                Ecograder
-              </a>
-              <a
-                href="https://www.websitecarbon.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-muted rounded-full text-sm hover:bg-muted/80 transition-colors text-muted-foreground"
-              >
-                Website Carbon
-              </a>
-              <a
-                href="https://observatory.mozilla.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-muted rounded-full text-sm hover:bg-muted/80 transition-colors text-muted-foreground"
-              >
-                Mozilla Observatory
-              </a>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

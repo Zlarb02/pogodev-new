@@ -7,7 +7,7 @@ import { useModals } from "@/contexts/ModalsContext";
 
 export function Projects() {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   // Utiliser le contexte pour les modals et les projets
   const { openProjectModal, handleVisitSite, projects } = useModals();
@@ -32,12 +32,12 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 bg-background">
+    <section id="projects" ref={sectionRef} className="py-20 bg-background min-h-screen">
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-2xl md:text-3xl font-bold text-center mb-6 font-['Poppins'] text-foreground"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           Mes projets personnels et démonstrateurs
@@ -45,8 +45,8 @@ export function Projects() {
 
         <motion.p
           className="text-center text-muted-foreground max-w-3xl mx-auto mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           Voici quelques projets et concepts réalisés pour montrer ce que je
@@ -56,8 +56,8 @@ export function Projects() {
         {/* Bloc Alto Lille vendeur en haut, grille inchangée */}
         <motion.p
           className="max-w-3xl mx-auto mb-8 text-center text-lg md:text-xl text-accent font-semibold"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <span className="font-bold">Alto Lille</span> : mon projet vitrine,
@@ -85,8 +85,8 @@ export function Projects() {
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
           variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          initial="visible"
+          animate="visible"
         >
           {projects.map((project) => (
             <motion.div
@@ -163,8 +163,8 @@ export function Projects() {
 
         <motion.div
           className="mt-12 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <p className="text-muted-foreground">

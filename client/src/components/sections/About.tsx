@@ -18,12 +18,24 @@ export function About() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <img
-                src="https://i.imgur.com/LFjVFj2.jpeg"
-                alt="Photo d'Étienne Pogoda"
-                className="rounded-lg shadow-md w-full h-auto"
-                loading="lazy"
-              />
+              <picture>
+                <source
+                  srcSet="/images/etienne-portrait.avif"
+                  type="image/avif"
+                />
+                <source
+                  srcSet="/images/etienne-portrait.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="/images/etienne-portrait.jpg"
+                  alt="Photo d'Étienne Pogoda"
+                  className="rounded-lg shadow-md w-full h-auto"
+                  loading="lazy"
+                  width="800"
+                  height="800"
+                />
+              </picture>
             </motion.div>
 
             <motion.div
@@ -36,15 +48,17 @@ export function About() {
                 Qui suis-je ?
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground mb-4">
-                Derrière l'écran, je suis Étienne Pogoda, développeur freelance.
-                Après 7 ans de formations en développement web, je me lance
-                aujourd'hui dans l'aventure du freelance avec une conviction :
-                créer un web plus sobre, performant et respectueux.
+                Je m'appelle Étienne, j'ai 29 ans et je vis à Lille. Mon parcours, c'est pas une ligne droite :
+                j'ai bossé en restauration, enchaîné 8 formations pro, vécu 3 ans en foyer de jeunes travailleurs
+                avec ma copine. Aujourd'hui on a un HLM, elle paie le loyer, et je dois trouver des clients rapidement.
               </p>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                <span className="text-accent font-medium">
-                  🌱 Éco-conception · Sobriété numérique · Accessibilité
-                </span>
+              <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+                Pendant longtemps, mes valeurs m'ont freiné. J'ai attendu que le monde change. Maintenant,
+                j'ai décidé de participer à sa transformation, à ma manière : en créant des sites web qui
+                ne gaspillent pas, qui durent, et qui respectent les gens qui les utilisent.
+              </p>
+              <p className="text-lg leading-relaxed text-muted-foreground font-medium">
+                Pas besoin de choisir entre un site robuste et un site éthique. Les deux vont ensemble.
               </p>
             </motion.div>
           </div>
@@ -57,12 +71,24 @@ export function About() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <img
-                src="https://i.imgur.com/eGdIlno.jpeg"
-                alt="Étienne Pogoda en train de coder sur sa terrasse"
-                className="rounded-lg shadow-md w-full h-auto"
-                loading="lazy"
-              />
+              <picture>
+                <source
+                  srcSet="/images/etienne-coding.avif"
+                  type="image/avif"
+                />
+                <source
+                  srcSet="/images/etienne-coding.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="/images/etienne-coding.jpg"
+                  alt="Étienne Pogoda en train de coder sur sa terrasse"
+                  className="rounded-lg shadow-md w-full h-auto"
+                  loading="lazy"
+                  width="5184"
+                  height="3888"
+                />
+              </picture>
             </motion.div>
 
             <motion.div
@@ -72,24 +98,23 @@ export function About() {
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <p className="text-lg leading-relaxed text-muted-foreground mb-4">
-                Mon objectif : partir du besoin réel, choisir la solution la plus
-                adaptée, et livrer quelque chose que vous pouvez héberger et
-                faire évoluer sereinement.
+                <span className="font-medium text-foreground">Mon approche</span> : partir de vos vrais besoins, choisir la solution adaptée (pas
+                forcément la plus à la mode), et vous livrer quelque chose que vous comprenez
+                et maîtrisez.
               </p>
               <p className="text-lg leading-relaxed text-muted-foreground mb-6">
-                <span className="font-medium text-foreground">
-                  Pas de dépendances inutiles.
-                </span>{" "}
-                Pas de tracking par défaut. Du code lisible et maintenable. 🌱
+                Code lisible. Pas de dépendances inutiles. Pas de tracking par défaut.
+                C'est aussi simple que ça.
               </p>
-              <h3 className="text-xl font-medium mb-2 text-foreground">
-                Alternative-friendly
-              </h3>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Je peux monter une stack sans services GAFAM si vous le
-                souhaitez : hébergement perso/VPS, DNS maîtrisé, pas de trackers
-                tiers, analytics légers, outils open-source.
-              </p>
+              <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
+                <h3 className="text-xl font-medium mb-2 text-foreground">
+                  Stack alternative
+                </h3>
+                <p className="text-base leading-relaxed text-muted-foreground">
+                  Vous préférez garder le contrôle de vos données ? Je monte aussi des stacks
+                  sans services GAFAM.
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>

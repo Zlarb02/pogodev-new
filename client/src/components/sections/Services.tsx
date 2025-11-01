@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ImageModal } from "@/components/ui/image-modal";
 
 export function Services() {
   const sectionRef = useRef(null);
@@ -60,9 +61,9 @@ export function Services() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            Sites et applications qui chargent vite, restent simples à héberger,
-            et n'embarquent que le nécessaire. Une approche sobre, durable et
-            transparente.
+            Des sites qui chargent vite, consomment peu de ressources, et restent simples
+            à maintenir. Une approche sobre et pragmatique — parce que c'est souvent la
+            plus rentable.
           </motion.p>
 
           <motion.h3
@@ -82,58 +83,67 @@ export function Services() {
           >
             {/* Service 1 */}
             <motion.div
-              className="bg-card p-6 rounded-xl shadow-sm"
+              className="bg-card p-6 rounded-xl shadow-sm border border-border"
               variants={fadeInUp}
             >
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
                 <Globe className="h-8 w-8 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  Sites vitrines propres
+                  Sites vitrines & portfolios
                 </h4>
               </div>
-              <p className="text-muted-foreground min-h-20">
-                Sites vitrines et portfolios performants avec un poids maîtrisé
-                et une techno compréhensible.
+              <p className="text-muted-foreground">
+                Sites performants avec un poids maîtrisé et une techno accessible.
+                Vous gardez la main dessus, même sans compétences techniques poussées.
+              </p>
+              <p className="text-muted-foreground mt-2 text-sm">
+                Exemple : <a href="https://vio-lettres.pogodev.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">vio-lettres.pogodev.com</a>
               </p>
             </motion.div>
 
             {/* Service 2 */}
             <motion.div
-              className="bg-card p-6 rounded-xl shadow-sm"
+              className="bg-card p-6 rounded-xl shadow-sm border border-border"
               variants={fadeInUp}
             >
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
                 <ShoppingBag className="h-8 w-8 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  E-commerce / Paiements
+                  E-commerce sur-mesure
                 </h4>
               </div>
-              <p className="text-muted-foreground min-h-20">
-                Boutiques en ligne sécurisées avec Stripe, optimisées pour la
+              <p className="text-muted-foreground">
+                Boutiques en ligne sécurisées avec paiement Stripe. Pensées pour la
                 conversion et la performance.
+              </p>
+              <p className="text-muted-foreground mt-2 text-sm">
+                Exemple : <a href="https://alto-lille.fr" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">alto-lille.fr</a>
               </p>
             </motion.div>
 
             {/* Service 3 */}
             <motion.div
-              className="bg-card p-6 rounded-xl shadow-sm"
+              className="bg-card p-6 rounded-xl shadow-sm border border-border"
               variants={fadeInUp}
             >
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
                 <Box className="h-8 w-8 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  Petits outils web & 3D
+                  Visualisations 3D interactives et ludiques
                 </h4>
               </div>
-              <p className="text-muted-foreground min-h-20">
-                Outils web pour la prod ou la communauté, scènes 3D interactives
-                (Three.js, React Three Fiber, Blender).
+              <p className="text-muted-foreground">
+                Scènes 3D pour valoriser un produit ou un concept (Three.js, React Three Fiber).
+                Utilisé sur Alto Lille pour présenter leur lampe phare.
+              </p>
+              <p className="text-muted-foreground mt-2 text-sm">
+                Exemple : <a href="https://alto-lille.fr" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">alto-lille.fr</a>
               </p>
             </motion.div>
           </motion.div>
 
           <motion.h3
-            className="text-xl font-semibold mb-8 mt-12"
+            className="text-xl font-semibold mb-8 mt-12 text-center"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -142,83 +152,107 @@ export function Services() {
             🔧 Options techniques & avancées
           </motion.h3>
 
+          {/* Section IA centrée */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16"
-            variants={staggerContainer}
+            className="max-w-4xl mx-auto mb-12"
+            variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            transition={{ delayChildren: 0.4 }}
+            transition={{ delay: 0.4 }}
           >
-            {/* Option 1 - Automatisations */}
-            <motion.div
-              className="bg-card p-6 rounded-xl shadow-sm"
-              variants={fadeInUp}
-            >
-              <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
-                <Bot className="h-6 w-6 flex-shrink-0" />
-                <h4 className="text-lg font-semibold text-foreground">
-                  APIs LLM & Automatisations
+            <div className="bg-card p-8 rounded-xl shadow-sm border border-border">
+              <div className="text-accent flex row gap-4 items-center mb-6">
+                <Bot className="h-8 w-8 flex-shrink-0" />
+                <h4 className="text-2xl font-semibold text-foreground">
+                  APIs & Automatisations (IA incluse)
                 </h4>
               </div>
-              <p className="text-muted-foreground min-h-24">
-                Intégration d'APIs LLM seulement si c'est utile : génération de
-                contenu, traitement média, ou outil interne.
+              <p className="text-muted-foreground mb-4 text-lg">
+                Intégration d'APIs — y compris LLM — si ça résout un problème réel.
               </p>
-            </motion.div>
-
-            {/* Option 2 - Alternative-friendly */}
-            <motion.div
-              className="bg-card p-6 rounded-xl shadow-sm"
-              variants={fadeInUp}
-            >
-              <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
-                <Database className="h-6 w-6 flex-shrink-0" />
-                <h4 className="text-lg font-semibold text-foreground">
-                  Alternative GAFAM
-                </h4>
+              <p className="text-sm text-muted-foreground mb-6">
+                Exemple concret : prototype d'application immersive augmentée par IA
+                (génération de contenu dynamique, expérience narrative type AI Dungeon).
+              </p>
+              <div className="mt-6 pt-6 border-t border-border">
+                <p className="text-sm font-medium text-foreground mb-3">⚠️ Transparence sur l'IA :</p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  L'IA est un outil puissant, mais pas sans risques : biais algorithmiques,
+                  hallucinations, consommation énergétique, dépendance aux modèles propriétaires.
+                </p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Je l'utilise quand le bénéfice est clair (automatisation, gain de temps,
+                  amélioration qualité du code). Pas pour le buzz marketing.
+                </p>
+                <p className="text-sm text-muted-foreground italic">
+                  Bilan complexe : 1 dev + IA vs 10 devs en bureau avec déplacements quotidiens
+                  → quel impact réel ? Difficile à trancher. La transparence sur les choix et
+                  leurs conséquences me semble plus importante que la peur ou l'enthousiasme
+                  aveugle.
+                </p>
               </div>
-              <p className="text-muted-foreground min-h-24">
-                Stack sans GAFAM : hébergement perso/VPS, DNS maîtrisé, analytics
-                légers, outils open-source. Gardez le contrôle de vos données.
-              </p>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Option 3 - CI/CD */}
-            <motion.div
-              className="bg-card p-6 rounded-xl shadow-sm"
-              variants={fadeInUp}
-            >
-              <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
-                <Workflow className="h-6 w-6 flex-shrink-0" />
-                <h4 className="text-lg font-semibold text-foreground">
-                  Déploiement dockerisé
-                </h4>
-              </div>
-              <p className="text-muted-foreground min-h-24">
-                Stacks dockerisées déployables avec Traefik/Nginx, pour un
-                hébergement simple et évolutif.
-              </p>
-            </motion.div>
-
-            {/* Option 4 - Dashboards */}
-            <motion.div
-              className="bg-card p-6 rounded-xl shadow-sm"
-              variants={fadeInUp}
-            >
-              <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
+          {/* Section Dashboards avec images */}
+          <motion.div
+            className="max-w-6xl mx-auto mb-16"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            transition={{ delay: 0.6 }}
+          >
+            <div className="bg-card p-8 rounded-xl shadow-sm border border-border">
+              <div className="text-accent flex row gap-4 items-center mb-6">
                 <LayoutDashboard
-                  className="h-6 w-6 flex-shrink-0"
+                  className="h-8 w-8 flex-shrink-0"
                   strokeWidth={1.5}
                 />
-                <h4 className="text-lg font-semibold text-foreground">
-                  Dashboards d'administration
+                <h4 className="text-2xl font-semibold text-foreground">
+                  Dashboards d'administration sur-mesure
                 </h4>
               </div>
-              <p className="text-muted-foreground min-h-24">
-                Interfaces de gestion intuitives pour piloter votre contenu en
-                toute autonomie, sans compétence technique.
+              <p className="text-muted-foreground mb-8 text-lg max-w-4xl">
+                Interfaces React custom pour gérer votre contenu en autonomie. Pas de CMS
+                générique — un outil taillé pour votre workflow.
               </p>
-            </motion.div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <ImageModal 
+                  src="/images/dashboard-placeholder-1.avif"
+                  alt="Dashboard d'administration Alto Lille - Interface de gestion des produits"
+                  className="group"
+                >
+                  <div className="aspect-[16/10] bg-muted rounded-xl overflow-hidden shadow-lg border-2 border-border hover:border-accent/50 transition-all duration-300">
+                    <img
+                      src="/images/dashboard-placeholder-1.avif"
+                      alt="Dashboard admin exemple 1"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </ImageModal>
+                
+                <ImageModal 
+                  src="/images/dashboard-placeholder-2.avif"
+                  alt="Dashboard d'administration Alto Lille - Interface de gestion des commandes"
+                  className="group"
+                >
+                  <div className="aspect-[16/10] bg-muted rounded-xl overflow-hidden shadow-lg border-2 border-border hover:border-accent/50 transition-all duration-300">
+                    <img
+                      src="/images/dashboard-placeholder-2.avif"
+                      alt="Dashboard admin exemple 2"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </ImageModal>
+              </div>
+              
+              <div className="mt-6 text-center">
+                <p className="text-sm text-muted-foreground italic">
+                  ✨ Cliquez sur les images pour les voir en grand • Captures d'écran du dashboard d'Alto Lille
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           {/* Special offers */}
@@ -236,97 +270,121 @@ export function Services() {
           >
             {/* Offer 1 - Principes */}
             <motion.div
-              className="bg-accent/10 border border-accent/20 p-6 rounded-xl"
+              className="bg-accent/10 border-2 border-accent/30 p-8 rounded-xl"
               variants={{
                 hidden: { opacity: 0, x: -20 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
               }}
             >
-              <div className="flex items-start">
-                <div className="flex-shrink-0 bg-cyan-950 text-white rounded-full p-3 mr-4">
-                  <Gift className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-foreground">
-                    Mes principes
-                  </h4>
-                  <p className="text-accent text-lg font-bold mb-3">
-                    🌱 Éco-conception · Sobriété · Accessibilité
-                  </p>
-                  <p className="text-muted-foreground">
-                    Pas de dépendances inutiles, pas de tracking par défaut. Du
-                    code lisible et maintenable.
-                  </p>
-                </div>
+              <div>
+                <h4 className="text-xl font-bold mb-3 text-foreground">
+                  Mes principes
+                </h4>
+                <p className="text-accent text-lg font-bold mb-4">
+                  Sobriété · Performance · Accessibilité
+                </p>
+                <p className="text-muted-foreground mb-3">
+                  Code lisible et maintenable. Pas de dépendances inutiles. Pas de tracking
+                  par défaut.
+                </p>
+                <p className="text-foreground font-medium mb-2">Un site sobre, c'est :</p>
+                <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                  <li>Plus rapide</li>
+                  <li>Moins cher à héberger</li>
+                  <li>Accessible sur vieux matériel et connexions faibles</li>
+                  <li>Moins énergivore</li>
+                  <li>Moins de failles de sécurité</li>
+                  <li>Facile à maintenir</li>
+                </ul>
+                <p className="text-foreground font-medium mt-4 italic">
+                  La sobriété n'est pas qu'une question d'éthique. C'est souvent la solution
+                  la plus rentable.
+                </p>
               </div>
             </motion.div>
 
             {/* Offer 2 - Approche */}
             <motion.div
-              className="bg-accent/10 border border-accent/20 p-6 rounded-xl"
+              className="bg-accent/10 border-2 border-accent/30 p-8 rounded-xl"
               variants={{
                 hidden: { opacity: 0, x: 20 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
               }}
             >
-              <div className="flex items-start">
-                <div className="flex-shrink-0 bg-cyan-950 text-white rounded-full p-3 mr-4">
-                  <Clock className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-foreground">
-                    Façon de travailler
-                  </h4>
-                  <p className="text-accent text-lg font-bold mb-3">
-                    💬 Du besoin réel à la solution adaptée
-                  </p>
-                  <p className="text-muted-foreground">
-                    On part du besoin réel, on choisit la solution la plus
-                    adaptée, je livre quelque chose que vous pouvez héberger et
-                    faire évoluer sereinement.
-                  </p>
-                </div>
+              <div>
+                <h4 className="text-xl font-bold mb-3 text-foreground">
+                  Façon de travailler
+                </h4>
+                <p className="text-accent text-lg font-bold mb-4">
+                  Du besoin réel à la solution adaptée
+                </p>
+                <ol className="list-decimal list-inside text-muted-foreground space-y-2">
+                  <li>
+                    On discute de ce dont vous avez vraiment besoin (pas seulement ce que vous pensez
+                    vouloir, ou de ce que j'ai envie de vendre, non : on prend le temps de réfléchir ensemble au besoin réel).
+                  </li>
+                  <li>
+                    Je vous propose la solution la plus adaptée, et je vous montre un prototype dans l'heure suivant l'appel.
+                  </li>
+                  <li>
+                    Vous décidez de la suite.
+                  </li>
+                </ol>
+                <p className="text-foreground font-medium mt-4">
+                  Pas de bullshit. Pas de vente forcée de techno hype.
+                </p>
               </div>
             </motion.div>
           </motion.div>
 
           <motion.div
-            className="text-center mb-16"
+            className="relative mb-16 overflow-hidden"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ delay: 0.8 }}
           >
-            <Button asChild size="lg">
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Obtenez un devis personnalisé
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="h-5 w-5 ml-2"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </a>
-            </Button>
+            <div className="bg-gradient-to-br from-accent/20 via-accent/10 to-transparent p-12 rounded-2xl border-2 border-accent/30 shadow-lg">
+              <div className="max-w-2xl mx-auto text-center">
+                <h3 className="text-3xl font-bold mb-4 text-foreground">
+                  Prêt à démarrer votre projet ?
+                </h3>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Discutons de vos besoins. Je vous propose un prototype dans l'heure
+                  qui suit notre premier échange.
+                </p>
+                <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-all">
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("contact")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    Obtenez un devis personnalisé
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="h-5 w-5 ml-2"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </a>
+                </Button>
+              </div>
+            </div>
           </motion.div>
 
           {/* Hosting info */}
           <motion.div
-            className="bg-card p-8 rounded-xl shadow-sm mb-16"
+            className="bg-card p-8 rounded-xl shadow-sm mb-16 border border-border"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -334,44 +392,35 @@ export function Services() {
           >
             <h3 className="text-xl font-semibold mb-6 flex items-center text-foreground">
               <Server className="h-6 w-6 mr-2 text-accent" />
-              Hébergement & accompagnement sur-mesure
+              Hébergement & accompagnement
             </h3>
             <ul className="space-y-4 text-muted-foreground">
               <li className="flex items-start">
-                <Check className="h-5 w-5 text-accent mr-2 mt-1" />
+                <Check className="h-5 w-5 text-accent mr-2 mt-1 flex-shrink-0" />
                 <div>
-                  Je vous aide à choisir l'hébergement le plus adapté : VPS,
-                  cloud, serveur dédié, ou hébergement de solution légère chez
-                  o2switch offert (nom de domaine non inclus).
+                  Choix de l'hébergement adapté.
                 </div>
               </li>
               <li className="flex items-start">
-                <Check className="h-5 w-5 text-accent mr-2 mt-1" />
+                <Check className="h-5 w-5 text-accent mr-2 mt-1 flex-shrink-0" />
                 <div>
-                  Accompagnement dans le choix du nom de domaine (Abonnement
-                  annuel à votre charge, vous êtes propriétaire du domaine) —{" "}
+                  Accompagnement choix du domaine (vous restez propriétaire, abonnement annuel
+                  ~10-100€/an). Vérifier prix et dispo sur{" "}
                   <a
                     href="https://www.namecheap.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-accent hover:underline"
                   >
-                    Vérifier prix et disponibilité sur Namecheap
+                    Namecheap
                   </a>
+                  .
                 </div>
               </li>
               <li className="flex items-start">
-                <Check className="h-5 w-5 text-accent mr-2 mt-1" />
+                <Check className="h-5 w-5 text-accent mr-2 mt-1 flex-shrink-0" />
                 <div>
-                  Solutions évolutives possibles avec forfait hébergement et
-                  support technique à l'heure pour vous accompagner si besoin.
-                </div>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-accent mr-2 mt-1" />
-                <div>
-                  Formation offerte sur CMS ou outils pour vous rendre le plus
-                  autonome possible.
+                  Formation offerte sur les outils pour vous rendre autonome si besoin.
                 </div>
               </li>
             </ul>
@@ -379,7 +428,7 @@ export function Services() {
 
           {/* SEO & Modern Referencing */}
           <motion.div
-            className="bg-card p-8 rounded-xl shadow-sm"
+            className="bg-card p-8 rounded-xl shadow-sm border border-border"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -387,38 +436,36 @@ export function Services() {
           >
             <h3 className="text-xl font-semibold mb-6 flex items-center text-foreground">
               <Search className="h-6 w-6 mr-2 text-accent" />
-              Référencement & visibilité optimisés
+              Référencement & visibilité
             </h3>
 
             <p className="mb-6 text-muted-foreground">
-              Chaque projet est conçu avec le référencement au cœur des
-              priorités :
+              Chaque projet est optimisé pour le référencement dès la conception :
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <Zap className="h-5 w-5 text-accent mr-2 mt-1" />
+                  <Zap className="h-5 w-5 text-accent mr-2 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-foreground">
-                      SEO technique optimisé
+                      SEO technique
                     </h4>
-                    <p className="text-muted-foreground">
-                      Structure, vitesse, balisage sémantique et métadonnées
-                      optimisés.
+                    <p className="text-muted-foreground text-sm">
+                      Structure HTML sémantique, Core Web Vitals optimisés,
+                      métadonnées complètes.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <Smartphone className="h-5 w-5 text-accent mr-2 mt-1" />
+                  <Smartphone className="h-5 w-5 text-accent mr-2 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-foreground">
-                      Mobile-first & Responsive
+                      Mobile-first
                     </h4>
-                    <p className="text-muted-foreground">
-                      Expérience utilisateur fluide sur tous les appareils,
-                      critère essentiel pour Google.
+                    <p className="text-muted-foreground text-sm">
+                      Google privilégie les sites mobiles performants.
                     </p>
                   </div>
                 </div>
@@ -426,27 +473,25 @@ export function Services() {
 
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <LineChart className="h-5 w-5 text-accent mr-2 mt-1" />
+                  <LineChart className="h-5 w-5 text-accent mr-2 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-foreground">
-                      Analytics & Mesure d'impact
+                      Analytics respectueux
                     </h4>
-                    <p className="text-muted-foreground">
-                      Outils de suivi respectueux de la vie privée pour analyser
-                      et améliorer votre visibilité.
+                    <p className="text-muted-foreground text-sm">
+                      Plausible ou Matomo (alternatives à Google Analytics).
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <Globe className="h-5 w-5 text-accent mr-2 mt-1" />
+                  <Globe className="h-5 w-5 text-accent mr-2 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-foreground">
-                      Optimisation locale & globale
+                      Optimisation locale ou globale
                     </h4>
-                    <p className="text-muted-foreground">
-                      Stratégies adaptées pour renforcer votre présence en ligne
-                      locale ou internationale.
+                    <p className="text-muted-foreground text-sm">
+                      Selon votre cible.
                     </p>
                   </div>
                 </div>

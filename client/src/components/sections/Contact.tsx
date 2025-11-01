@@ -47,10 +47,8 @@ export function Contact() {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-semibold mb-2">1. Vous m'écrivez</h3>
-              <p className="text-sm text-muted-foreground">
-                Décrivez-moi votre projet en quelques mots par SMS
-              </p>
+              <h3 className="font-semibold mb-2 text-foreground">Vous m'écrivez</h3>
+
             </motion.div>
 
             <motion.div
@@ -62,10 +60,8 @@ export function Contact() {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-semibold mb-2">2. Je vous rappelle</h3>
-              <p className="text-sm text-muted-foreground">
-                Réponse rapide par SMS pour planifier un échange
-              </p>
+              <h3 className="font-semibold mb-2 text-foreground">Je vous rappelle</h3>
+
             </motion.div>
 
             <motion.div
@@ -77,10 +73,8 @@ export function Contact() {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-semibold mb-2">3. On discute projet</h3>
-              <p className="text-sm text-muted-foreground">
-                Échange approfondi pour concrétiser votre vision
-              </p>
+              <h3 className="font-semibold mb-2 text-foreground">On discute projet</h3>
+
             </motion.div>
           </div>
 
@@ -92,10 +86,10 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <div className="max-w-lg mx-auto">
-              <h3 className="text-2xl font-bold mb-4">Prêt à démarrer ?</h3>
+              <h3 className="text-2xl font-bold mb-4 text-foreground">Prêt à démarrer ?</h3>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
-                <p className="text-amber-800 font-semibold text-lg mb-2">
+              <div className="bg-accent/10 border-2 border-accent/30 rounded-lg p-4 mb-6">
+                <p className="text-foreground font-semibold text-lg mb-2">
                   Je privilégie les échanges simples et directs. <br /> Un SMS
                   suffit pour lancer la discussion.
                 </p>
@@ -107,14 +101,14 @@ export function Contact() {
 
               <a
                 href="sms:0771853328"
-                className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg"
+                className="inline-flex items-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent/90 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg"
               >
                 <MessageCircle className="w-5 h-5 mr-3" />
                 07 71 85 33 28
               </a>
 
               <p className="text-xs text-muted-foreground mt-4">
-                Cliquez pour ouvrir votre app SMS directement
+                Cliquer pour ouvrir votre app SMS depuis un téléphone.
               </p>
             </div>
           </motion.div>

@@ -1,0 +1,321 @@
+================================================================================
+PROPOSITION DE CONTENU REFONDU - POGODEV.COM
+Ton : humain, pédagogique, non donneur de leçon, inclusif
+================================================================================
+
+═══════════════════════════════════════════════════════════════════════════════
+SECTION HERO
+═══════════════════════════════════════════════════════════════════════════════
+
+TITRE :
+Un site web, c'est comme une maison : autant qu'elle soit solide et facile à entretenir
+
+PARAGRAPHE 1 :
+Je crée des sites pensés pour durer. Rapides, simples à héberger, sans complexité
+inutile. L'idée, c'est que vous puissiez comprendre ce que vous avez entre les mains.
+
+PARAGRAPHE 2 :
+Ce qui me guide : vous expliquer les choix techniques sans jargon, vous rendre
+autonome, et vous livrer un projet que vous pourrez faire évoluer — avec ou sans moi.
+
+PARAGRAPHE 3 :
+Un exemple concret : Alto Lille, boutique e-commerce sobre et performante.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+SECTION À PROPOS (QUI SUIS-JE ?)
+═══════════════════════════════════════════════════════════════════════════════
+
+TITRE : Qui suis-je ?
+
+BLOC 1 :
+Derrière l'écran, je suis Étienne Pogoda, développeur freelance basé à Lille.
+Après 7 ans de formation en développement web, je me lance dans l'aventure du
+freelance avec une conviction : on peut faire du web autrement.
+
+Plus sobre. Plus respectueux. Sans sacrifier la qualité.
+
+BLOC 2 :
+Mon objectif : partir de vos vrais besoins, choisir la solution adaptée (pas la
+plus à la mode), et vous livrer quelque chose que vous comprenez et maîtrisez.
+
+Pas de dépendances inutiles. Pas de tracking par défaut. Du code lisible et
+maintenable. C'est tout.
+
+BLOC 3 (Alternative-friendly) :
+Si vous le souhaitez, je peux aussi monter des stacks sans services GAFAM :
+hébergement perso ou VPS, DNS maîtrisé, analytics légers, outils open-source.
+
+Pas de militantisme. Juste une option pour ceux qui préfèrent garder le contrôle
+de leurs données. Les deux approches sont valables selon le contexte.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+SECTION POURQUOI MOI ?
+═══════════════════════════════════════════════════════════════════════════════
+
+TITRE : Pourquoi moi ?
+
+CARTE 1 - Sur-mesure :
+Chaque projet a ses contraintes. Budget, timing, compétences techniques en interne.
+Je m'adapte à votre réalité, pas l'inverse.
+
+CARTE 2 - Accessible :
+Accessible dans les deux sens : un site utilisable par tous (navigation clavier,
+lecteurs d'écran, contrastes), et un code compréhensible si vous voulez mettre
+les mains dedans.
+
+CARTE 3 - Transparent :
+Pas de « magie ». Je vous explique ce que je fais, pourquoi, et combien ça coûte.
+Vous savez toujours où vous mettez les pieds.
+
+CARTE 4 - Indépendant :
+Freelance = pas de commercial entre nous. Vous me parlez, je vous réponds.
+Relation directe, pas d'intermédiaire.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+SECTION SERVICES (MON OFFRE)
+═══════════════════════════════════════════════════════════════════════════════
+
+INTRO :
+Sites et applications qui chargent vite, restent simples à héberger, et
+n'embarquent que le nécessaire. Une approche sobre et pragmatique.
+
+---
+
+CE QUE JE LIVRE
+
+SERVICE 1 - Sites vitrines & portfolios :
+Sites performants avec un poids maîtrisé et une techno compréhensible.
+Vous gardez la main dessus.
+
+SERVICE 2 - E-commerce / Paiements :
+Boutiques en ligne sécurisées avec Stripe. Optimisées pour la conversion
+et la performance. Pas de usine à gaz.
+
+SERVICE 3 - Petits outils web & 3D :
+Outils métier sur-mesure, scènes 3D interactives (Three.js, React Three Fiber).
+Pour la prod ou pour la comm.
+
+---
+
+OPTIONS TECHNIQUES AVANCÉES
+
+OPTION 1 - APIs & Automatisations (y compris IA) :
+Intégration d'APIs — LLM compris — seulement si c'est utile.
+Génération de contenu, traitement média, outil interne.
+
+L'IA, c'est un outil. Pas une fin en soi. Si elle résout un problème concret
+(automatiser une tâche répétitive, analyser des données), pourquoi pas.
+Si c'est pour le buzz, non merci.
+
+OPTION 2 - Stack alternative (sans GAFAM) :
+Hébergement perso/VPS, DNS maîtrisé, analytics légers, outils open-source.
+Vous gardez le contrôle de vos données.
+
+Cette option n'est pas « meilleure » moralement. C'est juste une préférence
+technique et éthique que certains ont. Si ça vous parle, je sais faire.
+
+OPTION 3 - Déploiement dockerisé :
+Stacks dockerisées déployables avec Traefik/Nginx.
+Hébergement simple et évolutif.
+
+OPTION 4 - Dashboards d'administration :
+Interfaces de gestion intuitives pour piloter votre contenu en autonomie,
+sans compétence technique.
+
+---
+
+MES PRINCIPES (encadré spécial)
+
+Sobriété · Accessibilité · Pérennité
+
+Pas de dépendances inutiles. Pas de tracking par défaut. Du code lisible et
+maintenable.
+
+Sobre, ça veut dire : léger, rapide, qui marche sur du vieux matos.
+Pas militant. Juste pragmatique.
+
+---
+
+FAÇON DE TRAVAILLER (encadré spécial)
+
+Du besoin réel à la solution adaptée
+
+On discute de ce dont vous avez vraiment besoin. Je vous propose la solution
+la plus adaptée — pas forcément la plus moderne. Je livre quelque chose que
+vous pouvez héberger et faire évoluer sereinement.
+
+---
+
+HÉBERGEMENT & ACCOMPAGNEMENT
+
+• Je vous aide à choisir l'hébergement adapté : VPS, cloud, serveur dédié, ou
+  hébergement mutualisé léger chez o2switch (offert pour les petits projets,
+  nom de domaine non inclus).
+
+• Accompagnement dans le choix du nom de domaine (abonnement annuel à votre
+  charge, vous restez propriétaire). Prix et dispo sur Namecheap.
+
+• Solutions évolutives possibles avec support technique à l'heure si besoin.
+
+• Formation offerte sur les outils pour vous rendre autonome.
+
+---
+
+RÉFÉRENCEMENT & VISIBILITÉ
+
+Chaque projet est conçu avec le référencement au cœur des priorités :
+
+• SEO technique optimisé : structure, vitesse, balisage sémantique, métadonnées.
+• Mobile-first & Responsive : expérience fluide partout, critère Google.
+• Analytics & Mesure : outils de suivi respectueux pour analyser votre trafic.
+• Optimisation locale ou globale : selon vos besoins.
+
+Badges : Schema.org · Core Web Vitals · SSR/SSG · HTTPS · Sitemap XML · Open Graph
+
+
+═══════════════════════════════════════════════════════════════════════════════
+SECTION PROCESSUS
+═══════════════════════════════════════════════════════════════════════════════
+
+(Garder tel quel, déjà sobre et clair)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+SECTION ÉCO-CONCEPTION (PAGE DÉDIÉE)
+═══════════════════════════════════════════════════════════════════════════════
+
+TITRE PRINCIPAL :
+L'éco-conception web, c'est quoi ?
+
+INTRO :
+Créer des sites performants, sobres et accessibles. Pas par militantisme,
+mais parce que c'est logique : ça coûte moins cher, ça charge plus vite,
+et ça marche mieux pour tout le monde.
+
+Voici comment ça marche.
+
+---
+
+POURQUOI S'EN PRÉOCCUPER ?
+
+CARTE 1 - Impact environnemental :
+Le numérique, c'est 4% des émissions mondiales de CO2. Plus que l'aviation.
+Chaque octet transféré consomme de l'énergie. Moins il y en a, mieux c'est.
+
+Pas de culpabilisation. Juste des faits.
+
+CARTE 2 - Performance :
+Un site éco-conçu charge 2 à 3 fois plus vite. Meilleur pour le SEO,
+meilleur pour l'expérience utilisateur. Win-win.
+
+CARTE 3 - Accessibilité :
+Sites légers = accessibles sur connexions faibles et vieux appareils.
+Inclusivité numérique. Pas élitiste.
+
+---
+
+LES 6 PILIERS DE L'ÉCO-CONCEPTION
+
+1. OPTIMISATION DES IMAGES
+Les images = 50% du poids d'une page en moyenne.
+
+• Formats modernes : WebP (-30%), AVIF (-50%), SVG pour icônes
+• Compression : qualité 80-85%, dimensions adaptées
+• Lazy loading : charger seulement au scroll
+
+Résultat : -70% de poids sans perte visible.
+
+---
+
+2. CODE SOBRE ET MINIFIÉ
+Éviter le code mort, supprimer les dépendances inutiles.
+
+• Tree-shaking : supprimer le code non utilisé (-40% bundle)
+• Code-splitting : charger uniquement ce qui est nécessaire (import() dynamique)
+• Audit dépendances : bundlephobia.com pour analyser le poids
+
+Une bibliothèque JS de 200 Ko qui sert à afficher un bouton ? Non merci.
+
+---
+
+3. TYPOGRAPHIE OPTIMISÉE
+Les fonts Google peuvent peser 200-400 Ko par famille.
+
+• Variable fonts : 1 seule font = tous les poids (-60%)
+• Subsetting : charger uniquement les caractères utilisés
+• display=swap : afficher le texte immédiatement
+
+Ou auto-héberger pour éviter les requêtes externes.
+
+---
+
+4. HÉBERGEMENT RESPONSABLE
+Le choix de l'hébergeur a un impact direct.
+
+• Énergie verte : datacenters alimentés aux énergies renouvelables
+• Proximité : hébergement proche des utilisateurs (CDN)
+• Mutualisé : VPS partagé plutôt que serveur dédié si possible
+
+Là encore, pas de moralisme. Juste du pragmatisme.
+
+---
+
+5. CORE WEB VITALS
+Métriques Google pour mesurer l'expérience utilisateur.
+
+• LCP (Largest Contentful Paint) < 2.5s
+• FID (First Input Delay) < 100ms
+• CLS (Cumulative Layout Shift) < 0.1
+
+Ces métriques impactent le référencement. Autant les soigner.
+
+---
+
+6. ACCESSIBILITÉ & SOBRIÉTÉ
+Un site accessible est un site sobre par nature.
+
+• Sémantique HTML : utiliser les bonnes balises (nav, main, article)
+• prefers-reduced-motion : respecter les préférences utilisateur
+• Contraste : WCAG AAA minimum (ratio 7:1)
+
+Accessible = utilisable par tous. Logique.
+
+---
+
+OUTILS D'AUDIT RECOMMANDÉS
+
+• Lighthouse : audit de performance, accessibilité et SEO (Chrome DevTools)
+• WebsiteCarbon : calculateur d'empreinte carbone
+• EcoIndex : note environnementale de A à G (GreenIT.fr)
+• bundlephobia : analyse le poids des packages npm
+
+---
+
+CTA FINAL :
+Prêt à optimiser votre projet ?
+
+Je vous accompagne dans la création d'un site performant et respectueux
+de l'environnement. Sans dogmatisme. Juste du bon sens.
+
+[Bouton : Demander un audit gratuit]
+
+
+═══════════════════════════════════════════════════════════════════════════════
+FIN DU DOCUMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+NOTES GÉNÉRALES :
+
+✓ Ton humble et factuel
+✓ Pas de « vous devez », seulement du « vous pouvez »
+✓ Reconnaissance que plusieurs approches sont valables
+✓ Pédagogie sans infantilisation
+✓ Chiffres concrets sans catastrophisme
+✓ Inclusif envers tous les profils (créatifs, sceptiques, fans GAFAM, anti-GAFAM)
+✓ L'IA et les GAFAM sont présentés comme des outils (ni diabolisés, ni glorifiés)
+✓ Sobriété = pragmatisme, pas militantisme
+
+Qu'en penses-tu ?

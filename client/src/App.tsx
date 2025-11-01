@@ -5,6 +5,7 @@ import { Footer } from "./components/layout/Footer";
 import Home from "./pages/Home";
 import NotFoundPage from "./pages/not-found";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import EcoConception from "./pages/EcoConception";
 
 // Hook pour gérer la base URL (nécessaire pour GitHub Pages)
 const useBasePath = () => {
@@ -80,6 +81,7 @@ export default function App() {
           <Switch>
             <Route path="/" component={Home} />
             <Route path="/privacy-policy" component={PrivacyPolicy} />
+            <Route path="/eco-conception" component={EcoConception} />
             <Route component={NotFoundPage} />
           </Switch>
         </main>
