@@ -16,7 +16,7 @@ export function Lighthouse() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          Performance mesurée : pogodev.com
+          Des preuves ?
         </motion.h2>
 
         <motion.p
@@ -29,7 +29,7 @@ export function Lighthouse() {
         </motion.p>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Scores Lighthouse */}
+          {/* Documentation Google - Code couleur */}
           <motion.div
             className="bg-card rounded-xl shadow-sm border border-border overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
@@ -38,40 +38,38 @@ export function Lighthouse() {
           >
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-3 text-foreground">
-                Scores Lighthouse de pogodev.com
+                Comment lire les scores Lighthouse ?
               </h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Performance, Accessibilité, Bonnes pratiques, SEO
+                Le code couleur expliqué par Google
               </p>
             </div>
             <ImageModal
-              src="/images/lighthouse-scores.avif"
-              alt="Scores Lighthouse de pogodev.com - Performance 100, Accessibilité 100, Bonnes pratiques 100, SEO 100"
+              src="/images/lighthouse-score-guide.png"
+              alt="Guide des scores Lighthouse - Code couleur : 0-49 rouge (faible), 50-89 orange (amélioration nécessaire), 90-100 vert (bon)"
             >
               <div className="aspect-[4/3] lg:aspect-video bg-muted cursor-pointer hover:bg-muted/80 transition-colors duration-300">
-                <picture>
-                  <source
-                    srcSet="/images/lighthouse-scores.avif"
-                    type="image/avif"
-                  />
-                  <source
-                    srcSet="/images/lighthouse-scores.webp"
-                    type="image/webp"
-                  />
-                  <img
-                    src="/images/lighthouse-scores.jpg"
-                    alt="Scores Lighthouse de pogodev.com"
-                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    width="3014"
-                    height="1814"
-                  />
-                </picture>
+                <img
+                  src="/images/lighthouse-score-guide.png"
+                  alt="Guide des scores Lighthouse"
+                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
               </div>
             </ImageModal>
+            <div className="p-6 bg-accent/5 border-t border-border">
+              <ul className="text-sm text-muted-foreground space-y-2">
+                <li><span className="font-semibold text-red-600">0 à 49</span> (rouge) : Faible - nécessite des améliorations urgentes</li>
+                <li><span className="font-semibold text-orange-600">50 à 89</span> (orange) : Amélioration nécessaire</li>
+                <li><span className="font-semibold text-green-600">90 à 100</span> (vert) : Bon - respecte les bonnes pratiques</li>
+              </ul>
+              <p className="text-xs text-muted-foreground mt-4 italic">
+                Un score parfait de 100 est extrêmement difficile et n'est pas attendu. L'objectif est d'atteindre la zone verte (90+).
+              </p>
+            </div>
           </motion.div>
 
-          {/* Documentation Google */}
+          {/* Scores Lighthouse de pogodev.com */}
           <motion.div
             className="bg-card rounded-xl shadow-sm border border-border overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
@@ -80,51 +78,32 @@ export function Lighthouse() {
           >
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-3 text-foreground">
-                Ce que dit Google
+                Résultats de pogodev.com
               </h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Documentation officielle sur les scores de performance
+                Les 4 piliers mesurés par Lighthouse
               </p>
             </div>
             <ImageModal
-              src="/images/google-lighthouse-doc.avif"
-              alt="Documentation Google Lighthouse - Explication des scores de performance et recommandations"
+              src="/images/pogodev-lighthouse-results.png"
+              alt="Scores Lighthouse de pogodev.com - Performance 86, Accessibilité 100, Bonnes pratiques 100, SEO 100"
             >
               <div className="aspect-[4/3] lg:aspect-video bg-muted cursor-pointer hover:bg-muted/80 transition-colors duration-300">
-                <picture>
-                  <source
-                    srcSet="/images/google-lighthouse-doc.avif"
-                    type="image/avif"
-                  />
-                  <source
-                    srcSet="/images/google-lighthouse-doc.webp"
-                    type="image/webp"
-                  />
-                  <img
-                    src="/images/google-lighthouse-doc.jpg"
-                    alt="Documentation Google Lighthouse sur les scores"
-                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    width="1516"
-                    height="830"
-                  />
-                </picture>
+                <img
+                  src="/images/pogodev-lighthouse-results.png"
+                  alt="Scores Lighthouse de pogodev.com"
+                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
               </div>
             </ImageModal>
             <div className="p-6 bg-accent/5 border-t border-border">
-              <p className="text-sm text-muted-foreground italic">
-                "Pour offrir une expérience utilisateur de qualité, les sites doivent s'efforcer
-                d'obtenir un bon score (90-100). Obtenir un score "parfait" de 100 est extrêmement
-                difficile et n'est pas attendu."
-              </p>
-              <a
-                href="https://developer.chrome.com/docs/lighthouse/performance/performance-scoring?hl=fr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:underline text-sm mt-2 inline-block"
-              >
-                → Lire la documentation complète
-              </a>
+              <ul className="text-sm text-muted-foreground space-y-2">
+                <li><span className="font-semibold text-orange-600">Performance : 86/100</span> - Bon résultat, des optimisations sont encore possibles</li>
+                <li><span className="font-semibold text-green-600">Accessibilité : 100/100</span> - Excellent ! Le site est accessible à tous</li>
+                <li><span className="font-semibold text-green-600">Bonnes pratiques : 100/100</span> - Parfait ! Respect total des standards web</li>
+                <li><span className="font-semibold text-green-600">SEO : 100/100</span> - Optimal pour le référencement naturel</li>
+              </ul>
             </div>
           </motion.div>
         </div>

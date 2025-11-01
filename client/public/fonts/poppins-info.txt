@@ -1,0 +1,5 @@
+Poppins Variable Font
+Source: Google Fonts
+Téléchargé depuis: https://fonts.google.com/specimen/Poppins
+Format: Variable font (woff2)
+Poids supportés: 100-900

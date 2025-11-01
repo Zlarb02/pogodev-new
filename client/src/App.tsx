@@ -1,11 +1,13 @@
 import { Route, Switch, Router } from "wouter";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import Home from "./pages/Home";
 import NotFoundPage from "./pages/not-found";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import EcoConception from "./pages/EcoConception";
+
+// Lazy loading des pages non-critiques pour améliorer les performances
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const EcoConception = lazy(() => import("./pages/EcoConception"));
 
 // Hook pour gérer la base URL (nécessaire pour GitHub Pages)
 const useBasePath = () => {
@@ -78,12 +80,21 @@ export default function App() {
       <div className="flex flex-col min-h-screen bg-background">
         <Header />
         <main className="flex-grow">
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/privacy-policy" component={PrivacyPolicy} />
-            <Route path="/eco-conception" component={EcoConception} />
-            <Route component={NotFoundPage} />
-          </Switch>
+          <Suspense fallback={
+            <div className="flex items-center justify-center min-h-[60vh]">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                <p className="text-muted-foreground">Chargement...</p>
+              </div>
+            </div>
+          }>
+            <Switch>
+              <Route path="/" component={Home} />
+              <Route path="/privacy-policy" component={PrivacyPolicy} />
+              <Route path="/eco-conception" component={EcoConception} />
+              <Route component={NotFoundPage} />
+            </Switch>
+          </Suspense>
         </main>
         <Footer />
       </div>

@@ -61,9 +61,8 @@ export function Services() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            Des sites qui chargent vite, consomment peu de ressources, et restent simples
-            à maintenir. Une approche sobre et pragmatique — parce que c'est souvent la
-            plus rentable.
+            Des sites rapides, légers, faciles à maintenir. Une approche sobre et pragmatique,
+            parce que c'est souvent la plus rentable et la plus durable.
           </motion.p>
 
           <motion.h3
@@ -89,14 +88,13 @@ export function Services() {
               <div className="text-accent flex row gap-4 items-center min-h-[64px] mb-4">
                 <Globe className="h-8 w-8 flex-shrink-0" />
                 <h4 className="text-lg font-semibold text-foreground">
-                  Sites vitrines & portfolios
+                  Web simple
                 </h4>
               </div>
               <p className="text-muted-foreground">
-                Sites performants avec un poids maîtrisé et une techno accessible.
-                Vous gardez la main dessus, même sans compétences techniques poussées.
+                Portfolio artistique avec galerie multimédia, blog pour partager vos idées, campagne de dons pour votre association, site pour présenter votre savoir-faire : un site qui fait exactement ce dont vous avez besoin, sans superflu.
               </p>
-              <p className="text-muted-foreground mt-2 text-sm">
+              <p className="text-muted-foreground mt-4 text-sm">
                 Exemple : <a href="https://vio-lettres.pogodev.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">vio-lettres.pogodev.com</a>
               </p>
             </motion.div>
@@ -113,8 +111,8 @@ export function Services() {
                 </h4>
               </div>
               <p className="text-muted-foreground">
-                Boutiques en ligne sécurisées avec paiement Stripe. Pensées pour la
-                conversion et la performance.
+                Boutiques en ligne sécurisées avec paiement Stripe. Conçues pour vendre
+                efficacement tout en restant rapides.
               </p>
               <p className="text-muted-foreground mt-2 text-sm">
                 Exemple : <a href="https://alto-lille.fr" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">alto-lille.fr</a>
@@ -181,14 +179,12 @@ export function Services() {
                   hallucinations, consommation énergétique, dépendance aux modèles propriétaires.
                 </p>
                 <p className="text-sm text-muted-foreground mb-3">
-                  Je l'utilise quand le bénéfice est clair (automatisation, gain de temps,
-                  amélioration qualité du code). Pas pour le buzz marketing.
+                  Je l'utilise quand le bénéfice est clair : automatisation de tâches répétitives,
+                  gain de temps sur le développement, ou pour des projets de recherche scientifique,
+                  artistique ou philosophique qui ont du sens. Pas pour le buzz marketing.
                 </p>
-                <p className="text-sm text-muted-foreground italic">
-                  Bilan complexe : 1 dev + IA vs 10 devs en bureau avec déplacements quotidiens
-                  → quel impact réel ? Difficile à trancher. La transparence sur les choix et
-                  leurs conséquences me semble plus importante que la peur ou l'enthousiasme
-                  aveugle.
+                <p className="text-sm text-muted-foreground">
+                  <span className="italic">Bilan :</span> L'impact environnemental de l'IA est complexe à évaluer. D'un côté, les data centers consomment de l'électricité pour l'entraînement et l'inférence des modèles. De l'autre, l'IA permet un travail plus performant et propre sur le long terme : code de meilleure qualité, moins d'erreurs, révisions plus efficaces. L'IA fait désormais partie intégrante du métier de développeur moderne. La question n'est plus de savoir si on l'utilise, mais comment on l'utilise de manière responsable. Je reste transparent sur mes usages et leurs limites : ni solution miracle, ni catastrophe, mais un outil professionnel que j'utilise avec prudence et discernement.
                 </p>
               </div>
             </div>
@@ -209,12 +205,11 @@ export function Services() {
                   strokeWidth={1.5}
                 />
                 <h4 className="text-2xl font-semibold text-foreground">
-                  Dashboards d'administration sur-mesure
+                  Interface de gestion sur-mesure
                 </h4>
               </div>
               <p className="text-muted-foreground mb-8 text-lg max-w-4xl">
-                Interfaces React custom pour gérer votre contenu en autonomie. Pas de CMS
-                générique — un outil taillé pour votre workflow.
+                Une interface pour prendre le contrôle de votre site : modifier vos textes, changer vos images, gérer vos produits ou vos commandes, sans dépendre de personne. Je construis l'outil qui correspond à votre façon de travailler, pas l'inverse. Selon vos besoins et votre budget, on choisit ensemble la meilleure approche : solution sur-mesure (comme l'interface créée pour l'artisan d'Alto Lille), système de gestion de contenu (CMS), ou outil no-code si c'est ce avec quoi vous désirez travailler — je suis formé et exercé également sur ces technologies. Dans tous les cas, qualité d'utilisation professionnelle garantie. Vous comprenez ce que vous faites, vous gardez le contrôle.
               </p>
               
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -249,7 +244,8 @@ export function Services() {
               
               <div className="mt-6 text-center">
                 <p className="text-sm text-muted-foreground italic">
-                  ✨ Cliquez sur les images pour les voir en grand • Captures d'écran du dashboard d'Alto Lille
+                  ✨ Cliquez sur les images pour les voir en grand • Exemple : interface de gestion créée pour
+                  l'artisan d'Alto Lille, qui gère sa boutique en ligne en toute autonomie
                 </p>
               </div>
             </div>
@@ -331,7 +327,7 @@ export function Services() {
                   </li>
                 </ol>
                 <p className="text-foreground font-medium mt-4">
-                  Pas de bullshit. Pas de vente forcée de techno hype.
+                  Pas de bullshit. Pas de vente forcée de technologies à la mode.
                 </p>
               </div>
             </motion.div>

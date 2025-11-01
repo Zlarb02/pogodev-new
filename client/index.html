@@ -31,16 +31,8 @@
       content="https://pogodev.com/assets/og-image.jpg"
     />
 
-    <!-- Préchargement des ressources critiques -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <!-- Préchargement de la font Inter auto-hébergée -->
+    <!-- Optimisations critiques pour les performances -->
+    <!-- Préchargement des fonts critiques auto-hébergées -->
     <link
       rel="preload"
       href="/fonts/inter-variable.woff2"
@@ -48,6 +40,37 @@
       type="font/woff2"
       crossorigin
     />
+    <!-- Préchargement seulement des poids essentiels de Poppins -->
+    <link
+      rel="preload"
+      href="/fonts/poppins-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/poppins-600.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    
+    <!-- Préchargement des images critiques -->
+    <link
+      rel="preload"
+      href="/images/etienne-portrait.avif"
+      as="image"
+      type="image/avif"
+    />
+    
+    <!-- DNS prefetch pour les domaines externes -->
+    <link rel="dns-prefetch" href="//alto-lille.fr">
+    <link rel="dns-prefetch" href="//github.com">
+    <link rel="dns-prefetch" href="//linkedin.com">
+    
+    <!-- Module preload pour le script principal -->
+    <link rel="modulepreload" href="/src/main.tsx" />
 
     <!-- Script amélioré pour gérer les redirections SPA -->
     <script type="text/javascript">

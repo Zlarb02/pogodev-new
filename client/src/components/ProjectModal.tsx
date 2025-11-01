@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -38,6 +38,22 @@ export function ProjectModal({
   const { handleVisitSite, setIsRedeploymentModalOpen, setRedeployingProject } =
     useModals();
 
+  // État pour le lazy loading de l'image (économie de 7 MB de bande passante)
+  const [imageSrc, setImageSrc] = useState<string>("");
+
+  // Charger l'image uniquement quand la modale s'ouvre
+  useEffect(() => {
+    if (open && project) {
+      // Précharger l'image uniquement quand la modale s'ouvre
+      const img = new Image();
+      img.src = project.image;
+      img.onload = () => setImageSrc(project.image);
+    } else {
+      // Réinitialiser quand la modale se ferme pour libérer la mémoire
+      setImageSrc("");
+    }
+  }, [open, project]);
+
   if (!project) return null;
 
   // Liste des projets qui nécessitent la modal de redéploiement
@@ -74,11 +90,18 @@ export function ProjectModal({
         </DialogHeader>
 
         <div className="grid grid-cols-1 gap-6">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-auto rounded-lg shadow-md object-cover max-h-[300px]"
-          />
+          {imageSrc ? (
+            <img
+              src={imageSrc}
+              alt={project.title}
+              loading="lazy"
+              className="w-full h-auto rounded-lg shadow-md object-cover max-h-[300px]"
+            />
+          ) : (
+            <div className="w-full h-[300px] rounded-lg shadow-md bg-muted animate-pulse flex items-center justify-center">
+              <p className="text-muted-foreground">Chargement de l'image...</p>
+            </div>
+          )}
 
           <div>
             <h3 className="text-lg font-semibold mb-2">Description</h3>

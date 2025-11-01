@@ -108,7 +108,7 @@ export function Contact() {
               </a>
 
               <p className="text-xs text-muted-foreground mt-4">
-                Cliquer pour ouvrir votre app SMS depuis un téléphone.
+                Cliquez pour ouvrir votre application SMS depuis un téléphone.
               </p>
             </div>
           </motion.div>

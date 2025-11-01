@@ -54,8 +54,9 @@ export function Process() {
     "Un code propre, documenté, maintenable.",
     "Un guide de prise en main (PDF ou vidéo).",
     "Tous les accès (vous êtes propriétaire).",
-    "Aide au choix et mise en ligne de l'hébergement.",
+    "Hébergement gratuit sous pogodev.com pour les projets simples, ou aide complète pour votre propre nom de domaine.",
     "Accompagnement pour l'achat de votre nom de domaine (Namecheap recommandé).",
+    "Prix transparent : je fixe et j'explique le choix du prix pour chaque projet. N'ayez pas peur de demander combien ça coûte ! Les prix varient du tout au tout. Je ne mords pas : si je peux vous conseiller gratuitement, ce sera avec plaisir aussi.",
     "Support technique facturé à l'heure après la période de garantie.",
     "Suivi et corrections gratuites pendant 30 jours.",
   ];

@@ -36,6 +36,41 @@ export default defineConfig(({ mode }) => {
       assetsDir: "assets",
       emptyOutDir: true,
       assetsInlineLimit: 0,
+      // Optimisation du code splitting
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Séparer les dépendances lourdes
+            'three': ['three'],
+            'framer-motion': ['framer-motion'],
+            'lucide-react': ['lucide-react'],
+            // Regrouper les composants UI
+            'ui': [
+              '@radix-ui/react-label',
+              '@radix-ui/react-toast',
+              'class-variance-authority',
+              'clsx',
+              'tailwind-merge',
+              'tailwindcss-animate',
+            ],
+            // Regrouper les utilitaires
+            'vendor': [
+              'react',
+              'react-dom',
+              'wouter',
+            ]
+          }
+        }
+      },
+      // Optimisations pour les performances
+      target: 'esnext',
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
     },
     server: {
       // Configuration pour gérer les redirections SPA en développement

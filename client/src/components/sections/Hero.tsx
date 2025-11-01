@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ChevronDown, ExternalLink } from "lucide-react";
+import { Mail, Github as GithubIcon, Linkedin as LinkedinIcon, ChevronDown, ExternalLink } from "lucide-react";
 
 export function Hero() {
   const threeContainerRef = useRef<HTMLDivElement>(null);
@@ -19,26 +19,53 @@ export function Hero() {
 
     mediaQuery.addEventListener("change", handleChange);
 
-    // Lazy-load Three.js animation only if motion is allowed
+    // Lazy-load Three.js uniquement quand visible (Intersection Observer pour meilleures performances)
     if (!prefersReducedMotion && threeContainerRef.current && !threeAnimationRef.current) {
-      const containerId = "three-container";
-      threeContainerRef.current.id = containerId;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !threeAnimationRef.current) {
+              const containerId = "three-container";
+              if (threeContainerRef.current) {
+                threeContainerRef.current.id = containerId;
 
-      // Dynamic import for Three.js animation
-      import("@/lib/three-animation").then(({ ThreeAnimation }) => {
-        if (threeContainerRef.current && !threeAnimationRef.current) {
-          threeAnimationRef.current = new ThreeAnimation({
-            containerId,
-            particleCount: 150,
-            particleSize: 0.05,
-            particleColor: "#2c9e5e",
-            lineColor: "#34d8ac",
-            lineOpacity: 0.2,
+                // Chargement différé de Three.js pour améliorer FCP/LCP
+                setTimeout(() => {
+                  import("@/lib/three-animation").then(({ ThreeAnimation }) => {
+                    if (threeContainerRef.current && !threeAnimationRef.current) {
+                      threeAnimationRef.current = new ThreeAnimation({
+                        containerId,
+                        particleCount: 100,
+                        particleSize: 0.05,
+                        particleColor: "#2c9e5e",
+                        lineColor: "#34d8ac",
+                        lineOpacity: 0.15,
+                      });
+
+                      threeAnimationRef.current.start();
+                    }
+                  });
+                }, 200); // Délai pour laisser le rendu initial se terminer
+
+              // Déconnecter l'observer une fois chargé
+              observer.disconnect();
+              }
+            }
           });
+        },
+        { threshold: 0.1 } // Charge quand 10% du Hero est visible
+      );
 
-          threeAnimationRef.current.start();
+      observer.observe(threeContainerRef.current);
+
+      return () => {
+        observer.disconnect();
+        mediaQuery.removeEventListener("change", handleChange);
+        if (threeAnimationRef.current) {
+          threeAnimationRef.current.stop();
+          threeAnimationRef.current = null;
         }
-      });
+      };
     }
 
     // Cleanup
@@ -51,23 +78,24 @@ export function Hero() {
     };
   }, [prefersReducedMotion]);
 
+  // Optimisation des variants pour réduire les re-renders
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
+        delayChildren: 0.1, // Réduit pour améliorer FCP
+        staggerChildren: 0.1, // Réduit pour améliorer FCP
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 10, opacity: 0 }, // Réduit l'effet pour la performance
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.4, ease: "easeOut" }, // Réduit la durée
     },
   };
 
@@ -88,7 +116,7 @@ export function Hero() {
             className="text-3xl md:text-4xl lg:text-5xl lg:leading-tight font-bold mb-6 font-['Poppins'] text-foreground"
             variants={itemVariants}
           >
-            Un site web, c'est comme une maison : mieux vaut qu'elle soit solide
+            Le web, c'est ma maison. Je le construis pour qu'il soit solide
             et facile à entretenir
           </motion.h1>
 
@@ -96,25 +124,21 @@ export function Hero() {
             className="text-lg md:text-xl text-muted-foreground/80 italic mb-8"
             variants={itemVariants}
           >
-            Et comme pour une maison bien isolée, ce qui est bon pour la planète finit par être bon pour le porte-monnaie.
+            Bonus : consomme peu, dure longtemps.
           </motion.p>
 
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-6"
+            className="text-lg md:text-xl lg:text-2xl text-foreground font-medium mb-6"
             variants={itemVariants}
           >
-            Je crée des sites et applications pensés pour durer : rapides à
-            charger, simples à héberger, sans complexité inutile.
+            Je vous explique clairement les choix techniques, vous rends autonome, et vous livre un projet que vous pourrez faire évoluer sereinement — avec ou sans moi.
           </motion.p>
 
           <motion.p
             className="text-base md:text-lg text-muted-foreground mb-6"
             variants={itemVariants}
           >
-            <span className="text-foreground font-medium">Ma valeur ajoutée</span>
-            &nbsp;: vous expliquer clairement les choix techniques, vous rendre
-            autonome, et vous livrer un projet que vous pourrez faire évoluer
-            sereinement — avec ou sans moi.
+            Pourquoi solide et facile à entretenir ? Parce qu'un site bien construit résiste au temps et aux attaques, et vous coûte moins de temps, d'énergie et d'argent à maintenir. Sans dépendre de personne.
           </motion.p>
 
           <motion.div
@@ -147,7 +171,7 @@ export function Hero() {
                 className="text-muted-foreground hover:text-accent transition-colors"
                 aria-label="GitHub"
               >
-                <Github className="h-6 w-6" />
+                <GithubIcon className="h-6 w-6" />
               </a>
               <a
                 href="https://linkedin.com/in/etiennepogoda"
@@ -156,7 +180,7 @@ export function Hero() {
                 className="text-muted-foreground hover:text-accent transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="h-6 w-6" />
+                <LinkedinIcon className="h-6 w-6" />
               </a>
             </div>
           </motion.div>

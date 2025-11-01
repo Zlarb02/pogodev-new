@@ -2,7 +2,17 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./client/index.html", 
+    "./client/src/**/*.{js,jsx,ts,tsx}",
+    // Être très spécifique sur les fichiers à scanner
+    "./client/src/components/**/*.{ts,tsx}",
+    "./client/src/pages/**/*.{ts,tsx}",
+  ],
+  // Optimisations pour la production
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       borderRadius: {

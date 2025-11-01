@@ -48,14 +48,14 @@ export function About() {
                 Qui suis-je ?
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground mb-4">
-                Je m'appelle Étienne, j'ai 29 ans et je vis à Lille. Mon parcours, c'est pas une ligne droite :
-                j'ai bossé en restauration, enchaîné 8 formations pro, vécu 3 ans en foyer de jeunes travailleurs
-                avec ma copine. Aujourd'hui on a un HLM, elle paie le loyer, et je dois trouver des clients rapidement.
+                Je m'appelle Étienne, j'ai 29 ans et je vis à Lille. J'ai bossé en restauration, enchaîné
+                des formations, galéré à trouver ma place. Mais ça m'a appris un truc important : partir
+                de ce qu'on a et construire quelque chose qui tient la route.
               </p>
               <p className="text-lg leading-relaxed text-muted-foreground mb-4">
-                Pendant longtemps, mes valeurs m'ont freiné. J'ai attendu que le monde change. Maintenant,
-                j'ai décidé de participer à sa transformation, à ma manière : en créant des sites web qui
-                ne gaspillent pas, qui durent, et qui respectent les gens qui les utilisent.
+                Pendant longtemps, je me suis demandé comment faire un métier qui avait du sens.
+                J'ai trouvé : créer des sites qui ne gaspillent pas, qui respectent les gens,
+                avec des solutions qui répondent au besoin réel.
               </p>
               <p className="text-lg leading-relaxed text-muted-foreground font-medium">
                 Pas besoin de choisir entre un site robuste et un site éthique. Les deux vont ensemble.
@@ -98,9 +98,8 @@ export function About() {
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <p className="text-lg leading-relaxed text-muted-foreground mb-4">
-                <span className="font-medium text-foreground">Mon approche</span> : partir de vos vrais besoins, choisir la solution adaptée (pas
-                forcément la plus à la mode), et vous livrer quelque chose que vous comprenez
-                et maîtrisez.
+                <span className="font-medium text-foreground">Mon approche</span> : partir de vos vrais besoins, choisir la solution adaptée,
+                et vous livrer quelque chose que vous comprenez et maîtrisez.
               </p>
               <p className="text-lg leading-relaxed text-muted-foreground mb-6">
                 Code lisible. Pas de dépendances inutiles. Pas de tracking par défaut.

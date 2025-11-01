@@ -29,5 +29,37 @@ export default defineConfig({
     emptyOutDir: true,
     assetsDir: "assets",
     assetsInlineLimit: 0,
+    // Optimisations pour réduire la taille du bundle et améliorer le chargement
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Séparer Three.js dans son propre chunk (117 KB)
+          'three': ['three'],
+          // Séparer Framer Motion (chunk séparé)
+          'framer-motion': ['framer-motion'],
+          // Séparer Lucide icons (lazy loaded)
+          'lucide': ['lucide-react'],
+          // Séparer les UI components shadcn
+          'ui-components': [
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-label',
+            '@radix-ui/react-toast',
+          ],
+          // Vendor chunk pour React et autres dépendances stables
+          'vendor': ['react', 'react-dom', 'wouter'],
+        },
+      },
+    },
+    // Minification avancée
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Supprimer les console.log en production
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug'],
+      },
+    },
+    // Optimiser la taille des chunks
+    chunkSizeWarningLimit: 600,
   },
 });

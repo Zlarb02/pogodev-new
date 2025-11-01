@@ -480,7 +480,7 @@ export default function EcoConception() {
             <motion.div variants={fadeInUp}>
               <Card className="p-6 border-border mb-6">
                 <h3 className="text-xl font-semibold mb-4 text-foreground">
-                  Investissement : optimisation initiale (~10-20h dev)
+                  Investissement : optimisation initiale (~10-20h de développement)
                 </h3>
 
                 <p className="text-foreground font-medium mb-3">Retours mesurables :</p>
