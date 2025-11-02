@@ -3,11 +3,8 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   MessageCircle,
-  Phone,
   Github,
   Linkedin,
-  Zap,
-  Clock,
 } from "lucide-react";
 
 export function Contact() {
@@ -17,67 +14,7 @@ export function Contact() {
   return (
     <section id="contact" ref={sectionRef} className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-2xl md:text-3xl font-bold text-center mb-6 font-['Poppins'] text-foreground"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-        >
-          Parlons de votre projet
-        </motion.h2>
-
-        <motion.p
-          className="text-center text-muted-foreground max-w-2xl mx-auto mb-12 text-lg"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          Une idée de projet web ? Prenez contact, je vous rappelle par SMS !
-        </motion.p>
-
         <div className="max-w-4xl mx-auto">
-          {/* Cards avec processus */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <motion.div
-              className="bg-card rounded-xl p-6 text-center shadow-sm border border-accent/20"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MessageCircle className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-semibold mb-2 text-foreground">Vous m'écrivez</h3>
-
-            </motion.div>
-
-            <motion.div
-              className="bg-card rounded-xl p-6 text-center shadow-sm border border-accent/20"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-semibold mb-2 text-foreground">Je vous rappelle</h3>
-
-            </motion.div>
-
-            <motion.div
-              className="bg-card rounded-xl p-6 text-center shadow-sm border border-accent/20"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-semibold mb-2 text-foreground">On discute projet</h3>
-
-            </motion.div>
-          </div>
-
           {/* CTA principal */}
           <motion.div
             className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 text-center border border-primary/20"
@@ -99,15 +36,33 @@ export function Contact() {
                 Envoyez-moi un message avec votre idée de projet.
               </p>
 
-              <a
-                href="sms:0771853328"
-                className="inline-flex items-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent/90 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg"
-              >
-                <MessageCircle className="w-5 h-5 mr-3" />
-                07 71 85 33 28
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
+                <a
+                  href="sms:0771853328"
+                  className="inline-flex items-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent/90 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg"
+                >
+                  <MessageCircle className="w-5 h-5 mr-3" />
+                  07 71 85 33 28
+                </a>
 
-              <p className="text-xs text-muted-foreground mt-4">
+                <a
+                  href="#tarifs"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document
+                      .getElementById("tarifs")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="inline-flex items-center px-6 py-3 bg-card border-2 border-accent/30 text-foreground rounded-xl hover:bg-accent/10 transition-all font-medium text-base shadow-sm"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 mr-2">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                  </svg>
+                  Tarifs et devis ?
+                </a>
+              </div>
+
+              <p className="text-xs text-muted-foreground mt-2">
                 Cliquez pour ouvrir votre application SMS depuis un téléphone.
               </p>
             </div>

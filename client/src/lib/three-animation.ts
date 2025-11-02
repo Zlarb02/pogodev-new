@@ -56,13 +56,26 @@ export class ThreeAnimation {
       1000
     );
 
-    this.renderer = new THREE.WebGLRenderer({ alpha: true });
-    this.renderer.setSize(
-      this.container.clientWidth,
-      this.container.clientHeight
-    );
-    this.renderer.setClearColor(0x000000, 0);
-    this.container.appendChild(this.renderer.domElement);
+    // Silence Three.js console errors
+    const originalError = console.error;
+    console.error = () => {};
+
+    try {
+      this.renderer = new THREE.WebGLRenderer({ alpha: true });
+      this.renderer.setSize(
+        this.container.clientWidth,
+        this.container.clientHeight
+      );
+      this.renderer.setClearColor(0x000000, 0);
+      this.container.appendChild(this.renderer.domElement);
+    } catch (error) {
+      // WebGL not supported, animation disabled (silent fail)
+      this.renderer = null as any;
+      console.error = originalError;
+      return;
+    }
+
+    console.error = originalError;
 
     // Create particles
     const particles = new THREE.BufferGeometry();
@@ -111,6 +124,7 @@ export class ThreeAnimation {
   }
 
   public start(): void {
+    if (!this.renderer) return;
     this.animate();
   }
 
@@ -125,10 +139,13 @@ export class ThreeAnimation {
     // Clean up
     this.lines.forEach((line) => this.scene.remove(line));
     this.scene.remove(this.particleSystem);
-    this.container.removeChild(this.renderer.domElement);
+    if (this.renderer?.domElement) {
+      this.container.removeChild(this.renderer.domElement);
+    }
   }
 
   private animate = (): void => {
+    if (!this.renderer) return;
     this.animationFrameId = requestAnimationFrame(this.animate);
 
     this.particleSystem.rotation.x += this.options.rotationSpeedX;
@@ -180,7 +197,7 @@ export class ThreeAnimation {
   };
 
   private handleResize(): void {
-    if (!this.container) return;
+    if (!this.container || !this.renderer) return;
 
     this.camera.aspect =
       this.container.clientWidth / this.container.clientHeight;

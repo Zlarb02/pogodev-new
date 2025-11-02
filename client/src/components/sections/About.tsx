@@ -31,7 +31,7 @@ export function About() {
                   src="/images/etienne-portrait.jpg"
                   alt="Photo d'Étienne Pogoda"
                   className="rounded-lg shadow-md w-full h-auto"
-                  loading="lazy"
+                  loading="eager"
                   width="800"
                   height="800"
                 />
@@ -48,10 +48,7 @@ export function About() {
                 Qui suis-je ?
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground mb-4">
-                Je m'appelle Étienne, j'ai 29 ans et je vis à Lille. J'ai bossé en restauration, enchaîné
-                des formations, galéré à trouver ma place. Mais ça m'a appris un truc important : partir
-                de ce qu'on a et construire quelque chose qui tient la route.
-              </p>
+Je m'appelle Étienne, j'ai 29 ans et je vis à Lille. J'ai travaillé en restauration, suivi 6 formations web, travaillé dur et galéré à trouver ma place. Mais ça m'a appris un truc important : partir de ce qu'on a et construire quelque chose qui tient la route. </p>
               <p className="text-lg leading-relaxed text-muted-foreground mb-4">
                 Pendant longtemps, je me suis demandé comment faire un métier qui avait du sens.
                 J'ai trouvé : créer des sites qui ne gaspillent pas, qui respectent les gens,

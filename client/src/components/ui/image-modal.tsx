@@ -15,18 +15,19 @@ export function ImageModal({ src, alt, className, children }: ImageModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <div className={`relative cursor-pointer group ${className}`}>
+        <button className={`relative cursor-pointer group ${className} block w-full`} aria-label={`Agrandir: ${alt}`}>
           {children}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg flex items-center justify-center pointer-events-none">
             <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100" />
           </div>
-        </div>
+        </button>
       </DialogTrigger>
       <DialogContent className="max-w-[98vw] max-h-[98vh] w-[98vw] h-[98vh] p-0 bg-transparent border-none flex items-center justify-center">
         <div className="relative w-full h-full flex items-center justify-center">
           <button
             onClick={() => setIsOpen(false)}
             className="absolute top-4 right-4 z-10 bg-black/80 hover:bg-black text-white rounded-full p-3 transition-colors shadow-lg"
+            aria-label="Fermer l'image agrandie"
           >
             <X className="w-6 h-6" />
           </button>

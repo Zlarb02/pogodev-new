@@ -45,16 +45,21 @@ export function Lighthouse() {
               </p>
             </div>
             <ImageModal
-              src="/images/lighthouse-score-guide.png"
+              src="/images/lighthouse-score-guide.webp"
               alt="Guide des scores Lighthouse - Code couleur : 0-49 rouge (faible), 50-89 orange (amélioration nécessaire), 90-100 vert (bon)"
             >
               <div className="aspect-[4/3] lg:aspect-video bg-muted cursor-pointer hover:bg-muted/80 transition-colors duration-300">
-                <img
-                  src="/images/lighthouse-score-guide.png"
-                  alt="Guide des scores Lighthouse"
-                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
+                <picture>
+                  <source srcSet="/images/lighthouse-score-guide.webp" type="image/webp" />
+                  <img
+                    src="/images/lighthouse-score-guide.png"
+                    alt="Guide des scores Lighthouse"
+                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    width="1016"
+                    height="553"
+                  />
+                </picture>
               </div>
             </ImageModal>
             <div className="p-6 bg-accent/5 border-t border-border">
@@ -85,16 +90,21 @@ export function Lighthouse() {
               </p>
             </div>
             <ImageModal
-              src="/images/pogodev-lighthouse-results.png"
+              src="/images/pogodev-lighthouse-results.webp"
               alt="Scores Lighthouse de pogodev.com - Performance 86, Accessibilité 100, Bonnes pratiques 100, SEO 100"
             >
               <div className="aspect-[4/3] lg:aspect-video bg-muted cursor-pointer hover:bg-muted/80 transition-colors duration-300">
-                <img
-                  src="/images/pogodev-lighthouse-results.png"
-                  alt="Scores Lighthouse de pogodev.com"
-                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
+                <picture>
+                  <source srcSet="/images/pogodev-lighthouse-results.webp" type="image/webp" />
+                  <img
+                    src="/images/pogodev-lighthouse-results.png"
+                    alt="Scores Lighthouse de pogodev.com"
+                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    width="2019"
+                    height="1215"
+                  />
+                </picture>
               </div>
             </ImageModal>
             <div className="p-6 bg-accent/5 border-t border-border">
@@ -102,7 +112,7 @@ export function Lighthouse() {
                 <li><span className="font-semibold text-orange-600">Performance : 86/100</span> - Bon résultat, des optimisations sont encore possibles</li>
                 <li><span className="font-semibold text-green-600">Accessibilité : 100/100</span> - Excellent ! Le site est accessible à tous</li>
                 <li><span className="font-semibold text-green-600">Bonnes pratiques : 100/100</span> - Parfait ! Respect total des standards web</li>
-                <li><span className="font-semibold text-green-600">SEO : 100/100</span> - Optimal pour le référencement naturel</li>
+                <li><span className="font-semibold text-green-600">SEO : 100/100</span> - Optimal pour le référencement naturel (SEO = Search Engine Optimization = faire en sorte que votre site soit bien positionné dans les résultats de recherche Google)</li>
               </ul>
             </div>
           </motion.div>

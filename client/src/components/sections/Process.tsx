@@ -12,19 +12,19 @@ export function Process() {
       id: 1,
       title: "Premier échange",
       description:
-        "Discussion approfondie pour comprendre votre projet, vos besoins et vos objectifs.",
+        "On discute de ce dont vous avez vraiment besoin (pas seulement ce que vous pensez vouloir, ou de ce que j'ai envie de vendre : on prend le temps de réfléchir ensemble au besoin réel).",
     },
     {
       id: 2,
-      title: "Proposition et devis",
+      title: "Prototype dans l'heure",
       description:
-        "Je vous propose une solution adaptée avec un devis clair et détaillé.",
+        "Je vous propose la solution la plus adaptée et je vous montre un prototype dans l'heure suivant l'appel. Vous décidez de la suite.",
     },
     {
       id: 3,
       title: "Développement sur-mesure",
       description:
-        "Réalisation du projet avec des points de validation réguliers pour ajuster si nécessaire.",
+        "Réalisation du projet avec des points de validation réguliers pour ajuster si nécessaire. Travail d'équipe avec d'autres développeur·ses possible.",
     },
     {
       id: 4,
@@ -48,18 +48,6 @@ export function Process() {
       },
     },
   };
-
-  const deliverables = [
-    "Un site ou une application finalisé(e), prêt(e) à l'emploi.",
-    "Un code propre, documenté, maintenable.",
-    "Un guide de prise en main (PDF ou vidéo).",
-    "Tous les accès (vous êtes propriétaire).",
-    "Hébergement gratuit sous pogodev.com pour les projets simples, ou aide complète pour votre propre nom de domaine.",
-    "Accompagnement pour l'achat de votre nom de domaine (Namecheap recommandé).",
-    "Prix transparent : je fixe et j'explique le choix du prix pour chaque projet. N'ayez pas peur de demander combien ça coûte ! Les prix varient du tout au tout. Je ne mords pas : si je peux vous conseiller gratuitement, ce sera avec plaisir aussi.",
-    "Support technique facturé à l'heure après la période de garantie.",
-    "Suivi et corrections gratuites pendant 30 jours.",
-  ];
 
   return (
     <section id="process" ref={sectionRef} className="py-20 bg-background">
@@ -124,34 +112,6 @@ export function Process() {
               ))}
             </motion.div>
           </div>
-
-          {/* What you receive */}
-          <motion.div
-            className="mt-24 bg-card p-8 rounded-xl"
-            variants={fadeInUp}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            transition={{ delay: 0.8 }}
-          >
-            <h3 className="text-xl font-semibold mb-6 text-foreground">
-              Ce que vous recevez
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {deliverables.map((item, index) => (
-                <div key={index} className="flex items-start">
-                  <Check className="h-5 w-5 text-accent mr-3 mt-1" />
-                  <span className="text-muted-foreground">
-                    {item.includes("Namecheap") ? (
-                      <>Accompagnement pour l'achat de votre nom de domaine.</>
-                    ) : (
-                      item
-                    )}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

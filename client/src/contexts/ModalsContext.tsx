@@ -34,31 +34,67 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
   // Liste des projets enrichie avec des détails
   const projects: ProjectType[] = [
     {
-      id: "shop",
-      title: "E-commerce produits numériques",
+      id: "alto",
+      title: "Alto Lille - E-commerce sur-mesure",
       description:
-        "Site de vente en ligne pour produits numériques avec paiement sécurisé et téléchargements automatiques.",
+        "Boutique e-commerce pour un créateur de lampes écoresponsables. Design haut de gamme, animation 3D, mode sombre/clair, paiement Stripe, gestion autonome des contenus.",
       longDescription:
-        "Solution e-commerce complète déployée avec Prestashop grâce à Yunohost sur un serveur OVH. Site en cours de redéploiement avec des améliorations.",
+        "Alto Lille réunit design haut de gamme, animation 3D interactive, mode sombre/clair, paiement Stripe, gestion autonome des contenus via une interface d'administration sur-mesure. Ce projet incarne ma passion pour le web utile, performant et humain.",
       context:
-        "Projet personnel pour tester le déploiement d'une boutique en ligne sécurisée et performante.",
-      image: "https://i.imgur.com/oqJFeVp.png",
-      url: "https://shop.pogodev.com",
-      technologies: ["Prestashop", "Yunohost", "OVH", "PHP", "MySQL"],
+        "Projet professionnel : e-commerce sur mesure, moderne et engagé pour un créateur de lampes écoresponsables lillois.",
+      image: "/images/alto-lille-shop-light.webp",
+      url: "https://alto-lille.fr",
+      technologies: ["React", "TypeScript", "Three.js", "Stripe", "TailwindCSS", "Node.js"],
     },
     {
-      id: "anais",
-      title: "Site vitrine freelance",
+      id: "violette",
+      title: "Vio-lettres - Services de correction",
       description:
-        "Présentation professionnelle avec portfolio intégré et formulaire de contact pour une vidéaste.",
+        "Présentation simple des services d'une correctrice indépendante. Design rappelant les livres (particulièrement visible sur desktop).",
       longDescription:
-        "Site créé rapidement en quelques prompts grâce à l'IA de lovable.dev pour ma sœur Anaïs, vidéaste freelance.",
+        "Un site vitrine élégant présentant les services de correction professionnelle. Le design s'inspire de l'univers du livre avec une typographie soignée et une mise en page sobre et efficace.",
       context:
-        "Projet à développer permettant d'expérimenter la génération rapide de sites web professionnels avec l'aide de l'IA.",
-      image: "https://i.imgur.com/ErtS8mL.png",
-      url: "https://anais.pogodev.com",
-      githubUrl: "https://github.com/Zlarb02/video-eco-creative",
-      technologies: ["React", "TailwindCSS", "Lovable.dev AI", "Netlify"],
+        "Projet professionnel : site créé pour ma sœur Violette, correctrice indépendante, en utilisant une approche centrée sur la lisibilité et l'identité visuelle du métier.",
+      image: "/images/vio-lettres-book-format.webp",
+      url: "https://vio-lettres.pogodev.com",
+      githubUrl: "https://github.com/Zlarb02/violette-pogodev",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Lovable.dev AI"],
+    },
+    {
+      id: "mirojo",
+      title: "Mirojo.app - Landing page",
+      description: "Landing page Webflow pour un projet de plateforme JDR avec IA. L'application complète (React/Supabase/OpenAI) a été développée pour expérimenter mais le projet a été abandonné — le code reste disponible sur GitHub.",
+      longDescription:
+        "Landing page réalisée avec Webflow présentant Mirojo.app, une plateforme pour joueurs de JDR permettant de créer des univers, générer et gérer des scénarios avec l'aide de l'IA. L'application complète a été développée en parallèle (React/Supabase/OpenAI) pour expérimenter avec ces technologies, le code est disponible sur GitHub mais le projet a été abandonné en cours d'expérimentation.",
+      context:
+        "Projet de formation no-code/low-code chez M2i : création d'une landing page avec Webflow. L'application complète a été développée en parallèle (React/Supabase/OpenAI) pour expérimenter, le code est sur GitHub mais le projet a été abandonné en cours d'expérimentation.",
+      image:
+        "https://cdn.prod.website-files.com/67bdb9c24215a721af4d2bf1/67be47a750c54053e52e5be2_00c38b114f077b8819a5ce847be9f50c_Capture%20d%E2%80%99e%CC%81cran%202025-02-25%20a%CC%80%2023.01.44-p-1080.png",
+      url: "https://etiennes-mirojo-landing-page.webflow.io",
+      githubUrl: "https://github.com/Zlarb02/last-mirojo",
+      technologies: ["Webflow", "React", "Supabase", "OpenAI API"],
+    },
+    {
+      id: "groove",
+      title: "GrooveGather - Plateforme",
+      description:
+        "Plateforme collaborative pour musiciens permettant le partage et la création de projets communs.",
+      longDescription:
+        "GrooveGather est une plateforme web qui permet aux musiciens de collaborer à distance sur des projets musicaux. Elle offre des fonctionnalités de partage de fichiers audio, d'édition collaborative et de communication entre artistes.",
+      context:
+        "Projet de formation à la Wild Code School où j'ai été désigné 'Tech Lead' de mon groupe par le formateur. J'ai travaillé à faire monter en compétences mes camarades tout en donnant le maximum pour obtenir un produit à la hauteur de nos ambitions. Malgré le temps limité et l'apprentissage en cours de route, je suis fier du résultat même si certaines fonctionnalités ne sont pas encore totalement opérationnelles.",
+      image: "https://i.imgur.com/nPrCK8U.png",
+      url: "https://groovegather.fr",
+      githubUrl: "https://github.com/Zlarb02/GrooveGatherBack",
+      technologies: [
+        "Angular",
+        "Java",
+        "Spring",
+        "Spring Boot",
+        "Docker",
+        "GitHub Actions",
+        "Portainer",
+      ],
     },
     {
       id: "scene",
@@ -81,54 +117,18 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
       ],
     },
     {
-      id: "mirojo",
-      title: "Mirojo.app - Application JDR",
-      description: "Application web pour jeu de rôle avec intégration IA.",
-      longDescription:
-        "Mirojo.app est une plateforme web qui permet aux joueurs de JDR de créer des univers entier, générer et gérer des scénarios leurs campagnes. Elle intègre des fonctionnalités IA pour aider les maîtres de jeu à créer rapidement du contenu riche.",
-      context:
-        "Application React/Supabase en cours de développement. Une landing page réalisée avec Webflow est déjà disponible en ligne, et l'application complète sera bientôt déployée.",
-      image:
-        "https://cdn.prod.website-files.com/67bdb9c24215a721af4d2bf1/67be47a750c54053e52e5be2_00c38b114f077b8819a5ce847be9f50c_Capture%20d%E2%80%99e%CC%81cran%202025-02-25%20a%CC%80%2023.01.44-p-1080.png",
-      url: "https://etiennes-mirojo-landing-page.webflow.io",
-      githubUrl: "https://github.com/Zlarb02/last-mirojo",
-      technologies: ["React", "Supabase", "OpenAI API", "Webflow"],
-    },
-    {
-      id: "violette",
-      title: "Vio-lettres - Site vitrine",
+      id: "anais",
+      title: "Site vitrine freelance",
       description:
-        "Site vitrine entièrement responsive optimisé pour tous types d'appareils et tailles d'écran.",
+        "Présentation professionnelle avec portfolio intégré et formulaire de contact pour une vidéaste.",
       longDescription:
-        "Un site vitrine simple mais efficace, conçu avec une approche mobile-first et entièrement responsive. Il présente les services et l'identité d'une entreprise avec un design épuré et moderne.",
+        "Site créé rapidement en quelques prompts grâce à l'IA de lovable.dev pour ma sœur Anaïs, vidéaste freelance.",
       context:
-        "Site créé pour ma sœur Violette en utilisant l'IA de lovable.dev pour générer rapidement un site professionnel et responsive.",
-      image: "https://i.imgur.com/0iTLzLd.png",
-      url: "https://vio-lettres.pogodev.com",
-      githubUrl: "https://github.com/Zlarb02/violette-pogodev",
-      technologies: ["HTML5", "CSS3", "JavaScript", "Lovable.dev AI"],
-    },
-    {
-      id: "groove",
-      title: "GrooveGather - Plateforme",
-      description:
-        "Plateforme collaborative pour musiciens permettant le partage et la création de projets communs.",
-      longDescription:
-        "GrooveGather est une plateforme web qui permet aux musiciens de collaborer à distance sur des projets musicaux. Elle offre des fonctionnalités de partage de fichiers audio, d'édition collaborative et de communication entre artistes.",
-      context:
-        "Projet de formation à la Wild Code School où j'ai été désigné 'Tech Lead' de mon groupe par le formateur. J'ai travaillé à faire monter en compétences mes camarades tout en donnant le maximum pour obtenir un produit à la hauteur de nos ambitions. Malgré le temps limité et l'apprentissage en cours de route, je suis fier du résultat même si certaines fonctionnalités ne sont pas encore totalement opérationnelles. Ce projet sera redéployé prochainement.",
-      image: "https://i.imgur.com/nPrCK8U.png",
-      url: "https://groovegather.fr",
-      githubUrl: "https://github.com/Zlarb02/GrooveGatherBack",
-      technologies: [
-        "Angular",
-        "Java",
-        "Spring",
-        "Spring Boot",
-        "Docker",
-        "GitHub Actions",
-        "Portainer",
-      ],
+        "Projet à développer permettant d'expérimenter la génération rapide de sites web professionnels avec l'aide de l'IA.",
+      image: "https://i.imgur.com/ErtS8mL.png",
+      url: "https://anais.pogodev.com",
+      githubUrl: "https://github.com/Zlarb02/video-eco-creative",
+      technologies: ["React", "TailwindCSS", "Lovable.dev AI", "Netlify"],
     },
   ];
 

@@ -199,6 +199,8 @@ export function Header() {
               src={`assets/logo-large.svg`}
               alt="Logo"
               className="h-20 w-auto"
+              width="200"
+              height="80"
             />
           </a>
           <a href="/">
@@ -341,12 +343,6 @@ export function Header() {
               }}
             >
               Processus
-            </a>
-            <a
-              href="/#/eco-conception"
-              className="text-foreground hover:text-accent transition-colors py-2 flex items-center"
-            >
-              Éco-conception
             </a>
             <a
               href="#contact"

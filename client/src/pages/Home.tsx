@@ -1,6 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
-import { Lighthouse } from "@/components/sections/Lighthouse";
 import { WhyMe } from "@/components/sections/WhyMe";
 import { Services } from "@/components/sections/Services";
 import { Projects } from "@/components/sections/Projects";
@@ -14,7 +13,6 @@ export default function Home() {
       <VerticalNavigation />
       <Hero />
       <About />
-      <Lighthouse />
       <WhyMe />
       <Services />
       <Projects />

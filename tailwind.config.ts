@@ -3,13 +3,11 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: ["class"],
   content: [
-    "./client/index.html", 
+    "./client/index.html",
     "./client/src/**/*.{js,jsx,ts,tsx}",
-    // Être très spécifique sur les fichiers à scanner
     "./client/src/components/**/*.{ts,tsx}",
     "./client/src/pages/**/*.{ts,tsx}",
   ],
-  // Optimisations pour la production
   future: {
     hoverOnlyWhenSupported: true,
   },
@@ -64,7 +62,7 @@ export default {
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
+          primary: "hsl(var(--sidebar-primary)",
           "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
           accent: "hsl(var(--sidebar-accent))",
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",

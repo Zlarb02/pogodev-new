@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Mail, Github as GithubIcon, Linkedin as LinkedinIcon, ChevronDown, ExternalLink } from "lucide-react";
+import { Github as GithubIcon, Linkedin as LinkedinIcon, ChevronDown, ExternalLink } from "lucide-react";
 
 export function Hero() {
   const threeContainerRef = useRef<HTMLDivElement>(null);
@@ -116,29 +116,28 @@ export function Hero() {
             className="text-3xl md:text-4xl lg:text-5xl lg:leading-tight font-bold mb-6 font-['Poppins'] text-foreground"
             variants={itemVariants}
           >
-            Le web, c'est ma maison. Je le construis pour qu'il soit solide
-            et facile à entretenir
+            Le web, c'est un peu ma maison.
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-muted-foreground/80 italic mb-8"
+            className="text-lg md:text-xl text-foreground font-medium mb-6"
             variants={itemVariants}
           >
-            Bonus : consomme peu, dure longtemps.
-          </motion.p>
-
-          <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-foreground font-medium mb-6"
-            variants={itemVariants}
-          >
-            Je vous explique clairement les choix techniques, vous rends autonome, et vous livre un projet que vous pourrez faire évoluer sereinement — avec ou sans moi.
+            Je le construis pour qu'il soit solide, beau, facile à entretenir, et qu'on prenne plaisir à le visiter !
           </motion.p>
 
           <motion.p
             className="text-base md:text-lg text-muted-foreground mb-6"
             variants={itemVariants}
           >
-            Pourquoi solide et facile à entretenir ? Parce qu'un site bien construit résiste au temps et aux attaques, et vous coûte moins de temps, d'énergie et d'argent à maintenir. Sans dépendre de personne.
+            Je m'adapte à vos solutions web et à votre équipe. Je vous livre un code propre et évolutif, que vous pourrez faire vivre — avec ou sans moi.
+          </motion.p>
+
+          <motion.p
+            className="text-base md:text-lg text-muted-foreground mb-6"
+            variants={itemVariants}
+          >
+            Pourquoi solide et facile à entretenir ? Parce qu'un site bien pensé tient dans le temps et vous coûte moins de temps, d'énergie et d'argent.
           </motion.p>
 
           <motion.div
@@ -157,13 +156,6 @@ export function Hero() {
             </Button>
 
             <div className="flex space-x-4">
-              <a
-                href="mailto:etienne@pogodev.com"
-                className="text-muted-foreground hover:text-accent transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="h-6 w-6" />
-              </a>
               <a
                 href="https://github.com/zlarb02"
                 target="_blank"
