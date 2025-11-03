@@ -3,22 +3,23 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   ShoppingBag,
-  Gift,
   Bot,
-  Clock,
-  Server,
   LayoutDashboard,
-  Database,
-  Workflow,
   CheckCheck,
   Box,
   Sparkles,
+  Palette,
+  Building2,
+  Wrench,
+  Code,
+  ReceiptEuro,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ImageModal } from "@/components/ui/image-modal";
 
 export function Services() {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.05 });
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -54,8 +55,8 @@ export function Services() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            Des sites rapides, légers, faciles à maintenir. Une approche sobre et pragmatique,
-            parce que c'est souvent la plus rentable et la plus durable.
+            Des sites <span className="text-cyan-400">rapides</span>, légers, faciles à maintenir. Une approche sobre et pragmatique,
+            parce que c'est souvent la plus <span className="text-amber-400">rentable</span> et la plus <span className="text-green-400">durable</span>.
           </motion.p>
 
           <motion.h3
@@ -133,112 +134,161 @@ export function Services() {
             </motion.div>
           </motion.div>
 
-          {/* Encadré Tarif et devis */}
+          {/* Encadré Tarifs et devis */}
           <motion.div
             id="tarifs"
-            className="bg-accent/10 border-2 border-accent/30 p-8 rounded-xl mb-16"
+            className="bg-muted/20 border-2 border-accent/30 p-8 rounded-xl mb-16"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ delay: 0.3 }}
           >
             <div className="flex items-start gap-4 mb-4">
-              <Server className="h-8 w-8 text-accent flex-shrink-0" />
+              <ReceiptEuro className="h-8 w-8 text-accent flex-shrink-0" />
               <div className="flex-1">
-                <h3 className="text-2xl font-bold mb-4 text-foreground">
-                  Tarif et devis
+                <h3 className="text-2xl font-bold mb-6 text-foreground">
+                  Tarifs et devis
                 </h3>
-                <p className="text-muted-foreground mb-4">
-                  <span className="font-medium text-foreground">Hébergement gratuit</span> sous pogodev.com (comme{" "}
-                  <a href="https://vio-lettres.pogodev.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-                    vio-lettres.pogodev.com
-                  </a>
-                  ), ou bien vous choisissez votre propre nom de domaine et je me charge de tout.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 items-start mb-4">
-                  <Button asChild variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                
+                {/* Hébergement */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-foreground mb-3">
+                    Hébergement
+                  </h4>
+                  <p className="text-muted-foreground mb-3">
+                    <span className="font-semibold text-green-400">Inclus gratuitement</span> sur un sous-domaine pogodev.com
+                  </p>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Exemple : <a href="https://vio-lettres.pogodev.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">vio-lettres.pogodev.com</a>
+                  </p>
+                  <p className="text-muted-foreground mb-3">
+                    <span className="font-semibold text-foreground">Votre propre nom de domaine ?</span> Pas de souci.
+                  </p>
+                  <Button asChild variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
                     <a
                       href="https://www.namecheap.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Vérifier prix et disponibilité
+                      Vérifier disponibilité et prix →
                     </a>
                   </Button>
                 </div>
-                <p className="text-foreground font-semibold mb-2">
-                  Pas de prix affiché ? C'est que ça doit être cher !
-                </p>
-                <p className="text-muted-foreground mb-3">
-                  Pas du tout, j'ai peu de frais et je peux vous assurer que mes prix sont compétitifs.
-                  Je fixe un prix pour chaque projet car chaque projet est différent.
-                </p>
-                <p className="text-foreground font-medium">
-                  N'hésitez pas à demander combien ça coûte, promis je ne mords pas et ça ne me dérange pas de vous conseiller gratuitement rapidement sur un projet ou de lever un doute si vous avez une question.
-                </p>
+
+                {/* Prix juste */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-foreground mb-2">
+                    Prix juste
+                  </h4>
+                  <p className="text-muted-foreground mb-2">
+                    Pas de grille figée : chaque projet est différent. Je propose un prix clair et un périmètre précis, sans surprise.
+                  </p>
+                  <p className="text-muted-foreground">
+                    Structure légère, solutions sobres. Réduire les coûts ça veut aussi dire réduire le prix.
+                  </p>
+                </div>
+
+                {/* Posez la question */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-foreground mb-2">
+                    Posez la question
+                  </h4>
+                  <p className="text-muted-foreground mb-4">
+                    Demandez combien ça coûte : je réponds vite et je peux vous conseiller gratuitement pour éclairer votre choix.
+                  </p>
+                  <Button asChild size="lg" className="shadow-md">
+                    <a
+                      href="#contact"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document
+                          .getElementById("contact")
+                          ?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                    >
+                      On en parle ? 👋
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </motion.div>
 
           <motion.h3
-            className="text-xl font-semibold mb-8 mt-12 text-center"
+            className="text-2xl md:text-3xl font-bold text-center mb-12 mt-16 font-['Poppins'] text-foreground"
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ delay: 0.4 }}
           >
-            🔧 Options techniques & avancées
+            En option
           </motion.h3>
 
-          {/* Section IA centrée */}
-          <motion.div
-            className="max-w-4xl mx-auto mb-12"
-            variants={fadeInUp}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            transition={{ delay: 0.4 }}
-          >
-            <div className="bg-card p-8 rounded-xl shadow-sm border border-border">
-              <div className="text-accent flex row gap-4 items-center mb-6">
-                <Bot className="h-8 w-8 flex-shrink-0" />
-                <h4 className="text-2xl font-semibold text-foreground">
-                  APIs & Automatisations (IA incluse)
-                </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
+            {/* Section IA */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="bg-card p-8 rounded-xl shadow-sm border border-border h-full">
+                <div className="text-accent flex row gap-4 items-center mb-6">
+                  <Bot className="h-8 w-8 flex-shrink-0" />
+                  <h4 className="text-2xl font-semibold text-foreground">
+                    APIs & Automatisations (IA incluse)
+                  </h4>
+                </div>
+                <p className="text-muted-foreground mb-4 text-lg">
+                  Intégration d'APIs — y compris LLM — si ça résout un problème réel.
+                </p>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Exemple concret : <a 
+                    href="#projects" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const projectsSection = document.getElementById('projects');
+                      if (projectsSection) {
+                        projectsSection.scrollIntoView({ behavior: 'smooth' });
+                        // Ouvrir automatiquement le projet mirojo
+                        setTimeout(() => {
+                          window.dispatchEvent(new CustomEvent('openProject', { 
+                            detail: { projectId: 'mirojo' } 
+                          }));
+                        }, 500);
+                      }
+                    }}
+                    className="text-accent hover:underline font-medium cursor-pointer"
+                  >
+                    prototype d'application immersive augmentée par IA
+                  </a> (génération de contenu dynamique, expérience narrative type AI Dungeon).
+                </p>
+                <div className="mt-6 pt-6 border-t border-border">
+                  <p className="text-sm font-medium text-foreground mb-3">💬 Un mot sur l'IA</p>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    L'IA est un outil puissant, mais pas sans risques : biais algorithmiques,
+                    hallucinations, consommation énergétique, dépendance aux modèles propriétaires.
+                  </p>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Je l'utilise quand le bénéfice est clair : automatisation de tâches répétitives,
+                    gain de temps sur le développement, ou pour des projets de recherche scientifique,
+                    artistique ou philosophique qui ont du sens. Pas pour le buzz marketing.
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    <span className="italic">Bilan :</span> L'impact environnemental de l'IA est complexe à évaluer. D'un côté, les data centers consomment de l'électricité pour l'entraînement et l'inférence des modèles. De l'autre, l'IA permet un travail plus performant et propre sur le long terme : code de meilleure qualité, moins d'erreurs, révisions plus efficaces. L'IA fait désormais partie intégrante du métier de développeur. La question n'est plus de savoir si on l'utilise, mais comment on l'utilise de manière responsable. Je reste transparent sur mes usages et leurs limites : ni solution miracle, ni catastrophe, mais un outil professionnel que j'utilise avec prudence et discernement.
+                  </p>
+                </div>
               </div>
-              <p className="text-muted-foreground mb-4 text-lg">
-                Intégration d'APIs — y compris LLM — si ça résout un problème réel.
-              </p>
-              <p className="text-sm text-muted-foreground mb-6">
-                Exemple concret : prototype d'application immersive augmentée par IA
-                (génération de contenu dynamique, expérience narrative type AI Dungeon).
-              </p>
-              <div className="mt-6 pt-6 border-t border-border">
-                <p className="text-sm font-medium text-foreground mb-3">⚠️ Transparence sur l'IA :</p>
-                <p className="text-sm text-muted-foreground mb-3">
-                  L'IA est un outil puissant, mais pas sans risques : biais algorithmiques,
-                  hallucinations, consommation énergétique, dépendance aux modèles propriétaires.
-                </p>
-                <p className="text-sm text-muted-foreground mb-3">
-                  Je l'utilise quand le bénéfice est clair : automatisation de tâches répétitives,
-                  gain de temps sur le développement, ou pour des projets de recherche scientifique,
-                  artistique ou philosophique qui ont du sens. Pas pour le buzz marketing.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  <span className="italic">Bilan :</span> L'impact environnemental de l'IA est complexe à évaluer. D'un côté, les data centers consomment de l'électricité pour l'entraînement et l'inférence des modèles. De l'autre, l'IA permet un travail plus performant et propre sur le long terme : code de meilleure qualité, moins d'erreurs, révisions plus efficaces. L'IA fait désormais partie intégrante du métier de développeur moderne. La question n'est plus de savoir si on l'utilise, mais comment on l'utilise de manière responsable. Je reste transparent sur mes usages et leurs limites : ni solution miracle, ni catastrophe, mais un outil professionnel que j'utilise avec prudence et discernement.
-                </p>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Section Dashboards */}
-          <motion.div
-            className="max-w-6xl mx-auto mb-16"
-            variants={fadeInUp}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            transition={{ delay: 0.6 }}
-          >
-            <div className="bg-card p-8 rounded-xl shadow-sm border border-border">
+            {/* Section Dashboards */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              transition={{ delay: 0.6 }}
+            >
+              <div className="bg-card p-8 rounded-xl shadow-sm border border-border h-full">
               <div className="text-accent flex row gap-4 items-center mb-6">
                 <LayoutDashboard
                   className="h-8 w-8 flex-shrink-0"
@@ -248,15 +298,210 @@ export function Services() {
                   Interface de gestion sur-mesure
                 </h4>
               </div>
-              <p className="text-muted-foreground text-lg max-w-4xl">
-                Une interface pour prendre le contrôle de votre site : modifier vos textes, changer vos images, gérer vos produits ou vos commandes, sans dépendre de personne. Je construis l'outil qui correspond à votre façon de travailler, pas l'inverse. Selon vos besoins et votre budget, on choisit ensemble la meilleure approche : solution sur-mesure (comme l'interface créée pour l'artisan d'Alto Lille), système de gestion de contenu (CMS), ou outil no-code si c'est ce avec quoi vous désirez travailler — je suis formé et exercé également sur ces technologies. Dans tous les cas, qualité d'utilisation professionnelle garantie. Vous comprenez ce que vous faites, vous gardez le contrôle.
-              </p>
+              
+              {/* Introduction avec mise en valeur */}
+              <div className="space-y-5 mb-10 max-w-4xl">
+                <p className="text-lg text-foreground/90 leading-relaxed">
+                  Une interface pour piloter votre site — modifier vos textes, changer vos images, gérer produits et commandes — <span className="text-green-400">sans dépendre de personne</span>.
+                </p>
+                
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  J'adapte l'outil à votre manière de travailler, pas l'inverse.
+                </p>
+              </div>
+
+              {/* Exemple d'interface */}
+              <div className="bg-accent/5 border border-accent/20 rounded-2xl p-4 md:p-6 mb-10">
+                <p className="text-sm md:text-base text-foreground font-medium mb-4 text-center">
+                  📸 Exemple d'interface créée pour <a href="https://alto-lille.fr" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-semibold">alto-lille.fr</a> — Touchez pour agrandir
+                </p>
+                <div className="max-w-3xl mx-auto">
+                  <div className="space-y-3">
+                    <ImageModal
+                      src="/images/alto-gestion-textes.webp"
+                      alt="Interface de gestion des textes et traductions pour Alto Lille"
+                    >
+                      <div className="group relative cursor-pointer overflow-hidden rounded-xl border-2 border-border hover:border-accent/50 transition-all duration-300 shadow-lg hover:shadow-2xl active:scale-95">
+                        <img
+                          src="/images/alto-gestion-textes.webp"
+                          alt="Interface de gestion des textes et traductions pour Alto Lille"
+                          className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                        />
+                        {/* Badge permanent sur mobile */}
+                        <div className="absolute top-3 right-3 bg-accent/90 text-white px-3 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                          </svg>
+                          Agrandir
+                        </div>
+                        {/* Overlay desktop uniquement */}
+                        <div className="hidden md:flex absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-end justify-center pb-6">
+                          <span className="text-white font-medium text-sm flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                            </svg>
+                            Cliquer pour agrandir
+                          </span>
+                        </div>
+                      </div>
+                    </ImageModal>
+                    <p className="text-xs md:text-sm text-muted-foreground text-center font-medium">
+                      🌐 Gestion des textes et traductions
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+                {/* Texte subtil sans hiérarchisation */}
+                <div className="space-y-5 max-w-4xl text-base text-muted-foreground leading-relaxed">
+                  <p>
+                    Selon vos besoins et votre budget, on choisit ensemble la meilleure approche : 100% code sur-mesure (comme l'interface créée pour l'artisan d'Alto Lille), CMS, ou no-code si vous préférez — je suis formé et exercé sur ces technologies.
+                  </p>
+                  
+                  <p>
+                    Dans tous les cas, qualité d'usage professionnelle : vous comprenez ce que vous faites et <span className="text-green-400">vous gardez le contrôle</span>.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Section Pour Qui */}
+          <motion.div
+            id="pour-qui"
+            className="mb-20 -mx-4 px-4 py-12 bg-muted/10"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={fadeInUp}
+            transition={{ delay: 0.7 }}
+          >
+            <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
+              Pour qui ?
+            </h3>
+            <p className="text-lg text-center mb-12 text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Pour celles et ceux qui veulent <span className="text-cyan-400">reprendre la main</span> sur leur présence en ligne, avec des solutions cohérentes, utiles, belles (oui, artistiques) et <span className="text-green-400">éco-conçues</span> — des solutions qui vous appartiennent.
+            </p>
+
+            {/* Profils en grille compacte */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              {/* Créateurs */}
+              <motion.div
+                className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-6 rounded-xl border-2 border-accent/30"
+                variants={fadeInUp}
+              >
+                <div className="flex items-start gap-4 mb-3">
+                  <Palette className="w-8 h-8 text-accent flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-semibold text-foreground mb-1">
+                      Créateurs et artistes
+                    </h4>
+                    <p className="text-sm font-medium text-foreground/80 mb-2">
+                      Vous désirez créer un espace en ligne unique qui vous ressemble et vous rend service ?
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-2">
+                  Portfolio, expérience interactive pédagogique et ludique, campagne de dons... L'imagination est la limite.
+                </p>
+                <p className="text-foreground/90 text-sm font-medium italic">
+                  Imaginons ensemble les expériences web de demain.
+                </p>
+              </motion.div>
+
+              {/* Médias */}
+              <motion.div
+                className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 p-6 rounded-xl border-2 border-accent/30"
+                variants={fadeInUp}
+              >
+                <div className="flex items-start gap-4 mb-3">
+                  <Building2 className="w-8 h-8 text-accent flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-semibold text-foreground mb-1">
+                      Médias, associations, coopératives, startups
+                    </h4>
+                    <p className="text-sm font-medium text-foreground/80 mb-2">
+                      Des outils qui grandissent avec vous
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-2">
+                  Des outils ouverts qui grandissent avec vous : publication claire, contributions simples pour l'équipe, données chez vous (ou chez moi).
+                </p>
+                <p className="text-muted-foreground text-sm">
+                  Pas de verrouillage, pas de dépendance. Je vous forme et vous accompagne si nécessaire.
+                </p>
+              </motion.div>
+
+              {/* Artisans */}
+              <motion.div
+                className="bg-gradient-to-br from-orange-500/20 to-yellow-500/20 p-6 rounded-xl border-2 border-accent/30"
+                variants={fadeInUp}
+              >
+                <div className="flex items-start gap-4 mb-3">
+                  <Wrench className="w-8 h-8 text-accent flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-semibold text-foreground mb-1">
+                      Artisans, commerçants, indépendants
+                    </h4>
+                    <p className="text-sm font-medium text-foreground/80 mb-2">
+                      Simple, fiable, autonome
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-2">
+                  Un site clair pour montrer votre travail, prendre des rendez-vous 📅 et, si besoin, vendre 🛒.
+                </p>
+                <p className="text-muted-foreground text-sm">
+                  Imaginé avec vous, guidé par mon expertise : je vous donne toutes les clés 🔑 pour comprendre ce que le numérique peut faire pour vous, et comment bien faire les choses.
+                </p>
+              </motion.div>
+
+              {/* Équipes tech */}
+              <motion.div
+                className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 p-6 rounded-xl border-2 border-accent/30"
+                variants={fadeInUp}
+              >
+                <div className="flex items-start gap-4 mb-3">
+                  <Code className="w-8 h-8 text-accent flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-semibold text-foreground mb-1">
+                      Équipes tech
+                    </h4>
+                    <p className="text-sm font-medium text-foreground/80 mb-2">
+                      Code propre, collaboration sereine
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-2">
+                  Je m'intègre à vos équipes et m'adapte à votre stack, j'explique mes choix et je laisse un code propre, testable ✅ et maintenable.
+                </p>
+                <p className="text-muted-foreground text-sm">
+                  Communication claire, collaboration sereine 🤝.
+                </p>
+              </motion.div>
             </div>
+
+            {/* Message de fin */}
+            <motion.div
+              className="text-center space-y-4 max-w-3xl mx-auto"
+              variants={fadeInUp}
+            >
+              <h4 className="text-lg font-semibold text-foreground">En bref</h4>
+              <p className="text-muted-foreground leading-relaxed">
+                Des solutions qui vous coûtent moins de <span className="text-blue-400 font-semibold">temps</span>, <span className="text-green-400 font-semibold">d'argent</span> et <span className="text-teal-400 font-semibold">d'énergie</span> à faire vivre.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                <span className="text-teal-400 font-medium">Rapides</span> sur mobile, <span className="text-green-400 font-medium">respectueuses</span> des données, <span className="text-blue-400 font-medium">accessibles</span> à tous.
+              </p>
+              <p className="text-foreground font-semibold leading-relaxed pt-2">
+                Gardez les <span className="text-orange-400">clés</span> (domaine, code, contenus) — et un site où l'on a <span className="text-amber-400">plaisir</span> à revenir.
+              </p>
+            </motion.div>
           </motion.div>
 
           {/* Principes */}
           <motion.div
-            className="bg-accent/10 border-2 border-accent/30 p-8 rounded-xl mb-16"
+            className="bg-muted/20 border-2 border-accent/30 p-8 rounded-xl mb-16"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={{
@@ -286,7 +531,7 @@ export function Services() {
               </ul>
               <p className="text-foreground font-medium mt-4 italic">
                 La sobriété n'est pas qu'une question d'éthique. C'est souvent la solution
-                la plus rentable.
+                la plus <span className="text-amber-400">rentable</span>.
               </p>
             </div>
           </motion.div>

@@ -9,7 +9,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useModals } from "@/contexts/ModalsContext";
 
 export type ProjectType = {
   id: string;
@@ -34,10 +33,6 @@ export function ProjectModal({
   open,
   onOpenChange,
 }: ProjectModalProps) {
-  // Utiliser le contexte pour accéder aux fonctions et état du contexte
-  const { handleVisitSite, setIsRedeploymentModalOpen, setRedeployingProject } =
-    useModals();
-
   // État pour le lazy loading de l'image (économie de 7 MB de bande passante)
   const [imageSrc, setImageSrc] = useState<string>("");
 
@@ -56,25 +51,10 @@ export function ProjectModal({
 
   if (!project) return null;
 
-  // Liste des projets qui nécessitent la modal de redéploiement
-  const needsRedeploymentModal = ["shop", "groove", "scene"];
-
-  // Fonction pour gérer le clic sur le bouton "Voir le site"
+  // Fonction pour gérer le clic sur le bouton "Voir le site" - ouvrir directement
   const handleVisitClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // Toujours prévenir le comportement par défaut pour avoir un contrôle total
     e.preventDefault();
-
-    if (needsRedeploymentModal.includes(project.id)) {
-      // Si c'est un projet qui nécessite redéploiement, afficher la modal de redéploiement
-      setRedeployingProject(project.title);
-      setIsRedeploymentModalOpen(true);
-
-      // Fermer la modal de projet
-      onOpenChange(false);
-    } else {
-      // Pour les autres projets (anais, violette, mirojo), ouvrir directement le site
-      window.open(project.url, "_blank", "noopener,noreferrer");
-    }
+    window.open(project.url, "_blank", "noopener,noreferrer");
   };
 
   return (

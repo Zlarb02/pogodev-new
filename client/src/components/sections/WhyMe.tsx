@@ -11,7 +11,7 @@ import { ImageModal } from "@/components/ui/image-modal";
 
 export function WhyMe() {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.05 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,7 +33,7 @@ export function WhyMe() {
   };
 
   return (
-    <section id="why-me" ref={sectionRef} className="py-20 bg-background">
+    <section id="why-me" ref={sectionRef} className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-2xl md:text-3xl font-bold text-center mb-12 font-['Poppins'] text-foreground"
@@ -63,9 +63,8 @@ export function WhyMe() {
             </div>
 
             <p className="text-muted-foreground">
-              Chaque projet a ses contraintes : budget, timing, compétences en interne.
-              Je m'adapte à votre réalité, pas l'inverse. Pas de solution clé en main
-              standardisée.
+              Je construis avec vous, pas pour vous. On part de <span className="text-purple-400">votre réalité</span> : votre budget, vos délais, vos compétences.
+              Pas de formule standardisée qui s'impose à vous.
             </p>
           </motion.div>
 
@@ -80,10 +79,11 @@ export function WhyMe() {
                 Accessible
               </h3>
             </div>
+            <p className="text-muted-foreground mb-3">
+              Un site <span className="text-blue-400">utilisable par tous</span> : personnes en situation de handicap, au clavier, lecteurs d'écran, contrastes élevés. Navigation et configurations limpides.
+            </p>
             <p className="text-muted-foreground">
-              Accessible dans les deux sens : un site utilisable par tous (navigation clavier,
-              lecteurs d'écran, contrastes WCAG AAA), et un code que vous pouvez comprendre
-              si vous voulez mettre les mains dedans.
+              Et aussi : un code compréhensible si vous voulez y mettre les mains.
             </p>
           </motion.div>
 
@@ -102,7 +102,7 @@ export function WhyMe() {
               Pas de « magie ». Je vous explique ce que je fais, pourquoi, et combien ça coûte.
             </p>
             <p className="text-muted-foreground">
-              Je travaille en code ouvert. Vous pouvez auditer et modifier le code.
+              Je travaille en <span className="text-cyan-400">code ouvert</span>. Vous pouvez auditer et modifier le code.
             </p>
           </motion.div>
 
@@ -118,12 +118,12 @@ export function WhyMe() {
               </h3>
             </div>
             <p className="text-muted-foreground">
-              Freelance = vous me parlez, je vous réponds. Pas de commercial, pas d'équipe commerciale, pas d'intermédiaire. Relation directe. Je reste ouvert aux propositions d'embauche.
+              Freelance = vous me parlez, je vous réponds. Pas de commercial, pas d'équipe commerciale, pas d'intermédiaire. <span className="text-green-400">Relation directe</span>. Je reste ouvert aux propositions d'embauche.
             </p>
           </motion.div>
         </motion.div>
 
-        {/* Section Des preuves - Lighthouse */}
+        {/* Section La qualité, mesurée - Lighthouse */}
         <motion.div
           className="mt-20"
           initial={{ opacity: 0 }}
@@ -131,75 +131,30 @@ export function WhyMe() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <motion.h3
-            className="text-2xl md:text-3xl font-bold text-center mb-6 font-['Poppins'] text-foreground"
+            className="text-2xl md:text-3xl font-bold text-center mb-4 font-['Poppins'] text-foreground"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            Des preuves ?
+            La qualité, mesurée
           </motion.h3>
 
           <motion.p
-            className="text-center text-muted-foreground max-w-3xl mx-auto mb-12"
+            className="text-center text-muted-foreground max-w-3xl mx-auto mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            Des résultats concrets, mesurés avec Google Lighthouse.
+            Exemple avec Google Lighthouse qui analyse la qualité des sites web. Voici comment ce site se comporte.
           </motion.p>
 
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Documentation Google - Code couleur */}
+            {/* Scores Lighthouse de pogodev.com - EN PREMIER */}
             <motion.div
               className="bg-card rounded-xl shadow-sm border border-border overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-            >
-              <div className="p-6">
-                <h4 className="text-xl font-semibold mb-3 text-foreground">
-                  Comment lire les scores Lighthouse ?
-                </h4>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Le code couleur expliqué par Google
-                </p>
-              </div>
-              <ImageModal
-                src="/images/lighthouse-score-guide.webp"
-                alt="Guide des scores Lighthouse - Code couleur : 0-49 rouge (faible), 50-89 orange (amélioration nécessaire), 90-100 vert (bon)"
-              >
-                <div className="aspect-[4/3] lg:aspect-video bg-muted cursor-pointer hover:bg-muted/80 transition-colors duration-300">
-                  <picture>
-                    <source srcSet="/images/lighthouse-score-guide.webp" type="image/webp" />
-                    <img
-                      src="/images/lighthouse-score-guide.png"
-                      alt="Guide des scores Lighthouse"
-                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                      width="1016"
-                      height="553"
-                    />
-                  </picture>
-                </div>
-              </ImageModal>
-              <div className="p-6 bg-accent/5 border-t border-border">
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li><span className="font-semibold text-red-600">0 à 49</span> (rouge) : Faible - nécessite des améliorations urgentes</li>
-                  <li><span className="font-semibold text-orange-600">50 à 89</span> (orange) : Amélioration nécessaire</li>
-                  <li><span className="font-semibold text-green-600">90 à 100</span> (vert) : Bon - respecte les bonnes pratiques</li>
-                </ul>
-                <p className="text-xs text-muted-foreground mt-4 italic">
-                  Un score parfait de 100 est extrêmement difficile et n'est pas attendu. L'objectif est d'atteindre la zone verte (90+).
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Scores Lighthouse de pogodev.com */}
-            <motion.div
-              className="bg-card rounded-xl shadow-sm border border-border overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
             >
               <div className="p-6">
                 <h4 className="text-xl font-semibold mb-3 text-foreground">
@@ -227,13 +182,127 @@ export function WhyMe() {
                   </picture>
                 </div>
               </ImageModal>
-              <div className="p-6 bg-accent/5 border-t border-border">
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li><span className="font-semibold text-orange-600">Performance : 86/100</span> - Bon résultat, des optimisations sont encore possibles</li>
-                  <li><span className="font-semibold text-green-600">Accessibilité : 100/100</span> - Excellent ! Le site est accessible à tous</li>
-                  <li><span className="font-semibold text-green-600">Bonnes pratiques : 100/100</span> - Parfait ! Respect total des standards web</li>
-                  <li><span className="font-semibold text-green-600">SEO : 100/100</span> - Optimal pour le référencement naturel (SEO = Search Engine Optimization = faire en sorte que votre site soit bien positionné dans les résultats de recherche Google)</li>
-                </ul>
+              <div className="p-6 bg-gradient-to-br from-accent/5 to-transparent">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3 group">
+                    <div className="flex-shrink-0 w-16 h-16 rounded-lg bg-gradient-to-br from-orange-500/10 to-orange-600/5 flex items-center justify-center border border-orange-500/20 group-hover:border-orange-500/40 transition-colors">
+                      <span className="text-2xl font-bold text-orange-600">86</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h5 className="font-semibold text-foreground mb-1">Performance</h5>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Vitesse de chargement et fluidité. Un bon score, avec une marge d'amélioration.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 group">
+                    <div className="flex-shrink-0 w-16 h-16 rounded-lg bg-gradient-to-br from-green-500/10 to-green-600/5 flex items-center justify-center border border-green-500/20 group-hover:border-green-500/40 transition-colors">
+                      <span className="text-2xl font-bold text-green-600">100</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h5 className="font-semibold text-foreground mb-1">Accessibilité</h5>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Utilisable par tous, y compris les personnes en situation de handicap (lecteurs d'écran, navigation clavier...).
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 group">
+                    <div className="flex-shrink-0 w-16 h-16 rounded-lg bg-gradient-to-br from-green-500/10 to-green-600/5 flex items-center justify-center border border-green-500/20 group-hover:border-green-500/40 transition-colors">
+                      <span className="text-2xl font-bold text-green-600">100</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h5 className="font-semibold text-foreground mb-1">Bonnes pratiques</h5>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Respect des standards modernes du web : sécurité, compatibilité, qualité du code.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 group">
+                    <div className="flex-shrink-0 w-16 h-16 rounded-lg bg-gradient-to-br from-green-500/10 to-green-600/5 flex items-center justify-center border border-green-500/20 group-hover:border-green-500/40 transition-colors">
+                      <span className="text-2xl font-bold text-green-600">100</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h5 className="font-semibold text-foreground mb-1">SEO</h5>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Optimisé pour être bien référencé sur Google et les autres moteurs de recherche.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Documentation Google - Code couleur - EN SECOND */}
+            <motion.div
+              className="bg-card rounded-xl shadow-sm border border-border overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <div className="p-6">
+                <h4 className="text-xl font-semibold mb-3 text-foreground">
+                  Comment lire les scores ?
+                </h4>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Le code couleur expliqué par Google
+                </p>
+              </div>
+              <ImageModal
+                src="/images/lighthouse-score-guide.webp"
+                alt="Guide des scores Lighthouse - Code couleur : 0-49 rouge (faible), 50-89 orange (amélioration nécessaire), 90-100 vert (bon)"
+              >
+                <div className="aspect-[4/3] lg:aspect-video bg-muted cursor-pointer hover:bg-muted/80 transition-colors duration-300">
+                  <picture>
+                    <source srcSet="/images/lighthouse-score-guide.webp" type="image/webp" />
+                    <img
+                      src="/images/lighthouse-score-guide.png"
+                      alt="Guide des scores Lighthouse"
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      width="1016"
+                      height="553"
+                    />
+                  </picture>
+                </div>
+              </ImageModal>
+              <div className="p-6 bg-gradient-to-br from-accent/5 to-transparent">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 group">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-red-500/10 to-red-600/5 flex items-center justify-center border border-red-500/20 group-hover:border-red-500/40 transition-colors">
+                      <span className="text-sm font-bold text-red-600">0-49</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        <span className="font-medium text-foreground">Rouge</span> — Le site a besoin d'améliorations importantes
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 group">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500/10 to-orange-600/5 flex items-center justify-center border border-orange-500/20 group-hover:border-orange-500/40 transition-colors">
+                      <span className="text-sm font-bold text-orange-600">50-89</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        <span className="font-medium text-foreground">Orange</span> — Correct, mais peut être optimisé
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 group">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/10 to-green-600/5 flex items-center justify-center border border-green-500/20 group-hover:border-green-500/40 transition-colors">
+                      <span className="text-sm font-bold text-green-600">90+</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        <span className="font-medium text-foreground">Vert</span> — Excellent ! Le site respecte les bonnes pratiques
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

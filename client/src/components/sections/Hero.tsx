@@ -116,28 +116,28 @@ export function Hero() {
             className="text-3xl md:text-4xl lg:text-5xl lg:leading-tight font-bold mb-6 font-['Poppins'] text-foreground"
             variants={itemVariants}
           >
-            Le web, c'est un peu ma maison.
+            Le <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">web</span>, c'est un peu ma <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent">maison</span>.
           </motion.h1>
 
           <motion.p
             className="text-lg md:text-xl text-foreground font-medium mb-6"
             variants={itemVariants}
           >
-            Je le construis pour qu'il soit solide, beau, facile à entretenir, et qu'on prenne plaisir à le visiter !
+            Je le construis pour qu'il soit <span className="text-green-400 font-semibold">solide</span>, beau, <span className="text-cyan-400 font-semibold">facile à entretenir</span>, et qu'on prenne <span className="text-amber-400 font-semibold">plaisir</span> à le visiter !
           </motion.p>
 
           <motion.p
             className="text-base md:text-lg text-muted-foreground mb-6"
             variants={itemVariants}
           >
-            Je m'adapte à vos solutions web et à votre équipe. Je vous livre un code propre et évolutif, que vous pourrez faire vivre — avec ou sans moi.
+            Je m'adapte à vos solutions web et à votre <span className="text-purple-400/90">équipe</span>. Je vous livre un code propre et évolutif, que vous pourrez faire vivre — <span className="text-pink-400/90">avec ou sans moi</span>.
           </motion.p>
 
           <motion.p
             className="text-base md:text-lg text-muted-foreground mb-6"
             variants={itemVariants}
           >
-            Pourquoi solide et facile à entretenir ? Parce qu'un site bien pensé tient dans le temps et vous coûte moins de temps, d'énergie et d'argent.
+            Pourquoi <span className="text-teal-400/90">solide et facile à entretenir</span> ? Parce qu'un site bien pensé tient dans le temps et vous coûte moins de <span className="text-amber-400/90">temps, d'énergie et d'argent</span>.
           </motion.p>
 
           <motion.div

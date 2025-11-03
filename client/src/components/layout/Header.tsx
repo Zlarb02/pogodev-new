@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, ChevronRight, Info } from "lucide-react";
+import { ChevronDown, ChevronRight, Info } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProjectType } from "@/components/ProjectModal";
 import { useModals } from "@/contexts/ModalsContext";
@@ -12,6 +12,8 @@ export function Header() {
   // Séparons les états des dropdowns pour desktop et mobile
   const [isDesktopProjectsOpen, setIsDesktopProjectsOpen] = useState(false);
   const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false);
+  const [isDesktopServicesOpen, setIsDesktopServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   // Utiliser le contexte pour les modals et les projets
   const { openProjectModal, handleVisitSite, projects } = useModals();
@@ -21,9 +23,10 @@ export function Header() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    // Si le menu est fermé, fermer aussi le dropdown des projets
+    // Si le menu est fermé, fermer aussi tous les dropdowns
     if (!isMenuOpen) {
       setIsMobileProjectsOpen(false);
+      setIsMobileServicesOpen(false);
     }
   };
 
@@ -110,9 +113,11 @@ export function Header() {
       setIsMenuOpen(false);
     }
 
-    // Close projects dropdowns
+    // Close all dropdowns
     setIsDesktopProjectsOpen(false);
     setIsMobileProjectsOpen(false);
+    setIsDesktopServicesOpen(false);
+    setIsMobileServicesOpen(false);
 
     // Scroll to the section if an ID is provided
     if (sectionId) {
@@ -132,17 +137,9 @@ export function Header() {
   // Fonction pour ouvrir la modal avec les détails du projet
   const handleOpenProjectModal = (project: ProjectType) => {
     openProjectModal(project);
-    // Fermer les menus
+    // Fermer seulement le dropdown desktop
     setIsDesktopProjectsOpen(false);
-    setIsMobileProjectsOpen(false);
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-    }
-  };
-
-  // Pour obtenir le bon chemin de base pour les assets
-  const getBasePath = () => {
-    return window.location.hostname === "pogodev.com" ? "" : "/";
+    // Ne pas fermer le menu mobile ni son dropdown pour permettre de continuer à naviguer
   };
 
   // Animations pour le menu mobile
@@ -170,20 +167,6 @@ export function Header() {
     open: { opacity: 1, x: 0 },
   };
 
-  // Version simplifiée de l'animation de dropdown
-  const dropdownVariants = {
-    closed: {
-      height: 0,
-      opacity: 0,
-      overflow: "hidden",
-    },
-    open: {
-      height: "auto",
-      opacity: 1,
-      overflow: "hidden",
-    },
-  };
-
   return (
     <>
       <header
@@ -194,52 +177,149 @@ export function Header() {
         }`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="/">
+          <a href="/" className="flex items-center gap-4 group">
             <img
               src={`assets/logo-large.svg`}
               alt="Logo"
-              className="h-20 w-auto"
+              className="h-16 md:h-20 w-auto group-hover:scale-105 transition-transform duration-300"
               width="200"
               height="80"
             />
-          </a>
-          <a href="/">
-            <div className="text-xl font-semibold text-primary font-['Poppins'] cursor-pointer">
-              pogodev<span className="text-accent">.com</span>
+            <div className="flex flex-col">
+              <div className="text-xl md:text-2xl font-bold font-['Poppins'] cursor-pointer">
+                <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-green-400 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:via-teal-300 group-hover:to-emerald-300 transition-all duration-300">
+                  pogodev
+                </span>
+                <span className="text-accent group-hover:text-accent/80 transition-colors duration-300">.com</span>
+              </div>
+              <div className="text-[10px] md:text-xs text-muted-foreground/70 font-medium tracking-wide uppercase">
+                <span className="text-cyan-400/70">Solutions web</span> <span className="text-green-400/70">écoconçues</span>
+              </div>
             </div>
           </a>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button - Advanced Artistic CSS */}
           <button
-            className="lg:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md p-1"
+            className="lg:hidden focus:outline-none relative w-16 h-16 flex items-center justify-center group perspective-1000"
             onClick={toggleMenu}
             aria-label="Menu"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
+            style={{ perspective: '1000px' }}
           >
-            <AnimatePresence mode="wait" initial={false}>
-              {isMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="h-6 w-6" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="h-6 w-6" />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* Conteneur avec effet 3D et rotation lente hypnotique */}
+            <div className={`relative w-9 h-9 transition-transform duration-500 ease-out ${isMenuOpen ? 'rotate-180' : ''}`}
+                 style={{ 
+                   transformStyle: 'preserve-3d',
+                   animation: isMenuOpen ? 'none' : 'float-rotate 8s ease-in-out infinite'
+                 }}>
+              
+              {/* Background circle avec effet morphing intensifié */}
+              <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-accent/20 via-cyan-500/20 to-teal-500/20 transition-all duration-500 ${
+                isMenuOpen 
+                  ? 'scale-[2] rotate-180 opacity-70' 
+                  : 'scale-100 rotate-0 opacity-0 group-hover:opacity-80 group-hover:scale-110'
+              }`} 
+              style={{ 
+                filter: 'blur(8px)',
+                animation: isMenuOpen ? 'none' : 'none'
+              }} />
+              
+              {/* Deuxième couche de glow pour plus de profondeur */}
+              <div className={`absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400/10 to-accent/10 transition-all duration-700 ${
+                isMenuOpen 
+                  ? 'scale-[2.5] opacity-40' 
+                  : 'scale-100 opacity-0 group-hover:opacity-60 group-hover:scale-[1.3]'
+              }`} 
+              style={{ 
+                filter: 'blur(12px)'
+              }} />
+              
+              {/* Burger lines container */}
+              <div className="absolute inset-0 flex flex-col justify-center items-center gap-1.5">
+                {/* Line 1 - Top */}
+                <span
+                  className={`h-0.5 rounded-full transition-all duration-500 ease-out ${
+                    isMenuOpen
+                      ? "w-7 bg-gradient-to-r from-rose-400 via-pink-400 to-fuchsia-400 rotate-45 translate-y-[7px] shadow-sm"
+                      : "w-7 bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 rotate-0 translate-y-0 group-hover:w-6 group-hover:translate-x-1.5 shadow-md"
+                  }`}
+                  style={{
+                    boxShadow: isMenuOpen 
+                      ? '0 0 4px rgba(244, 114, 182, 0.3)' 
+                      : '0 0 8px rgba(34, 211, 238, 0.4)'
+                  }}
+                />
+                
+                {/* Line 2 - Middle avec effet morphing complexe */}
+                <div className="relative w-7 h-0.5 overflow-hidden">
+                  <span
+                    className={`absolute inset-0 rounded-full transition-all duration-500 ease-out ${
+                      isMenuOpen
+                        ? "scale-x-0 opacity-0 rotate-180"
+                        : "scale-x-100 opacity-100 rotate-0 group-hover:scale-x-70"
+                    }`}
+                    style={{
+                      background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)',
+                      boxShadow: isMenuOpen ? 'none' : '0 0 8px rgba(139, 92, 246, 0.4)',
+                      transformOrigin: 'center'
+                    }}
+                  />
+                  {/* Particules subtiles au survol */}
+                  {!isMenuOpen && (
+                    <>
+                      <span className="absolute left-0 w-1 h-0.5 bg-blue-400/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <span className="absolute right-0 w-1 h-0.5 bg-pink-400/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </>
+                  )}
+                </div>
+                
+                {/* Line 3 - Bottom */}
+                <span
+                  className={`h-0.5 rounded-full transition-all duration-500 ease-out ${
+                    isMenuOpen
+                      ? "w-7 bg-gradient-to-r from-fuchsia-400 via-pink-400 to-rose-400 -rotate-45 -translate-y-[7px] shadow-sm"
+                      : "w-7 bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 rotate-0 translate-y-0 group-hover:w-6 group-hover:translate-x-1.5 shadow-md"
+                  }`}
+                  style={{
+                    boxShadow: isMenuOpen 
+                      ? '0 0 4px rgba(244, 114, 182, 0.3)' 
+                      : '0 0 8px rgba(251, 146, 60, 0.4)'
+                  }}
+                />
+              </div>
+              
+              {/* Orbites animées plus dynamiques */}
+              <div className={`absolute inset-0 rounded-full border border-accent/40 transition-all duration-700 ${
+                isMenuOpen ? 'scale-[2] opacity-0' : 'scale-100 opacity-0 group-hover:opacity-100 group-hover:scale-[1.35]'
+              }`} 
+              style={{ 
+                animation: isMenuOpen ? 'none' : 'spin 2.5s linear infinite'
+              }} />
+              
+              <div className={`absolute inset-0 rounded-full border border-cyan-400/30 transition-all duration-700 ${
+                isMenuOpen ? 'scale-[2] opacity-0' : 'scale-100 opacity-0 group-hover:opacity-100 group-hover:scale-[1.2]'
+              }`} 
+              style={{ 
+                animation: isMenuOpen ? 'none' : 'spin 1.8s linear infinite reverse',
+                animationDelay: '0.3s'
+              }} />
+              
+              {/* Troisième orbite pour plus de dynamisme */}
+              <div className={`absolute inset-0 rounded-full border border-teal-400/20 transition-all duration-700 ${
+                isMenuOpen ? 'scale-[2] opacity-0' : 'scale-100 opacity-0 group-hover:opacity-70 group-hover:scale-[1.5]'
+              }`} 
+              style={{ 
+                animation: isMenuOpen ? 'none' : 'spin 3.2s linear infinite',
+                animationDelay: '0.6s'
+              }} />
+            </div>
+            
+            {/* Focus ring animé */}
+            <div className="absolute inset-0 rounded-full opacity-0 focus-visible:opacity-100 transition-opacity">
+              <div className="absolute inset-0 rounded-full border-2 border-accent animate-ping" style={{ animationDuration: '1.5s' }} />
+              <div className="absolute inset-0 rounded-full border-2 border-accent" />
+            </div>
           </button>
 
           {/* Desktop Navigation */}
@@ -254,33 +334,122 @@ export function Header() {
             >
               Qui suis-je ?
             </a>
-            <a
-              href="#why-me"
-              className="text-foreground hover:text-accent transition-colors py-2 flex items-center"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("why-me");
-              }}
-            >
-              Pourquoi moi ?
-            </a>
-            <a
-              href="#services"
-              className="text-foreground hover:text-accent transition-colors py-2 flex items-center"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("services");
-              }}
-            >
-              Mon offre
-            </a>
-            {/* Desktop Dropdown pour les projets */}
+            
+            {/* Desktop Dropdown pour Mon offre */}
+            <div className="relative flex items-center">
+              <button
+                className="text-foreground hover:text-accent transition-colors flex items-center gap-1 py-2"
+                onClick={() => setIsDesktopServicesOpen(!isDesktopServicesOpen)}
+                onBlur={(e) => {
+                  // Fermer uniquement si le focus sort du dropdown
+                  if (!e.currentTarget.parentElement?.contains(e.relatedTarget)) {
+                    setTimeout(() => setIsDesktopServicesOpen(false), 150);
+                  }
+                }}
+              >
+                Mon offre{" "}
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${
+                    isDesktopServicesOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {isDesktopServicesOpen && (
+                <div className="absolute top-full left-0 mt-2 py-2 w-64 bg-card rounded-lg shadow-md border border-border z-50">
+                  <a
+                    href="#services"
+                    className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-accent"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick("services");
+                      setIsDesktopServicesOpen(false);
+                    }}
+                  >
+                    Ce que je livre
+                  </a>
+                  <a
+                    href="#pour-qui"
+                    className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-accent"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick("pour-qui");
+                      setIsDesktopServicesOpen(false);
+                    }}
+                  >
+                    Pour qui ?
+                  </a>
+                  <a
+                    href="#tarifs"
+                    className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-accent"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick("tarifs");
+                      setIsDesktopServicesOpen(false);
+                    }}
+                  >
+                    Tarifs & devis
+                  </a>
+                  <div className="h-px bg-border my-1" />
+                  <div className="px-4 py-1 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                    En option
+                  </div>
+                  <a
+                    href="#services"
+                    className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-accent"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // Scroll vers la section services puis vers "En option"
+                      const servicesSection = document.getElementById("services");
+                      if (servicesSection) {
+                        servicesSection.scrollIntoView({ behavior: "smooth" });
+                        // Petit délai pour laisser le scroll se faire, puis scroll vers "En option"
+                        setTimeout(() => {
+                          const optionsTitle = Array.from(document.querySelectorAll('h3')).find(
+                            h3 => h3.textContent?.includes('En option')
+                          );
+                          if (optionsTitle) {
+                            optionsTitle.scrollIntoView({ behavior: "smooth", block: "center" });
+                          }
+                        }, 500);
+                      }
+                      setIsDesktopServicesOpen(false);
+                    }}
+                  >
+                    APIs & IA
+                  </a>
+                  <a
+                    href="#services"
+                    className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-accent"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // Scroll vers la section services puis vers "En option"
+                      const servicesSection = document.getElementById("services");
+                      if (servicesSection) {
+                        servicesSection.scrollIntoView({ behavior: "smooth" });
+                        setTimeout(() => {
+                          const optionsTitle = Array.from(document.querySelectorAll('h3')).find(
+                            h3 => h3.textContent?.includes('En option')
+                          );
+                          if (optionsTitle) {
+                            optionsTitle.scrollIntoView({ behavior: "smooth", block: "center" });
+                          }
+                        }, 500);
+                      }
+                      setIsDesktopServicesOpen(false);
+                    }}
+                  >
+                    Interface de gestion
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Desktop Dropdown pour les projets - PROJETS PRO UNIQUEMENT */}
             <div
               className="relative flex items-center"
               ref={projectsDropdownRef}
             >
-              <a
-                href="#projects"
+              <button
                 className="text-foreground hover:text-accent transition-colors flex items-center gap-1 py-2"
                 onClick={toggleDesktopProjects}
               >
@@ -290,12 +459,12 @@ export function Header() {
                     isDesktopProjectsOpen ? "rotate-180" : ""
                   }`}
                 />
-              </a>
+              </button>
               {isDesktopProjectsOpen && (
-                <div className="absolute top-full left-0 mt-2 py-2 w-56 bg-card rounded-lg shadow-md border border-border z-50">
+                <div className="absolute top-full left-0 mt-2 py-2 w-64 bg-card rounded-lg shadow-md border border-border z-50">
                   <a
                     href="#projects"
-                    className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-accent"
+                    className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-accent font-medium"
                     onClick={(e) => {
                       e.preventDefault();
                       handleNavClick("projects");
@@ -303,7 +472,11 @@ export function Header() {
                   >
                     Tous les projets
                   </a>
-                  {projects.map((project) => (
+                  <div className="h-px bg-border my-1" />
+                  <div className="px-4 py-1 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                    Projets professionnels
+                  </div>
+                  {projects.filter(p => p.id === 'alto' || p.id === 'violette').map((project) => (
                     <div
                       key={project.id}
                       className="flex items-center justify-between px-4 py-2 text-sm hover:bg-accent/10 group"
@@ -334,6 +507,7 @@ export function Header() {
                 </div>
               )}
             </div>
+
             <a
               href="#process"
               className="text-foreground hover:text-accent transition-colors py-2 flex items-center"
@@ -342,7 +516,7 @@ export function Header() {
                 handleNavClick("process");
               }}
             >
-              Processus
+              Comment ça marche ?
             </a>
             <a
               href="#contact"
@@ -367,9 +541,16 @@ export function Header() {
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className="lg:hidden fixed left-0 right-0 bottom-0 top-[72px] z-[100] bg-background/95 backdrop-blur-md overflow-y-auto h-[calc(100vh-72px)]"
-              style={{ pointerEvents: "auto" }}
+              className="lg:hidden fixed left-0 right-0 bottom-0 top-[72px] z-[100] overflow-y-auto h-[calc(100vh-72px)]"
+              style={{ 
+                pointerEvents: "auto",
+                background: 'linear-gradient(to bottom, transparent 0%, hsl(var(--background)/.85) 5%, hsl(var(--background)/.98) 15%, hsl(var(--background)/.95) 100%)'
+              }}
             >
+              {/* Orbes flottants artistiques */}
+              <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-gradient-to-br from-accent/5 to-cyan-500/5 blur-3xl" />
+              <div className="absolute bottom-20 left-10 w-48 h-48 rounded-full bg-gradient-to-tr from-teal-500/5 to-emerald-500/5 blur-3xl" />
+              
               <div className="container mx-auto px-4 py-6 flex flex-col space-y-6 relative">
                 <motion.a
                   href="#about"
@@ -378,10 +559,13 @@ export function Header() {
                     e.preventDefault();
                     handleNavClick("about");
                   }}
-                  className="flex items-center justify-between text-foreground hover:text-accent py-3 border-b border-border/40 transition-colors"
+                  className="group relative flex items-center justify-between text-foreground py-4 px-4 rounded-xl bg-gradient-to-r from-card/50 to-transparent hover:from-accent/10 hover:to-accent/5 border border-border/30 hover:border-accent/30 transition-all duration-300 overflow-hidden"
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <span className="text-lg font-medium">Qui suis-je ?</span>
-                  <ChevronRight className="h-5 w-5 opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="text-lg font-semibold relative z-10 group-hover:text-accent transition-colors">Qui suis-je ?</span>
+                  <ChevronRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all relative z-10" />
                 </motion.a>
 
                 <motion.a
@@ -391,92 +575,209 @@ export function Header() {
                     e.preventDefault();
                     handleNavClick("why-me");
                   }}
-                  className="flex items-center justify-between text-foreground hover:text-accent py-3 border-b border-border/40 transition-colors"
+                  className="group relative flex items-center justify-between text-foreground py-4 px-4 rounded-xl bg-gradient-to-r from-card/50 to-transparent hover:from-cyan-500/10 hover:to-cyan-500/5 border border-border/30 hover:border-cyan-500/30 transition-all duration-300 overflow-hidden"
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <span className="text-lg font-medium">Pourquoi moi ?</span>
-                  <ChevronRight className="h-5 w-5 opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/5 to-cyan-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="text-lg font-semibold relative z-10 group-hover:text-cyan-400 transition-colors">Pourquoi moi ?</span>
+                  <ChevronRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all relative z-10" />
                 </motion.a>
 
-                <motion.a
-                  href="#services"
-                  variants={itemVariants}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick("services");
-                  }}
-                  className="flex items-center justify-between text-foreground hover:text-accent py-3 border-b border-border/40 transition-colors"
-                >
-                  <span className="text-lg font-medium">Mon offre</span>
-                  <ChevronRight className="h-5 w-5 opacity-60" />
-                </motion.a>
-
-                {/* Menu déroulant mobile pour les projets - VERSION SIMPLIFIÉE */}
+                {/* Menu déroulant mobile pour Mon offre */}
                 <motion.div
                   variants={itemVariants}
-                  className="py-3 border-b border-border/40"
+                  className="relative rounded-xl bg-gradient-to-br from-card/60 to-card/30 border border-border/40 p-4 overflow-hidden"
+                >
+                  {/* Effet de brillance */}
+                  <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+                  
+                  <div
+                    className="flex items-center justify-between text-foreground hover:text-accent transition-colors cursor-pointer"
+                    onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                    aria-expanded={isMobileServicesOpen}
+                    aria-controls="services-dropdown-mobile"
+                  >
+                    <span className="text-lg font-semibold">Mon offre</span>
+                    <motion.div
+                      animate={{ rotate: isMobileServicesOpen ? 180 : 0 }}
+                      transition={{ duration: 0.3, type: "spring" }}
+                    >
+                      <ChevronDown className="h-5 w-5 opacity-60" />
+                    </motion.div>
+                  </div>
+
+                  <div
+                    id="services-dropdown-mobile"
+                    className={`transition-all duration-300 mt-4 overflow-hidden ${
+                      isMobileServicesOpen
+                        ? "max-h-[500px] opacity-100"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <div className="space-y-2 pl-4 border-l-2 border-accent/30">
+                      <a
+                        href="#services"
+                        className="group block py-2 px-3 text-base hover:text-accent flex items-center rounded-lg hover:bg-accent/5 transition-all"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavClick("services");
+                        }}
+                      >
+                        <span className="text-accent mr-3 group-hover:scale-125 transition-transform">•</span>
+                        <span className="group-hover:translate-x-1 transition-transform">Ce que je livre</span>
+                      </a>
+                      <a
+                        href="#pour-qui"
+                        className="group block py-2 px-3 text-base hover:text-accent flex items-center rounded-lg hover:bg-accent/5 transition-all"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavClick("pour-qui");
+                        }}
+                      >
+                        <span className="text-accent mr-3 group-hover:scale-125 transition-transform">•</span>
+                        <span className="group-hover:translate-x-1 transition-transform">Pour qui ?</span>
+                      </a>
+                      <a
+                        href="#tarifs"
+                        className="group block py-2 px-3 text-base hover:text-accent flex items-center rounded-lg hover:bg-accent/5 transition-all"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavClick("tarifs");
+                        }}
+                      >
+                        <span className="text-accent mr-3 group-hover:scale-125 transition-transform">•</span>
+                        <span className="group-hover:translate-x-1 transition-transform">Tarifs & devis</span>
+                      </a>
+                      <div className="py-2 mt-2 text-xs font-bold text-accent/70 uppercase tracking-widest pl-3 flex items-center gap-2">
+                        <div className="h-[1px] w-8 bg-gradient-to-r from-accent/50 to-transparent" />
+                        En option
+                      </div>
+                      <a
+                        href="#services"
+                        className="group block py-2 px-3 text-base hover:text-accent flex items-center rounded-lg hover:bg-accent/5 transition-all"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const servicesSection = document.getElementById("services");
+                          if (servicesSection) {
+                            servicesSection.scrollIntoView({ behavior: "smooth" });
+                            setTimeout(() => {
+                              const optionsTitle = Array.from(document.querySelectorAll('h3')).find(
+                                h3 => h3.textContent?.includes('En option')
+                              );
+                              if (optionsTitle) {
+                                optionsTitle.scrollIntoView({ behavior: "smooth", block: "center" });
+                              }
+                            }, 500);
+                          }
+                          setIsMenuOpen(false);
+                        }}
+                      >
+                        <span className="text-accent mr-3 group-hover:scale-125 transition-transform">•</span>
+                        <span className="group-hover:translate-x-1 transition-transform">APIs & IA</span>
+                      </a>
+                      <a
+                        href="#services"
+                        className="group block py-2 px-3 text-base hover:text-accent flex items-center rounded-lg hover:bg-accent/5 transition-all"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const servicesSection = document.getElementById("services");
+                          if (servicesSection) {
+                            servicesSection.scrollIntoView({ behavior: "smooth" });
+                            setTimeout(() => {
+                              const optionsTitle = Array.from(document.querySelectorAll('h3')).find(
+                                h3 => h3.textContent?.includes('En option')
+                              );
+                              if (optionsTitle) {
+                                optionsTitle.scrollIntoView({ behavior: "smooth", block: "center" });
+                              }
+                            }, 500);
+                          }
+                          setIsMenuOpen(false);
+                        }}
+                      >
+                        <span className="text-accent mr-2">•</span>
+                        Interface de gestion
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Menu déroulant mobile pour les projets */}
+                <motion.div
+                  variants={itemVariants}
+                  className="py-3"
                 >
                   {/* Titre du dropdown qui fait le toggle */}
                   <div
-                    className="flex items-center justify-between text-foreground hover:text-accent transition-colors cursor-pointer"
+                    className="flex items-center justify-between text-foreground cursor-pointer group rounded-xl p-3 bg-gradient-to-r from-card/50 to-card/30 border border-border/50 hover:border-purple-500/50 transition-all duration-300 relative overflow-hidden"
                     onClick={toggleMobileProjects}
                     aria-expanded={isMobileProjectsOpen}
                     aria-controls="projects-dropdown-mobile"
                   >
-                    <span className="text-lg font-medium">Mes projets</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                    <span className="text-lg font-medium relative z-10 group-hover:text-purple-400 transition-colors">Mes projets</span>
                     <motion.div
                       animate={{ rotate: isMobileProjectsOpen ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                      className="relative z-10"
                     >
-                      <ChevronDown className="h-5 w-5 opacity-60" />
+                      <ChevronDown className="h-5 w-5 opacity-60 group-hover:opacity-100 transition-opacity" />
                     </motion.div>
                   </div>
 
                   {/* Contenu du dropdown - utilisons CSS pour l'animation au lieu de Framer Motion */}
                   <div
                     id="projects-dropdown-mobile"
-                    className={`transition-all duration-300 mt-4 overflow-hidden ${
+                    className={`transition-all duration-300 mt-3 overflow-hidden rounded-xl bg-gradient-to-b from-card/60 to-card/30 border border-border/40 relative ${
                       isMobileProjectsOpen
-                        ? "max-h-[500px] opacity-100"
-                        : "max-h-0 opacity-0"
+                        ? "max-h-[400px] opacity-100 p-4"
+                        : "max-h-0 opacity-0 p-0 border-transparent"
                     }`}
                   >
+                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
                     <div className="space-y-3 pl-4 border-l-2 border-border">
-                      <a
-                        href="#projects"
-                        className="block py-2 text-base hover:text-accent flex items-center"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleNavClick("projects");
-                        }}
-                      >
-                        <span className="text-accent mr-2">•</span>
-                        Tous les projets
-                      </a>
-                      {projects.map((project) => (
-                        <div key={project.id} className="flex items-center">
                           <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="py-2 text-base hover:text-accent flex items-center flex-1"
-                            onClick={(e) => handleVisitSite(e, project)}
-                          >
-                            <span className="text-accent mr-2">•</span>
-                            {project.title}
-                          </a>
-                          <Button
-                            size="icon"
-                            variant="ghost"
-                            className="h-8 w-8 p-0"
+                            href="#projects"
+                            className="group/item flex items-center py-2 text-base hover:text-purple-400 transition-colors rounded-lg hover:bg-purple-500/5 px-3"
                             onClick={(e) => {
                               e.preventDefault();
-                              handleOpenProjectModal(project);
+                              handleNavClick("projects");
                             }}
                           >
-                            <Info className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      ))}
+                            <span className="text-purple-400 mr-2 transition-transform group-hover/item:scale-125">•</span>
+                            <span className="transition-transform group-hover/item:translate-x-1">Tous les projets</span>
+                          </a>
+                          <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mt-3 mb-2 flex items-center gap-2">
+                            Projets professionnels
+                            <div className="flex-1 h-[1px] bg-gradient-to-r from-purple-500/50 to-transparent" />
+                          </div>
+                          {projects.filter(p => p.id === 'alto' || p.id === 'violette').map((project) => (
+                            <div key={project.id} className="group/item flex items-center rounded-lg hover:bg-purple-500/5 transition-colors">
+                              <a
+                                href={project.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="py-2 text-base hover:text-purple-400 flex items-center flex-1 px-3 transition-colors"
+                                onClick={(e) => handleVisitSite(e, project)}
+                              >
+                                <span className="text-purple-400 mr-2 transition-transform group-hover/item:scale-125">•</span>
+                                <span className="transition-transform group-hover/item:translate-x-1">{project.title}</span>
+                              </a>
+                              <Button
+                                size="icon"
+                                variant="ghost"
+                                className="h-10 w-10 min-w-10 p-0 hover:bg-purple-500/20 hover:text-purple-400 transition-colors rounded-lg"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  handleOpenProjectModal(project);
+                                }}
+                              >
+                                <Info className="h-5 w-5" />
+                              </Button>
+                            </div>
+                          ))}
                     </div>
                   </div>
                 </motion.div>
@@ -488,23 +789,30 @@ export function Header() {
                     e.preventDefault();
                     handleNavClick("process");
                   }}
-                  className="flex items-center justify-between text-foreground hover:text-accent py-3 border-b border-border/40 transition-colors"
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group flex items-center justify-between text-foreground py-3 transition-all duration-300 rounded-xl p-3 bg-gradient-to-r from-card/50 to-card/30 border border-border/50 hover:border-emerald-500/50 relative overflow-hidden"
                 >
-                  <span className="text-lg font-medium">Processus</span>
-                  <ChevronRight className="h-5 w-5 opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="text-lg font-medium relative z-10 group-hover:text-emerald-400 transition-colors">Comment ça marche ?</span>
+                  <ChevronRight className="h-5 w-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all relative z-10" />
                 </motion.a>
 
-                <motion.div variants={itemVariants} className="pt-6">
-                  <a
+                <motion.div variants={itemVariants} className="pt-6 flex justify-end">
+                  <motion.a
                     href="#contact"
                     onClick={(e) => {
                       e.preventDefault();
                       handleNavClick("contact");
                     }}
-                    className="block w-full text-center px-5 py-3.5 bg-accent text-accent-foreground font-medium rounded-lg hover:bg-accent/90 transition-colors"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-accent/95 to-accent text-white font-medium rounded-full transition-all duration-200 relative overflow-hidden shadow-md hover:shadow-lg hover:shadow-accent/25"
                   >
-                    Contact
-                  </a>
+                    {/* Effet de brillance subtil */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
+                    <span className="relative z-10">Contact</span>
+                  </motion.a>
                 </motion.div>
               </div>
             </motion.div>

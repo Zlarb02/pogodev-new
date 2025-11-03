@@ -4,12 +4,8 @@ import { ProjectType } from "@/components/ProjectModal";
 type ModalsContextType = {
   selectedProject: ProjectType | null;
   isProjectModalOpen: boolean;
-  isRedeploymentModalOpen: boolean;
-  redeployingProject: string;
-  projects: ProjectType[]; // Ajout de la liste des projets au contexte
+  projects: ProjectType[];
   setIsProjectModalOpen: (open: boolean) => void;
-  setIsRedeploymentModalOpen: (open: boolean) => void;
-  setRedeployingProject: (title: string) => void; // Ajout de cette fonction
   openProjectModal: (project: ProjectType) => void;
   handleVisitSite: (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -19,17 +15,12 @@ type ModalsContextType = {
 
 const ModalsContext = createContext<ModalsContextType | undefined>(undefined);
 
-// Liste des projets exclus de la redirection vers la modal de redéploiement
-const excludedFromRedeploymentModal = ["anais", "violette", "mirojo"];
-
 export function ModalsProvider({ children }: { children: ReactNode }) {
   // État pour les modals
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(
     null
   );
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
-  const [isRedeploymentModalOpen, setIsRedeploymentModalOpen] = useState(false);
-  const [redeployingProject, setRedeployingProject] = useState<string>("");
 
   // Liste des projets enrichie avec des détails
   const projects: ProjectType[] = [
@@ -116,20 +107,6 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
         "Replit",
       ],
     },
-    {
-      id: "anais",
-      title: "Site vitrine freelance",
-      description:
-        "Présentation professionnelle avec portfolio intégré et formulaire de contact pour une vidéaste.",
-      longDescription:
-        "Site créé rapidement en quelques prompts grâce à l'IA de lovable.dev pour ma sœur Anaïs, vidéaste freelance.",
-      context:
-        "Projet à développer permettant d'expérimenter la génération rapide de sites web professionnels avec l'aide de l'IA.",
-      image: "https://i.imgur.com/ErtS8mL.png",
-      url: "https://anais.pogodev.com",
-      githubUrl: "https://github.com/Zlarb02/video-eco-creative",
-      technologies: ["React", "TailwindCSS", "Lovable.dev AI", "Netlify"],
-    },
   ];
 
   // Fonction pour ouvrir la modal avec les détails du projet
@@ -138,17 +115,13 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
     setIsProjectModalOpen(true);
   };
 
-  // Fonction pour gérer les clics sur "Voir le site"
+  // Fonction pour gérer les clics sur "Voir le site" - ouvrir directement le site
   const handleVisitSite = (
-    e: React.MouseEvent<HTMLAnchorElement>,
+    _e: React.MouseEvent<HTMLAnchorElement>,
     project: ProjectType
   ) => {
-    if (!excludedFromRedeploymentModal.includes(project.id)) {
-      e.preventDefault();
-      setRedeployingProject(project.title);
-      setIsRedeploymentModalOpen(true);
-    }
-    // Si le projet est exclu, le comportement par défaut du lien fonctionne normalement
+    // Ouvrir directement tous les sites
+    window.open(project.url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -156,12 +129,8 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
       value={{
         selectedProject,
         isProjectModalOpen,
-        isRedeploymentModalOpen,
-        redeployingProject,
-        projects, // Exposition de la liste des projets
+        projects,
         setIsProjectModalOpen,
-        setIsRedeploymentModalOpen,
-        setRedeployingProject, // Exposer cette fonction
         openProjectModal,
         handleVisitSite,
       }}

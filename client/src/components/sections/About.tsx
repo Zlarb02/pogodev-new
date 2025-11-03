@@ -51,11 +51,11 @@ export function About() {
 Je m'appelle Étienne, j'ai 29 ans et je vis à Lille. J'ai travaillé en restauration, suivi 6 formations web, travaillé dur et galéré à trouver ma place. Mais ça m'a appris un truc important : partir de ce qu'on a et construire quelque chose qui tient la route. </p>
               <p className="text-lg leading-relaxed text-muted-foreground mb-4">
                 Pendant longtemps, je me suis demandé comment faire un métier qui avait du sens.
-                J'ai trouvé : créer des sites qui ne gaspillent pas, qui respectent les gens,
+                J'ai trouvé : créer des sites qui <span className="text-green-400/90">ne gaspillent pas</span>, qui respectent les gens,
                 avec des solutions qui répondent au besoin réel.
               </p>
               <p className="text-lg leading-relaxed text-muted-foreground font-medium">
-                Pas besoin de choisir entre un site robuste et un site éthique. Les deux vont ensemble.
+                Pas besoin de choisir entre un site <span className="text-green-400">robuste</span> et un site <span className="text-cyan-400">éthique</span>. Les deux vont ensemble.
               </p>
             </motion.div>
           </div>

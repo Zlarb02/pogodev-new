@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { User, Star, Briefcase, FolderOpen, ListChecks, Mail } from "lucide-react";
 
 // Sections à inclure dans la navigation verticale
 const navItems = [
-  { id: "about", label: "À propos" },
-  { id: "why-me", label: "Pourquoi moi" },
-  { id: "services", label: "Mon offre" },
-  { id: "projects", label: "Projets" },
-  { id: "process", label: "Processus" },
-  { id: "contact", label: "Contact" },
+  { id: "about", label: "À propos", icon: User },
+  { id: "why-me", label: "Pourquoi moi", icon: Star },
+  { id: "services", label: "Mon offre", icon: Briefcase },
+  { id: "projects", label: "Projets", icon: FolderOpen },
+  { id: "process", label: "Processus", icon: ListChecks },
+  { id: "contact", label: "Contact", icon: Mail },
 ];
 
 export function VerticalNavigation() {
@@ -39,9 +40,9 @@ export function VerticalNavigation() {
     // Remplacer les IntersectionObservers par un mécanisme plus stable
     // basé sur la position des sections dans la fenêtre
     const handleScroll = () => {
-      // Ne pas traiter les événements de défilement trop fréquemment
+      // Réduire le throttle pour mobile (50ms au lieu de 100ms)
       const now = Date.now();
-      if (now - lastChangeTime < 100) return;
+      if (now - lastChangeTime < 50) return;
 
       // Trouver la section la plus visible
       let maxVisibility = 0;
@@ -59,12 +60,10 @@ export function VerticalNavigation() {
           Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
         const visibility = visibleHeight > 0 ? visibleHeight / rect.height : 0;
 
-        // Donner plus de poids aux sections près du milieu de l'écran
-        const middleBoost =
-          1 -
-          (2 * Math.abs((rect.top + rect.bottom) / 2 - windowHeight / 2)) /
-            windowHeight;
-        const score = visibility * (1 + Math.max(0, middleBoost));
+        // Donner plus de poids aux sections près du haut de l'écran (meilleur pour mobile)
+        const topDistance = Math.abs(rect.top);
+        const topBoost = topDistance < windowHeight * 0.3 ? 1.5 : 1;
+        const score = visibility * topBoost;
 
         if (score > maxVisibility) {
           maxVisibility = score;
@@ -72,8 +71,8 @@ export function VerticalNavigation() {
         }
       });
 
-      // Ne mettre à jour la section active que si une section est suffisamment visible
-      if (maxVisibility > 0.15 && visibleSection !== activeSection) {
+      // Seuil plus bas pour mobile pour réagir plus vite
+      if (maxVisibility > 0.1 && visibleSection !== activeSection) {
         setActiveSection(visibleSection);
         setLastChangeTime(now);
       }
@@ -133,24 +132,19 @@ export function VerticalNavigation() {
   const MobileNavigation = (
     <motion.div
       className={cn(
-        "fixed z-40 inset-x-0 mx-auto",
-        isLandscape ? "bottom-2 lg:hidden" : "bottom-4 md:hidden"
+        "fixed z-40 inset-x-0 mx-auto px-2",
+        isLandscape ? "bottom-2 lg:hidden" : "bottom-6 md:hidden"
       )}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 30, scale: 0.9 }}
+      transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
     >
-      <div
-        className={cn(
-          "flex items-center justify-center mx-auto max-w-fit backdrop-blur-md border border-border shadow-lg",
-          isLandscape
-            ? "bg-card/95 rounded-lg gap-3 py-1.5 px-3"
-            : "bg-card/90 rounded-full gap-2 py-2 px-4"
-        )}
-      >
-        {navItems.map(({ id, label }) => (
-          <a
+      {/* Barre de navigation avec icônes et label intégré */}
+      <div className="relative flex items-center justify-between mx-auto max-w-lg backdrop-blur-xl border-2 border-border/50 shadow-xl bg-card/95 rounded-full py-2.5 px-4 gap-1">
+        
+        {navItems.map(({ id, label, icon: Icon }, index) => (
+          <motion.a
             key={id}
             href={`#${id}`}
             onClick={(e) => {
@@ -160,43 +154,62 @@ export function VerticalNavigation() {
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
             className={cn(
-              "relative flex items-center justify-center",
-              isLandscape ? "gap-1.5" : ""
+              "relative flex items-center justify-center gap-2 rounded-full transition-all duration-300 cursor-pointer",
+              activeSection === id 
+                ? "px-3 py-2 bg-accent/20 border-2 border-accent/50" 
+                : "p-2 hover:bg-accent/10 hover:scale-110"
             )}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              delay: index * 0.05,
+              type: "spring", 
+              stiffness: 400, 
+              damping: 25 
+            }}
+            whileTap={{ scale: 0.95 }}
+            layout
+            aria-label={label}
           >
-            <div
-              className={cn(
-                "rounded-full transition-all duration-300",
-                isLandscape ? "h-2 w-2" : "h-3 w-3",
-                activeSection === id
-                  ? "bg-accent shadow-md shadow-accent/20"
-                  : "bg-muted-foreground/30"
-              )}
-            />
-
-            {/* Afficher les textes en mode paysage */}
-            {isLandscape && (
-              <span
+            {/* Icône avec animation au survol */}
+            <motion.div
+              animate={activeSection === id ? {
+                rotate: [0, -10, 10, -10, 0],
+                scale: [1, 1.1, 1.1, 1.1, 1]
+              } : {}}
+              transition={{ 
+                duration: 0.5,
+                times: [0, 0.2, 0.5, 0.8, 1]
+              }}
+            >
+              <Icon 
                 className={cn(
-                  "text-xs font-medium whitespace-nowrap",
-                  activeSection === id ? "text-accent" : "text-muted-foreground"
+                  "transition-all duration-300",
+                  activeSection === id
+                    ? "h-5 w-5 text-accent"
+                    : "h-5 w-5 text-muted-foreground"
                 )}
-              >
-                {label}
-              </span>
-            )}
-
-            {activeSection === id && (
-              <motion.div
-                layoutId="mobileActiveIndicator"
-                className={cn(
-                  "absolute rounded-full bg-accent/20",
-                  isLandscape ? "-inset-0.5" : "-inset-1"
-                )}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
               />
-            )}
-          </a>
+            </motion.div>
+
+            {/* Texte visible seulement pour la section active */}
+            <AnimatePresence>
+              {activeSection === id && (
+                <motion.span
+                  initial={{ opacity: 0, width: 0, x: -10 }}
+                  animate={{ opacity: 1, width: "auto", x: 0 }}
+                  exit={{ opacity: 0, width: 0, x: -10 }}
+                  transition={{ 
+                    duration: 0.3,
+                    ease: [0.34, 1.56, 0.64, 1]
+                  }}
+                  className="text-sm font-semibold text-accent whitespace-nowrap overflow-hidden"
+                >
+                  {label}
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </motion.a>
         ))}
       </div>
     </motion.div>

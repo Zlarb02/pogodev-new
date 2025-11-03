@@ -76,9 +76,9 @@ export default function App() {
 
   return (
     <Router hook={useHashLocation}>
-      <div className="flex flex-col min-h-screen bg-background">
+      <div className="flex flex-col min-h-screen bg-background overflow-x-hidden">
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow overflow-x-hidden">
           <Suspense fallback={
             <div className="flex items-center justify-center min-h-[60vh]">
               <div className="text-center">

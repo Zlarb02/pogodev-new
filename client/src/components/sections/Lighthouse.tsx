@@ -11,112 +11,139 @@ export function Lighthouse() {
     <section id="lighthouse" ref={sectionRef} className="py-20 bg-card/30">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-2xl md:text-3xl font-bold text-center mb-6 font-['Poppins'] text-foreground"
+          className="text-2xl md:text-3xl font-bold text-center mb-4 font-['Poppins'] text-foreground"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          Des preuves ?
+          La qualité, mesurée
         </motion.h2>
 
         <motion.p
-          className="text-center text-muted-foreground max-w-3xl mx-auto mb-12"
+          className="text-center text-muted-foreground max-w-3xl mx-auto mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Des résultats concrets, mesurés avec Google Lighthouse.
+          Google Lighthouse analyse automatiquement la qualité des sites web. Voici comment ce site se comporte.
         </motion.p>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Documentation Google - Code couleur */}
-          <motion.div
-            className="bg-card rounded-xl shadow-sm border border-border overflow-hidden"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-3 text-foreground">
-                Comment lire les scores Lighthouse ?
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Le code couleur expliqué par Google
-              </p>
-            </div>
-            <ImageModal
-              src="/images/lighthouse-score-guide.webp"
-              alt="Guide des scores Lighthouse - Code couleur : 0-49 rouge (faible), 50-89 orange (amélioration nécessaire), 90-100 vert (bon)"
-            >
-              <div className="aspect-[4/3] lg:aspect-video bg-muted cursor-pointer hover:bg-muted/80 transition-colors duration-300">
-                <picture>
-                  <source srcSet="/images/lighthouse-score-guide.webp" type="image/webp" />
-                  <img
-                    src="/images/lighthouse-score-guide.png"
-                    alt="Guide des scores Lighthouse"
-                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    width="1016"
-                    height="553"
-                  />
-                </picture>
-              </div>
-            </ImageModal>
-            <div className="p-6 bg-accent/5 border-t border-border">
-              <ul className="text-sm text-muted-foreground space-y-2">
-                <li><span className="font-semibold text-red-600">0 à 49</span> (rouge) : Faible - nécessite des améliorations urgentes</li>
-                <li><span className="font-semibold text-orange-600">50 à 89</span> (orange) : Amélioration nécessaire</li>
-                <li><span className="font-semibold text-green-600">90 à 100</span> (vert) : Bon - respecte les bonnes pratiques</li>
-              </ul>
-              <p className="text-xs text-muted-foreground mt-4 italic">
-                Un score parfait de 100 est extrêmement difficile et n'est pas attendu. L'objectif est d'atteindre la zone verte (90+).
-              </p>
-            </div>
-          </motion.div>
+        {/* Explication simple de Lighthouse */}
+        <motion.div
+          className="max-w-2xl mx-auto mb-12 bg-accent/10 border-2 border-accent/30 rounded-xl p-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
+          <h3 className="text-lg font-semibold mb-3 text-foreground">
+            🔍 Qu'est-ce que Lighthouse ?
+          </h3>
+          <p className="text-muted-foreground mb-3">
+            C'est un outil gratuit de Google qui note les sites web sur 4 critères essentiels.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            <span className="font-medium text-foreground">Le code couleur :</span> 🔴 Rouge (0-49) = problèmes importants • 
+            🟠 Orange (50-89) = améliorations possibles • 
+            🟢 Vert (90-100) = excellent
+          </p>
+        </motion.div>
 
-          {/* Scores Lighthouse de pogodev.com */}
-          <motion.div
-            className="bg-card rounded-xl shadow-sm border border-border overflow-hidden"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-3 text-foreground">
-                Résultats de pogodev.com
-              </h3>
+        {/* Scores en grand et clair */}
+        <motion.div
+          className="max-w-4xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="bg-card rounded-2xl shadow-lg border-2 border-border p-8">
+            <h3 className="text-xl font-semibold mb-6 text-center text-foreground">
+              Les scores de ce site
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-orange-500 mb-2">86</div>
+                <div className="text-sm font-medium text-foreground mb-1">Performance</div>
+                <div className="text-xs text-muted-foreground">Rapide ⚡</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-green-500 mb-2">100</div>
+                <div className="text-sm font-medium text-foreground mb-1">Accessibilité</div>
+                <div className="text-xs text-muted-foreground">Pour tous ♿</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-green-500 mb-2">100</div>
+                <div className="text-sm font-medium text-foreground mb-1">Bonnes pratiques</div>
+                <div className="text-xs text-muted-foreground">Sécurisé 🔒</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-green-500 mb-2">100</div>
+                <div className="text-sm font-medium text-foreground mb-1">SEO</div>
+                <div className="text-xs text-muted-foreground">Visible 👀</div>
+              </div>
+            </div>
+            <div className="text-center">
               <p className="text-sm text-muted-foreground mb-4">
-                Les 4 piliers mesurés par Lighthouse
+                Ces scores montrent que le site est rapide, accessible à tous, sécurisé et bien référencé sur Google.
+              </p>
+              <ImageModal
+                src="/images/pogodev-lighthouse-results.webp"
+                alt="Capture d'écran détaillée des scores Lighthouse de pogodev.com"
+              >
+                <button className="text-sm text-accent hover:underline">
+                  Voir la capture d'écran complète →
+                </button>
+              </ImageModal>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Documentation en option */}
+        <motion.div
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <details className="bg-card rounded-xl shadow-sm border border-border overflow-hidden">
+            <summary className="p-6 cursor-pointer hover:bg-accent/5 transition-colors">
+              <h3 className="text-lg font-semibold inline text-foreground">
+                📚 En savoir plus sur Lighthouse et comment lire ces scores
+              </h3>
+            </summary>
+            <div className="p-6 pt-0 border-t border-border">
+              <p className="text-muted-foreground mb-4">
+                Google Lighthouse est un outil d'audit automatique qui évalue la qualité des pages web selon 4 critères :
+              </p>
+              <ul className="space-y-3 mb-6 text-sm text-muted-foreground">
+                <li><span className="font-semibold text-foreground">⚡ Performance</span> : Vitesse de chargement et fluidité</li>
+                <li><span className="font-semibold text-foreground">♿ Accessibilité</span> : Utilisable par tous, y compris les personnes en situation de handicap</li>
+                <li><span className="font-semibold text-foreground">🔒 Bonnes pratiques</span> : Sécurité, standards web modernes</li>
+                <li><span className="font-semibold text-foreground">👀 SEO</span> : Optimisation pour les moteurs de recherche (Google, etc.)</li>
+              </ul>
+              <ImageModal
+                src="/images/lighthouse-score-guide.webp"
+                alt="Documentation officielle Google expliquant le code couleur Lighthouse"
+              >
+                <div className="aspect-video bg-card/50 rounded-lg cursor-pointer hover:bg-card/70 transition-colors border border-border overflow-hidden">
+                  <picture>
+                    <source srcSet="/images/lighthouse-score-guide.webp" type="image/webp" />
+                    <img
+                      src="/images/lighthouse-score-guide.png"
+                      alt="Guide des scores Lighthouse"
+                      className="w-full h-full object-contain p-4"
+                      loading="lazy"
+                      width="1016"
+                      height="553"
+                    />
+                  </picture>
+                </div>
+              </ImageModal>
+              <p className="text-xs text-muted-foreground mt-4 text-center">
+                Cliquez sur l'image pour voir la documentation complète de Google
               </p>
             </div>
-            <ImageModal
-              src="/images/pogodev-lighthouse-results.webp"
-              alt="Scores Lighthouse de pogodev.com - Performance 86, Accessibilité 100, Bonnes pratiques 100, SEO 100"
-            >
-              <div className="aspect-[4/3] lg:aspect-video bg-muted cursor-pointer hover:bg-muted/80 transition-colors duration-300">
-                <picture>
-                  <source srcSet="/images/pogodev-lighthouse-results.webp" type="image/webp" />
-                  <img
-                    src="/images/pogodev-lighthouse-results.png"
-                    alt="Scores Lighthouse de pogodev.com"
-                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    width="2019"
-                    height="1215"
-                  />
-                </picture>
-              </div>
-            </ImageModal>
-            <div className="p-6 bg-accent/5 border-t border-border">
-              <ul className="text-sm text-muted-foreground space-y-2">
-                <li><span className="font-semibold text-orange-600">Performance : 86/100</span> - Bon résultat, des optimisations sont encore possibles</li>
-                <li><span className="font-semibold text-green-600">Accessibilité : 100/100</span> - Excellent ! Le site est accessible à tous</li>
-                <li><span className="font-semibold text-green-600">Bonnes pratiques : 100/100</span> - Parfait ! Respect total des standards web</li>
-                <li><span className="font-semibold text-green-600">SEO : 100/100</span> - Optimal pour le référencement naturel (SEO = Search Engine Optimization = faire en sorte que votre site soit bien positionné dans les résultats de recherche Google)</li>
-              </ul>
-            </div>
-          </motion.div>
-        </div>
+          </details>
+        </motion.div>
 
         <motion.p
           className="text-center text-muted-foreground max-w-3xl mx-auto mt-8 text-sm"
@@ -124,8 +151,7 @@ export function Lighthouse() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          ✨ Cliquez sur les images pour les voir en détail • Ces scores reflètent l'application rigoureuse des principes d'éco-conception :
-          optimisation des images, code léger, et bonnes pratiques web.
+          Ces scores reflètent l'éco-conception : images optimisées, code léger, bonnes pratiques web.
         </motion.p>
 
       </div>
