@@ -2,8 +2,10 @@ import { Route, Switch, Router } from "wouter";
 import { useState, useEffect, lazy, Suspense } from "react";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
-import Home from "./pages/Home";
-import NotFoundPage from "./pages/not-found";
+
+// Lazy load de toutes les pages pour réduire le bundle initial
+const Home = lazy(() => import("./pages/Home"));
+const NotFoundPage = lazy(() => import("./pages/not-found"));
 
 // Lazy loading des pages non-critiques pour améliorer les performances
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
@@ -19,7 +21,6 @@ export const useHashLocation = (): [
   (to: string, ...args: any[]) => void
 ] => {
   const [loc, setLoc] = useState(window.location.hash.substring(1) || "/");
-  const basePath = useBasePath();
 
   useEffect(() => {
     const handler = () => {
@@ -42,7 +43,6 @@ export const useHashLocation = (): [
 export default function App() {
   // Déterminer si nous sommes sur la page 404
   const [is404Redirect, setIs404Redirect] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Vérifier si on vient d'une redirection 404
@@ -54,7 +54,6 @@ export default function App() {
 
     // Masquer l'écran de chargement après un court délai
     const timer = setTimeout(() => {
-      setIsLoading(false);
       // Masquer l'élément loader du DOM
       const loader = document.getElementById("loader");
       if (loader) {

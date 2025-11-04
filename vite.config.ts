@@ -19,27 +19,26 @@ export default defineConfig({
     outDir: path.resolve(__dirname, "dist/public"),
     assetsDir: "assets",
     emptyOutDir: true,
-    assetsInlineLimit: 0,
+    assetsInlineLimit: 4096, // Inline petits assets
+    cssCodeSplit: true, // Split CSS pour lazy loading
+    sourcemap: false, // Désactiver sourcemaps en prod
     rollupOptions: {
       output: {
-        manualChunks: {
-          'three': ['three'],
-          'framer-motion': ['framer-motion'],
-          'lucide-react': ['lucide-react'],
-          'ui': [
-            '@radix-ui/react-label',
-            '@radix-ui/react-toast',
-            'class-variance-authority',
-            'clsx',
-            'tailwind-merge',
-            'tailwindcss-animate',
-          ],
-          'vendor': [
-            'react',
-            'react-dom',
-            'wouter',
-          ]
-        }
+        manualChunks: (id) => {
+          // Optimisation du chunking pour meilleur cache
+          if (id.includes('node_modules')) {
+            if (id.includes('three')) return 'three';
+            if (id.includes('framer-motion')) return 'framer-motion';
+            if (id.includes('lucide-react')) return 'lucide';
+            if (id.includes('@radix-ui')) return 'radix';
+            if (id.includes('react') || id.includes('react-dom')) return 'react-vendor';
+            return 'vendor';
+          }
+        },
+        // Optimisation des noms de fichiers pour le cache
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]'
       }
     },
     target: 'esnext',
@@ -48,7 +47,23 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+        passes: 2, // Multiple passes pour meilleure compression
       },
+      mangle: {
+        safari10: true,
+      },
+      format: {
+        comments: false, // Supprimer tous les commentaires
+      },
+    },
+    chunkSizeWarningLimit: 1000, // Augmenter la limite de warning
+    reportCompressedSize: false, // Désactiver pour build plus rapide
+  },
+  // Optimisations de dev
+  server: {
+    hmr: {
+      overlay: false,
     },
   },
 });

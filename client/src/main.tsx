@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-// Il est préférable de garder les imports avec @ pour la cohérence du projet
 import { ModalsProvider } from "@/contexts/ModalsContext";
 import { AppModals } from "@/components/AppModals";
 
@@ -46,6 +45,16 @@ if (detectCustomDomain() && baseUrl !== "/") {
   window.BASE_URL = "/";
 }
 
+// Cacher le loader une fois l'app chargée
+const hideLoader = () => {
+  const loader = document.getElementById('loader');
+  if (loader) {
+    loader.style.opacity = '0';
+    loader.style.transition = 'opacity 0.3s ease';
+    setTimeout(() => loader.remove(), 300);
+  }
+};
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ModalsProvider>
@@ -54,3 +63,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </ModalsProvider>
   </React.StrictMode>
 );
+
+// Cacher le loader après le premier rendu
+hideLoader();
