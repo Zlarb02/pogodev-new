@@ -45,13 +45,6 @@ jobs:
             echo "File 404.html not found in client/public/"
           fi
 
-      - name: Fix asset paths 🔧
-        run: |
-          echo "Vérification des chemins d'assets dans index.html..."
-          sed -i 's|src="/assets/|src="./assets/|g' dist/public/index.html
-          sed -i 's|href="/assets/|href="./assets/|g' dist/public/index.html
-          echo "Chemins corrigés pour index.html"
-
       - name: Debug output directory 🔍
         run: |
           echo "Contenu du répertoire dist/public:"
