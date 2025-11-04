@@ -36,7 +36,12 @@
     />
 
     <!-- Optimisations critiques pour les performances -->
-    <!-- Préchargement des fonts critiques auto-hébergées -->
+    <!-- Préconnexion aux domaines externes (plus efficace que dns-prefetch) -->
+    <link rel="preconnect" href="https://alto-lille.fr" crossorigin>
+    <link rel="preconnect" href="https://github.com" crossorigin>
+    <link rel="preconnect" href="https://linkedin.com" crossorigin>
+    
+    <!-- Préchargement uniquement de la font critique (Inter) -->
     <link
       rel="preload"
       href="/fonts/inter-variable.woff2"
@@ -44,37 +49,35 @@
       type="font/woff2"
       crossorigin
     />
-    <!-- Préchargement seulement des poids essentiels de Poppins -->
+    
+    <!-- Chargement asynchrone pour Poppins (non critique) -->
     <link
       rel="preload"
       href="/fonts/poppins-400.woff2"
       as="font"
       type="font/woff2"
       crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/poppins-600.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
+      media="print"
+      onload="this.media='all'"
     />
     
-    <!-- Préchargement des images critiques -->
+    <!-- Préchargement de l'image critique en responsive -->
     <link
       rel="preload"
       href="/images/etienne-portrait.avif"
       as="image"
       type="image/avif"
+      fetchpriority="high"
     />
     
-    <!-- DNS prefetch pour les domaines externes -->
-    <link rel="dns-prefetch" href="//alto-lille.fr">
-    <link rel="dns-prefetch" href="//github.com">
-    <link rel="dns-prefetch" href="//linkedin.com">
-    
-    <!-- Module preload pour le script principal -->
-    <link rel="modulepreload" href="./assets/main-BUnNWYgy.tsx" />
+    <!-- Inline critique CSS pour éviter FOUC -->
+    <style>
+      /* Critical CSS inline pour faster FCP */
+      *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid}
+      html{-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Inter,system-ui,sans-serif}
+      body{margin:0;line-height:inherit;background:#121212;color:#fff}
+      #loader{display:flex;justify-content:center;align-items:center;height:100vh}
+    </style>
 
     <!-- Script amélioré pour gérer les redirections SPA -->
     <script type="text/javascript">
@@ -115,12 +118,13 @@
         );
       }
     </script>
-    <script type="module" crossorigin src="./assets/index-B-rQAOw3.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/framer-motion-DvzEZPUn.js">
-    <link rel="modulepreload" crossorigin href="./assets/ui-CZElPY_1.js">
-    <link rel="modulepreload" crossorigin href="./assets/vendor-BSheVUG7.js">
-    <link rel="modulepreload" crossorigin href="./assets/lucide-react-BmHQcPmC.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-Dwa_--RL.css">
+    <script type="module" crossorigin src="./assets/index.DgsF3pXS.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/vendor.BX5QzajZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-vendor.C0CR7xrs.js">
+    <link rel="modulepreload" crossorigin href="./assets/radix.BASKOFpn.js">
+    <link rel="modulepreload" crossorigin href="./assets/lucide.COa24ag4.js">
+    <link rel="modulepreload" crossorigin href="./assets/framer-motion.BlQt8qTR.js">
+    <link rel="stylesheet" crossorigin href="./assets/index.iE884bQ4.css">
   </head>
   <body>
     <div id="root">
