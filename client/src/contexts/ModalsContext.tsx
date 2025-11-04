@@ -41,7 +41,7 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
       id: "violette",
       title: "Vio-lettres - Services de correction",
       description:
-        "Présentation simple des services d'une correctrice indépendante. Design rappelant les livres (particulièrement visible sur desktop).",
+        "Présentation simple des services d'une correctrice indépendante. Design rappelant les livres (particulièrement visible sur écran plus large : tablette, ordinateur).",
       longDescription:
         "Un site vitrine élégant présentant les services de correction professionnelle. Le design s'inspire de l'univers du livre avec une typographie soignée et une mise en page sobre et efficace.",
       context:
@@ -53,7 +53,7 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
     },
     {
       id: "mirojo",
-      title: "Mirojo.app - Landing page",
+      title: "Mirojo.app",
       description: "Landing page Webflow pour un projet de plateforme JDR avec IA. L'application complète (React/Supabase/OpenAI) a été développée pour expérimenter mais le projet a été abandonné — le code reste disponible sur GitHub.",
       longDescription:
         "Landing page réalisée avec Webflow présentant Mirojo.app, une plateforme pour joueurs de JDR permettant de créer des univers, générer et gérer des scénarios avec l'aide de l'IA. L'application complète a été développée en parallèle (React/Supabase/OpenAI) pour expérimenter avec ces technologies, le code est disponible sur GitHub mais le projet a été abandonné en cours d'expérimentation.",

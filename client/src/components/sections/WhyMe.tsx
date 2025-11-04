@@ -118,7 +118,7 @@ export function WhyMe() {
               </h3>
             </div>
             <p className="text-muted-foreground">
-              Freelance = vous me parlez, je vous réponds. Pas de commercial, pas d'équipe commerciale, pas d'intermédiaire. <span className="text-green-400">Relation directe</span>. Je reste ouvert aux propositions d'embauche.
+              Indépendant = vous me parlez, je vous réponds. Pas de commercial, pas d'équipe commerciale, pas d'intermédiaire. <span className="text-green-400">Relation directe</span>. Je reste ouvert aux propositions d'embauche.
             </p>
           </motion.div>
         </motion.div>

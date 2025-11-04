@@ -244,19 +244,13 @@ export function Services() {
                 </p>
                 <p className="text-sm text-muted-foreground mb-6">
                   Exemple concret : <a 
-                    href="#projects" 
+                    href="#" 
                     onClick={(e) => {
                       e.preventDefault();
-                      const projectsSection = document.getElementById('projects');
-                      if (projectsSection) {
-                        projectsSection.scrollIntoView({ behavior: 'smooth' });
-                        // Ouvrir automatiquement le projet mirojo
-                        setTimeout(() => {
-                          window.dispatchEvent(new CustomEvent('openProject', { 
-                            detail: { projectId: 'mirojo' } 
-                          }));
-                        }, 500);
-                      }
+                      // Ouvrir directement la modal du projet Mirojo
+                      window.dispatchEvent(new CustomEvent('openProjectModal', { 
+                        detail: { projectId: 'mirojo' } 
+                      }));
                     }}
                     className="text-accent hover:underline font-medium cursor-pointer"
                   >
@@ -366,10 +360,10 @@ export function Services() {
             </motion.div>
           </div>
 
-          {/* Section Pour Qui */}
+          {/* S ection Pour Qui */}
           <motion.div
             id="pour-qui"
-            className="mb-20 -mx-4 px-4 py-12 bg-muted/10"
+            className="mb-15 -mx-4 px-4 py-12 bg-muted/10"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeInUp}
@@ -379,7 +373,7 @@ export function Services() {
               Pour qui ?
             </h3>
             <p className="text-lg text-center mb-12 text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Pour celles et ceux qui veulent <span className="text-cyan-400">reprendre la main</span> sur leur présence en ligne, avec des solutions cohérentes, utiles, belles (oui, artistiques) et <span className="text-green-400">éco-conçues</span> — des solutions qui vous appartiennent.
+              Pour celles et ceux qui veulent <span className="text-cyan-400">reprendre la main</span> sur leur présence en ligne, avec des solutions cohérentes, utiles, belles (oui, artistiques) et <span className="text-green-400">écoconçues</span> — des solutions qui vous appartiennent.
             </p>
 
             {/* Profils en grille compacte */}
@@ -473,30 +467,13 @@ export function Services() {
                   </div>
                 </div>
                 <p className="text-muted-foreground mb-2">
-                  Je m'intègre à vos équipes et m'adapte à votre stack, j'explique mes choix et je laisse un code propre, testable ✅ et maintenable.
+                  Je m'intègre à vos équipes et m'adapte à votre stack, j'explique mes choix et je laisse un code propre et maintenable.
                 </p>
                 <p className="text-muted-foreground text-sm">
                   Communication claire, collaboration sereine 🤝.
                 </p>
               </motion.div>
             </div>
-
-            {/* Message de fin */}
-            <motion.div
-              className="text-center space-y-4 max-w-3xl mx-auto"
-              variants={fadeInUp}
-            >
-              <h4 className="text-lg font-semibold text-foreground">En bref</h4>
-              <p className="text-muted-foreground leading-relaxed">
-                Des solutions qui vous coûtent moins de <span className="text-blue-400 font-semibold">temps</span>, <span className="text-green-400 font-semibold">d'argent</span> et <span className="text-teal-400 font-semibold">d'énergie</span> à faire vivre.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                <span className="text-teal-400 font-medium">Rapides</span> sur mobile, <span className="text-green-400 font-medium">respectueuses</span> des données, <span className="text-blue-400 font-medium">accessibles</span> à tous.
-              </p>
-              <p className="text-foreground font-semibold leading-relaxed pt-2">
-                Gardez les <span className="text-orange-400">clés</span> (domaine, code, contenus) — et un site où l'on a <span className="text-amber-400">plaisir</span> à revenir.
-              </p>
-            </motion.div>
           </motion.div>
 
           {/* Principes */}
@@ -514,7 +491,7 @@ export function Services() {
                 Mes principes
               </h4>
               <p className="text-accent text-lg font-bold mb-4">
-                Sobriété · Performance · Accessibilité · Transparence
+                Sobriété · Accessibilité · Transparence
               </p>
               <p className="text-muted-foreground mb-3">
                 Code lisible et maintenable. Pas de dépendances inutiles. Pas de tracking
@@ -522,16 +499,16 @@ export function Services() {
               </p>
               <p className="text-foreground font-medium mb-2">Un site sobre, c'est :</p>
               <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                <li>Plus rapide</li>
                 <li>Moins cher à héberger</li>
+                <li>Moins cher à maintenir</li>
                 <li>Accessible sur vieux matériel et connexions faibles</li>
                 <li>Moins énergivore</li>
                 <li>Moins de failles de sécurité</li>
                 <li>Facile à maintenir</li>
+                <li>Un contrôle total du design, des données et de l'expérience avec une compréhension profonde du web <span className="text-red-400">♥</span></li>
               </ul>
               <p className="text-foreground font-medium mt-4 italic">
-                La sobriété n'est pas qu'une question d'éthique. C'est souvent la solution
-                la plus <span className="text-amber-400">rentable</span>.
+                La sobriété n'est pas qu'une question d'éthique. C'est souvent le choix le plus <span className="text-amber-400">malin</span> !
               </p>
             </div>
           </motion.div>

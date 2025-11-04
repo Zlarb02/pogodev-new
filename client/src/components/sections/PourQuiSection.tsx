@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { Users, Palette, Building2, Wrench, Code } from "lucide-react";
 
@@ -50,7 +50,7 @@ const profiles: Profile[] = [
     title: "Équipes tech",
     subtitle: "Code propre, collaboration sereine",
     description: [
-      "Je m'intègre à vos outils, je privilégie la simplicité et la performance, j'explique mes choix et je laisse un code propre, testable et maintenable.",
+      "Je m'intègre à vos outils, je privilégie la simplicité et la performance, j'explique mes choix et je laisse un code propre et maintenable.",
       "Communication claire, collaboration sereine."
     ],
     color: "from-green-500/20 to-emerald-500/20"
@@ -59,14 +59,6 @@ const profiles: Profile[] = [
 
 export function PourQuiSection() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left - rect.width / 2);
-    mouseY.set(e.clientY - rect.top - rect.height / 2);
-  };
 
   return (
     <div id="pour-qui" className="mb-16">
@@ -82,7 +74,7 @@ export function PourQuiSection() {
           Pour qui ?
         </h2>
         <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-          Pour celles et ceux qui veulent <span className="text-cyan-400">reprendre la main</span> sur leur présence en ligne, avec des solutions cohérentes, utiles, belles (oui, artistiques) et éco-conçues — des solutions qui vous appartiennent.
+          Pour celles et ceux qui veulent <span className="text-cyan-400">reprendre la main</span> sur leur présence en ligne, avec des solutions cohérentes, utiles, belles (oui, artistiques) et écoconçues — des solutions qui vous appartiennent.
         </p>
       </motion.div>
 

@@ -21,22 +21,6 @@ export function Projects() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Gérer l'ouverture automatique d'un projet via event custom
-  useEffect(() => {
-    const handleOpenProject = (event: CustomEvent) => {
-      const projectId = event.detail.projectId;
-      if (projectId) {
-        setExpandedProjects(new Set([projectId]));
-      }
-    };
-
-    window.addEventListener('openProject' as any, handleOpenProject);
-    
-    return () => {
-      window.removeEventListener('openProject' as any, handleOpenProject);
-    };
-  }, []);
-
   // Fonction pour toggler l'état d'un projet
   const toggleProject = (projectId: string) => {
     setExpandedProjects(prev => {
@@ -52,6 +36,34 @@ export function Projects() {
 
   // Utiliser le contexte pour les modals et les projets
   const { openProjectModal, handleVisitSite, projects } = useModals();
+
+  // Gérer l'ouverture automatique d'un projet via event custom
+  useEffect(() => {
+    const handleOpenProject = (event: CustomEvent) => {
+      const projectId = event.detail.projectId;
+      if (projectId) {
+        setExpandedProjects(new Set([projectId]));
+      }
+    };
+
+    const handleOpenProjectModal = (event: CustomEvent) => {
+      const projectId = event.detail.projectId;
+      if (projectId) {
+        const project = projects.find(p => p.id === projectId);
+        if (project) {
+          openProjectModal(project);
+        }
+      }
+    };
+
+    window.addEventListener('openProject' as any, handleOpenProject);
+    window.addEventListener('openProjectModal' as any, handleOpenProjectModal);
+    
+    return () => {
+      window.removeEventListener('openProject' as any, handleOpenProject);
+      window.removeEventListener('openProjectModal' as any, handleOpenProjectModal);
+    };
+  }, [projects, openProjectModal]);
 
   const containerVariants = {
     hidden: { opacity: 0 },

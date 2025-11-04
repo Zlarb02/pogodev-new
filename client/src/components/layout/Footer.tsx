@@ -143,7 +143,7 @@ export function Footer({
                 1. Édition du site
               </h3>
               <p>
-                Ce site est édité par Etienne Pogoda, développeur web freelance
+                Ce site est édité par Etienne Pogoda, développeur web indépendant
                 en micro-entreprise.
               </p>
               <p className="mt-2">

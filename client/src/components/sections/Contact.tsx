@@ -8,7 +8,7 @@ import {
   ReceiptEuro,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { NtfyContactForm } from "@/components/NtfyContactForm";
+import { RobustContactForm } from "@/components/RobustContactForm";
 import { Button } from "@/components/ui/button";
 
 export function Contact() {
@@ -69,7 +69,7 @@ export function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
               >
-                <NtfyContactForm />
+                <RobustContactForm />
               </motion.div>
             </TabsContent>
 
