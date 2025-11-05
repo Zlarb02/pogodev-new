@@ -59,8 +59,7 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
         "Landing page réalisée avec Webflow présentant Mirojo.app, une plateforme pour joueurs de JDR permettant de créer des univers, générer et gérer des scénarios avec l'aide de l'IA. L'application complète a été développée en parallèle (React/Supabase/OpenAI) pour expérimenter avec ces technologies, le code est disponible sur GitHub mais le projet a été abandonné en cours d'expérimentation.",
       context:
         "Projet de formation no-code/low-code chez M2i : création d'une landing page avec Webflow. L'application complète a été développée en parallèle (React/Supabase/OpenAI) pour expérimenter, le code est sur GitHub mais le projet a été abandonné en cours d'expérimentation.",
-      image:
-        "https://cdn.prod.website-files.com/67bdb9c24215a721af4d2bf1/67be47a750c54053e52e5be2_00c38b114f077b8819a5ce847be9f50c_Capture%20d%E2%80%99e%CC%81cran%202025-02-25%20a%CC%80%2023.01.44-p-1080.png",
+      image: "/images/mirojo-landing.webp",
       url: "https://etiennes-mirojo-landing-page.webflow.io",
       githubUrl: "https://github.com/Zlarb02/last-mirojo",
       technologies: ["Webflow", "React", "Supabase", "OpenAI API"],
