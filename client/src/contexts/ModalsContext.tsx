@@ -74,7 +74,7 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
         "GrooveGather est une plateforme web qui permet aux musiciens de collaborer à distance sur des projets musicaux. Elle offre des fonctionnalités de partage de fichiers audio, d'édition collaborative et de communication entre artistes.",
       context:
         "Projet de formation à la Wild Code School où j'ai été désigné 'Tech Lead' de mon groupe par le formateur. J'ai travaillé à faire monter en compétences mes camarades tout en donnant le maximum pour obtenir un produit à la hauteur de nos ambitions. Malgré le temps limité et l'apprentissage en cours de route, je suis fier du résultat même si certaines fonctionnalités ne sont pas encore totalement opérationnelles.",
-      image: "https://i.imgur.com/nPrCK8U.png",
+      image: "/images/groovegather-preview.webp",
       url: "https://groovegather.fr",
       githubUrl: "https://github.com/Zlarb02/GrooveGatherBack",
       technologies: [
@@ -96,7 +96,7 @@ export function ModalsProvider({ children }: { children: ReactNode }) {
         "Une expérience immersive pour présenter mes projets de jeux vidéo indépendants avec un avatar 3D dans un environnement explorable. Les visiteurs peuvent interagir avec l'environnement et découvrir différents projets de manière ludique.",
       context:
         "Projet expérimental démarré avec Replit pour accélérer le processus de création et explorer les possibilités de Three.js et WebGL dans la présentation de portfolio créatifs.",
-      image: "https://i.imgur.com/nxAjahS.gif",
+      image: "/images/portfolio-3d-preview.webp",
       url: "https://games.pogodev.com",
       githubUrl: "https://github.com/Zlarb02/DevPortfolioShowcase",
       technologies: [

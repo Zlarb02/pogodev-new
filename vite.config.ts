@@ -24,6 +24,22 @@ export default defineConfig({
     sourcemap: false, // Désactiver sourcemaps en prod
     rollupOptions: {
       output: {
+        manualChunks: (id) => {
+          // Chunking sécurisé : séparer uniquement les grosses libs
+          if (id.includes('node_modules')) {
+            // Three.js dans son propre chunk (459KB)
+            if (id.includes('three')) {
+              return 'three';
+            }
+            // Framer Motion dans son propre chunk (114KB)
+            if (id.includes('framer-motion')) {
+              return 'framer';
+            }
+            // Tout le reste des node_modules ensemble (incluant react/react-dom)
+            // pour éviter les problèmes de dépendances
+            return 'vendor';
+          }
+        },
         // Optimisation des noms de fichiers pour le cache
         entryFileNames: 'assets/[name].[hash].js',
         chunkFileNames: 'assets/[name].[hash].js',

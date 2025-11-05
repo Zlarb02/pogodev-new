@@ -26,11 +26,6 @@ export function Footer({
     }
   }, []);
 
-  // Ne pas afficher le footer sur la page 404
-  if (is404Page) {
-    return null;
-  }
-
   // Fonction pour gérer les clics sur les liens en tenant compte de la page 404
   const handleNavClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -53,6 +48,7 @@ export function Footer({
     <footer
       className={cn(
         "w-full border-t bg-background text-muted-foreground py-4 px-4",
+        is404Page && "hidden",
         className
       )}
       {...props}
