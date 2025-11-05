@@ -22,7 +22,13 @@
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
   
-  # CSS et JavaScript - 1 mois
+  # CSS et JavaScript avec hash - 1 an (immutable)
+  <FilesMatch "\.(js|css)\.[a-f0-9]{8,}\.(js|css)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # CSS et JavaScript sans hash - 1 mois
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
   
