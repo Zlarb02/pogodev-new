@@ -72,8 +72,15 @@
       *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid}
       html{-webkit-text-size-adjust:100%;tab-size:4;font-family:Inter,system-ui,sans-serif}
       body{margin:0;line-height:inherit;background:#121212;color:#fff}
-      #loader{display:flex;justify-content:center;align-items:center;height:100vh}
     </style>
+
+    <!-- Sans JavaScript, les animations framer-motion ne se déclenchent pas :
+         on force l'affichage des éléments pré-rendus avec leur état initial masqué. -->
+    <noscript>
+      <style>
+        #root [style*="opacity:0"]{opacity:1!important;transform:none!important}
+      </style>
+    </noscript>
 
     <!-- Script amélioré pour gérer les redirections SPA -->
     <script type="text/javascript">
@@ -117,46 +124,6 @@
     </script>
   </head>
   <body>
-    <div id="root">
-      <!-- Fallback pour SEO et en cas de problème de chargement JS -->
-      <noscript>
-        <div style="padding: 20px; text-align: center">
-          <h1>Étienne Pogoda - Développeur Freelance</h1>
-          <p>Ce site nécessite JavaScript pour fonctionner correctement.</p>
-          <p>
-            Veuillez activer JavaScript ou utiliser un navigateur qui le
-            supporte.
-          </p>
-          <p>
-            Pour me contacter directement:
-            <a href="mailto:etienne@pogodev.com">etienne@pogodev.com</a>
-          </p>
-        </div>
-      </noscript>
-      <!-- Indicateur de chargement -->
-      <div
-        id="loader"
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          width: 100vw;
-          position: fixed;
-          top: 0;
-          left: 0;
-          background: #121212;
-        "
-      >
-        <div style="text-align: center">
-          <img
-            src="./assets/logo.svg"
-            alt="Logo"
-            style="width: 80px; height: 80px; margin-bottom: 20px"
-          />
-          <p style="color: #fff; font-family: sans-serif">Chargement...</p>
-        </div>
-      </div>
-    </div>
+    <div id="root"><!--app-html--></div>
   </body>
 </html>

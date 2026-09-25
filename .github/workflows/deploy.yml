@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js 🔧
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: "npm"
           # Chemin corrigé vers package-lock.json à la racine du projet
           cache-dependency-path: "./package-lock.json"

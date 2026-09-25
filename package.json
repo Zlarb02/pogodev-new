@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp client/public/404.html client/public/robots.txt client/public/sitemap.xml client/public/CNAME dist/public/ 2>/dev/null || true",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir ../dist/server && node scripts/prerender.mjs && (cp client/public/404.html client/public/robots.txt client/public/sitemap.xml client/public/CNAME dist/public/ 2>/dev/null || true)",
     "check": "tsc",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist/public",

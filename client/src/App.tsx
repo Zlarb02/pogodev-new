@@ -20,7 +20,9 @@ export const useHashLocation = (): [
   string,
   (to: string, ...args: any[]) => void
 ] => {
-  const [loc, setLoc] = useState(window.location.hash.substring(1) || "/");
+  const [loc, setLoc] = useState(
+    typeof window === "undefined" ? "/" : window.location.hash.substring(1) || "/"
+  );
 
   useEffect(() => {
     const handler = () => {

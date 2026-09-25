@@ -49,7 +49,8 @@ const hideLoader = () => {
   }
 };
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const rootElement = document.getElementById("root")!;
+const app = (
   <React.StrictMode>
     <ModalsProvider>
       <App />
@@ -57,6 +58,13 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </ModalsProvider>
   </React.StrictMode>
 );
+
+// Le HTML est pré-rendu au build (voir scripts/prerender.mjs) : on l'hydrate.
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrateRoot(rootElement, app);
+} else {
+  ReactDOM.createRoot(rootElement).render(app);
+}
 
 // Cacher le loader après le premier rendu
 hideLoader();
